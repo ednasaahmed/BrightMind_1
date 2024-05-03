@@ -1,0 +1,68 @@
+/* Estilos para tamaños de pantalla pequeños */
+@media (max-width: 991px) {
+  .offcanvas-body {
+    text-align: center;
+  }
+  .navbar-nav {
+    flex-direction: column;
+  }
+  .navbar-nav .nav-item {
+    margin-bottom: 10px;
+  }
+  .navbar-toggler {
+    display: block;
+  }
+  .navbar-collapse {
+    display: none;
+  }
+  .offcanvas.show .navbar-collapse {
+    display: block;
+  }
+}
+
+/* Estilos para tamaños de pantalla aún más pequeños */
+@media (max-width: 576px) {
+  .navbar-brand img {
+    width: 150px;
+    height: auto;
+  }
+  .offcanvas-body {
+    padding: 10px;
+  }
+  .navbar-nav .nav-item {
+    margin-bottom: 5px;
+  }
+}
+
+@media (max-width: 376px) {
+  .navbar-brand img {
+    width: 120px;
+  }
+}
+@media (max-width: 991px) {
+  .carousel-caption {
+    text-align: center;
+  }
+  .about_section .container {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
+}
+
+/* Estilos para tamaños de pantalla aún más pequeños */
+@media (max-width: 576px) {
+  .about_section .img-box img {
+    width: 100%;
+    height: auto;
+  }
+  .about_section .detail-box {
+    margin-top: 20px;
+  }
+}
+
+/* Estilos para tamaños de pantalla muy pequeños */
+@media (max-width: 376px) {
+  .about_section .detail-box h2 {
+    font-size: 1.5rem;
+  }
+}
