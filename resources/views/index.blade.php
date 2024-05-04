@@ -2,32 +2,31 @@
 @section('title','Brightmind')
 @section('content')
 
-<section class="one" >
-    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel" >
-    <div class="carousel-inner">
-    @foreach($slides as $key => $slide)
-        <div class="carousel-item {{$key == 0 ? 'active' : ''}}">
-            <img class="d-block w-100" src="{{ asset('images/'.$slide['image']) }}" alt="{{$slide['title']}}" >
-            <div class="carousel-caption d-none d-md-block" >
-                <h5>{{$slide['title']}}</h5>
-                <p>{{$slide['content']}}</p>
-                @if(isset($slide['button_text']) && isset($slide['button_url']))
-                    <a href="{{route('login')}}" class="btn" >{{$slide['button_text']}} </a>
-                @endif
-            </div>
+<section class="one">
+    <div id="carouselExample" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            @foreach($slides as $key => $slide)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <img src="{{ asset('images/'.$slide['image']) }}" class="d-block w-100" alt="...">
+                    @if(isset($slide['button_text']) && isset($slide['button_url']))
+                        <div class="carousel-caption d-none d-md-block">
+                            <a href="{{ route('login') }}" class="btn">{{ $slide['button_text'] }}</a>
+                        </div>
+                    @endif
+                </div>
+            @endforeach
         </div>
-    @endforeach
-</div>
-        <a class="carousel-control-prev" href="#carouselExampleSlidesOnly" role="button" data-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExample" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselExampleSlidesOnly" role="button" data-slide="next">
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExample" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="sr-only">Next</span>
-        </a>
+            <span class="visually-hidden">Next</span>
+        </button>
     </div>
 </section>
+
 <section class="about_section layout_padding ">
     <div class="container">
       <div class="row">
