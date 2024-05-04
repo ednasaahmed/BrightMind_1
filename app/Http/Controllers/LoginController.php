@@ -17,19 +17,19 @@ class LoginController extends Controller
 
     
     public function logout(Request $request){
-            Auth::logout();
+        Auth::logout();
 
-            $request->session()->invalidate();
-            $request->session()->regenerateToken();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
      }
 
      public function ingresar(){
 
-       $credentials = request()->only('email','password');
+       $credentials = Request()->only('email','password');
 
         if ( Auth::attempt($credentials)){
 
-            request()->session()->regenerate();
+            Request()->session()->regenerate();
 
             return redirect('home');
         }
