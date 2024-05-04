@@ -16,6 +16,7 @@ Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 
 Route::post('/login', [LoginController::class, 'ingresar'])->name('ingresar');
+//Route::get('/login', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/registrar', [RegistrarController::class, 'index'])->name('registrar');
 Route::get('/home', [HomeController::class, 'home'])->name('home')->middleware('auth');

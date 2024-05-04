@@ -4,7 +4,7 @@
 
 <main class="one">
     <div class="wrapper">
-  <form method="POST" class="login" action="/login">
+  <form method="POST" class="login">
     @csrf
     <h1>Iniciar Sesión</h1>
     <div class="input-box" >

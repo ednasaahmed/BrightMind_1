@@ -14,13 +14,15 @@ class LoginController extends Controller
     {
         return view('login');
     }
-
     
     public function logout(Request $request){
         Auth::logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
+        
+        //return redirect('index');
+
      }
 
      public function ingresar(){
@@ -32,6 +34,7 @@ class LoginController extends Controller
             Request()->session()->regenerate();
 
             return redirect('home');
+            
         }
 
         return redirect('login');
