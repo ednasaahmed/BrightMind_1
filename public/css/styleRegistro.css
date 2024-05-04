@@ -1,0 +1,44 @@
+.titulo {
+    text-align: center;
+}
+
+.reg-campos {
+    border: 3px solid #610C27;
+    border-radius: 25px;
+}
+
+.reg-campos:focus {
+    border: 3px solid #610C27;
+    box-shadow: 0 0 10px #610c27e0;;
+}
+
+
+.form-check {
+    display: inline-flex;
+}
+
+#fecha {
+    display: inline-block;
+    width: 59%;
+}
+
+#select {
+    display: inline-block;
+    width: 39%;
+}
+
+#guardar {
+    display: inline-block;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #610C27;
+    border-radius: 20px;
+    cursor: pointer;
+}
+
+#guardar:hover {
+    transition: 0.3s;
+    background-color: #610c27e0;
+}

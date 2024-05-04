@@ -9,7 +9,13 @@ use Illuminate\Support\Facades\Hash;
 
 class RegistrarController extends Controller
 {
-    public function register(Request $request){
+    #ruta del index al registro
+    public function registrar()
+    {
+        return view('registrar');
+    }
+
+    /*public function register(Request $request){
         $user= new User();
 
         $user->email=$request->email;
@@ -20,6 +26,6 @@ class RegistrarController extends Controller
         Auth::login($user);
 
         return redirect(route('index'));
-    }
+    }*/
 
 }
