@@ -1,0 +1,27 @@
+.navbar {
+    background-color: #cbad8dc0;
+    border-bottom: 1px solid #dee2e6; 
+  }
+  .icono-grande {
+    margin-right: 10px;
+    font-size: 25px; 
+  }
+ ul{
+    margin-left: auto;
+ }
+
+  .dropdown-menu {
+    border: none; 
+  }
+  
+  .dropdown-item:hover {
+    color: #fff; 
+    background-color: #610C27; 
+    border-radius: 2px;
+  }
+.navbar img {
+    width: 40px; 
+    height: 40px; 
+    border-radius: 50%; 
+  }
+    
