@@ -18,8 +18,8 @@ Route::get('/login', [LoginController::class, 'login'])->name('login');
 Route::post('/login', [LoginController::class, 'ingresar'])->name('ingresar');
 //Route::get('/login', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/registrar', [RegistrarController::class, 'index'])->name('registrar');
-Route::get('/home', [HomeController::class, 'home'])->name('home')->middleware('auth');
+Route::get('/registrar', [RegistrarController::class, 'registrar'])->name('registrar');
+Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 
 

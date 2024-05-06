@@ -10,20 +10,14 @@ class IndexController extends Controller
     {
         $slides = [
             [
-                'title' => '',
-                'content' => '',
                 'image' => 'c3.jpg',
                 'button_text' => 'Login',
-                'button_url' => '',
+                'button_url' => '#',
             ],
             [
-                'title' => '',
-                'content' => '',
                 'image' => 'c6.jpg',
             ],
             [
-                'title' => '',
-                'content' => '',
                 'image'=> 'c6.png',
             ]
         ];

@@ -1,4 +1,4 @@
-<body class="dark">
+<body>
 <nav class="sidebar close">
     <header>
         <div class="image-text">
