@@ -71,7 +71,7 @@
 
 
   <div style="text-align: center;">
-    <a href="" id="guardar">GUARDAR</a>
+    <a href="{{ route('register')}}" id="guardar">GUARDAR</a>
   </div>
     </div>
   </div>

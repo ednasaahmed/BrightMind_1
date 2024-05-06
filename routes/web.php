@@ -19,6 +19,7 @@ Route::post('/login', [LoginController::class, 'ingresar'])->name('ingresar');
 //Route::get('/login', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/registrar', [RegistrarController::class, 'registrar'])->name('registrar');
+Route::Post('/registrar', [RegistrarController::class, 'register'])->name('register');
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 
 

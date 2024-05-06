@@ -15,7 +15,7 @@ class RegistrarController extends Controller
         return view('registrar');
     }
 
-    /*public function register(Request $request){
+    public function register(Request $request){
         $user= new User();
 
         $user->email=$request->email;
@@ -25,7 +25,7 @@ class RegistrarController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('index'));
-    }*/
+        return redirect(route('home'));
+    }
 
 }
