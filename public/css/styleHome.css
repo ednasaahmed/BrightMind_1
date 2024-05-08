@@ -1,27 +1,53 @@
-.navbar {
-    background-color: #cbad8dc0;
-    border-bottom: 1px solid #dee2e6; 
-  }
-  .icono-grande {
-    margin-right: 10px;
-    font-size: 25px; 
-  }
- ul{
-    margin-left: auto;
- }
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
-  .dropdown-menu {
-    border: none; 
+.welcome {
+    position: relative;
+    height: 500px; 
+    color: white; 
+    text-align: center;
   }
   
-  .dropdown-item:hover {
-    color: #fff; 
-    background-color: #610C27; 
-    border-radius: 2px;
+  .overlay {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%; 
+    height: 200px; 
+    background-color: rgba(0, 0, 0, 0.5); 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
   }
-.navbar img {
-    width: 40px; 
-    height: 40px; 
+  
+  .welcome h1 {
+    z-index: 1; 
+  }
+
+  .card {
+    width: 300px;
+    margin: 0 10px;
+    border-radius: 10px;
+  }
+  
+  .card img {
+    width: 60px;
+    height: 60px;
     border-radius: 50%; 
+    margin-right: 10px;
   }
-    
+  
+  .card-body {
+    padding: 15px;
+  }
+  
+  .card-title {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .card-text {
+    font-size: 14px;
+    color: #555;
+  }
