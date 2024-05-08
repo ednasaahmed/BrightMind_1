@@ -27,7 +27,7 @@ class RegistrarController extends Controller
 
         Auth::login($user);
 
-        if (condition) {
+        if (radios.value()=="Estudiante") {
             $tutor = new Tutor();
 
             $tutor->nombre = $request->nombre;
@@ -48,7 +48,7 @@ class RegistrarController extends Controller
 
             $estudiante->save();
         }
-        
+
         return redirect(route('home'));
     }
 

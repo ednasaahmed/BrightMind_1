@@ -17,22 +17,16 @@
     <label for="floatingPassword">Contraseña</label>
   </div>
   <div class="form-floating mb-3">
-    <input type="password" class="form-control reg-campos" id="floatingPassword" placeholder="CONFIRMAR CONTRASEÑA">
+    <input type="password" class="form-control reg-campos" id="floatingPassword1" placeholder="CONFIRMAR CONTRASEÑA">
     <label for="floatingPassword">Confirmar Contraseña</label>
   </div>
 
-  <div style="text-align: center;">
+  <div style="text-align: center;" name="radios">
     <div class="form-check mb-3">
-      <input class="check" type="radio" name="flexRadioDefault" id="Radio2" checked>
-      <label for="Radio2">
-        Alumno
-      </label>
+      <input class="check" type="radio" name="tipo[]" value="Estudiante">Estudiante</br>
     </div>
     <div class="form-check mb-3">
-      <input class="check" type="radio" name="flexRadioDefault" id="Radio1">
-      <label for="Radio1">
-        Tutor
-      </label>
+      <input class="check" type="radio" name="tipo[]" value="Tutor">Tutor<br>
     </div>
   </div>
 
