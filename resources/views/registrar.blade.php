@@ -3,7 +3,6 @@
 @section('content')
 <main>
   <div class="barra-registro">
-
   </div>
   <div class="container">
     <div class="row">
@@ -54,10 +53,10 @@
 
           <div style="text-align:center;">
             <p class="d-inline-flex gap-1">
-              <button id="radioAlumno" class="radio-btn" type="radio" name="alu-tut" autocomplete="off">
+              <button id="radioAlumno" class="radio-btn" type="radio" name="alu-tut"  value="Alumno" autocomplete="off">
                 Alumno
               </button>
-              <button class="radio-btn" type="radio" name="alu-tut" autocomplete="off" checked data-bs-toggle="collapse" data-bs-target="#collapseTutor" aria-expanded="false" aria-controls="collapseTutor">
+              <button class="radio-btn" type="radio" name="alu-tut" autocomplete="off" value="Tutor" checked data-bs-toggle="collapse" data-bs-target="#collapseTutor" aria-expanded="false" aria-controls="collapseTutor">
                 Tutor
               </button>
             </p>
