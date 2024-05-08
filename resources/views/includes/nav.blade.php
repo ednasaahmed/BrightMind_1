@@ -11,10 +11,7 @@
             <a class="nav-linkl" href="#">INICIO</a>
           </li>
           <li class="nav-item">
-            <a class="nav-linkl" href="#">MATERIAS</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-linkl" href="#">ACERCA DE</a>
+            <a class="nav-linkl" href="#">NOSOTROS</a>
           </li>
           <li class="nav-item">
             <a class="nav-linkl" href="#">CONTACTO</a>
