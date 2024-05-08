@@ -1,39 +1,9 @@
 @extends('layout.inreg')
 @section('title','Sign In')
 @section('content')
-<<<<<<< HEAD
-<div class="container text-center">
-  <div class="row">
-    <div class="col">
-      1 of 2
-    </div>
-    <div class="col">
-    <h1 class="titulo">REGISTRATE</h1>
-  <div class="form-floating mb-3">
-    <input name="email" type="email" class="form-control reg-campos" id="floatingInput" placeholder="CORREO ELECTRÓNICO">
-    <label for="floatingInput">Correo Electrónico</label>
-  </div>
-  <div class="form-floating mb-3">
-    <input name="password" type="password" class="form-control reg-campos" id="floatingPassword" placeholder="CONTRASEÑA">
-    <label for="floatingPassword">Contraseña</label>
-  </div>
-  <div class="form-floating mb-3">
-    <input type="password" class="form-control reg-campos" id="floatingPassword1" placeholder="CONFIRMAR CONTRASEÑA">
-    <label for="floatingPassword">Confirmar Contraseña</label>
-  </div>
-
-  <div style="text-align: center;" name="radios">
-    <div class="form-check mb-3">
-      <input class="check" type="radio" name="tipo[]" value="Estudiante">Estudiante</br>
-    </div>
-    <div class="form-check mb-3">
-      <input class="check" type="radio" name="tipo[]" value="Tutor">Tutor<br>
-    </div>
-=======
 <main>
   <div class="barra-registro">
 
->>>>>>> d1e2a068352f45df972c9d4e6be80412d97a6dd7
   </div>
   <div class="container">
     <div class="row">
