@@ -8,7 +8,7 @@
   <div class="container">
     <div class="row">
       <div class="col-sm-6 d-flex justify-content-center align-items-center">
-        <img src="images/logo.png" alt="Logo BrightMind">
+        <img src="images/logo2.png" alt="Logo BrightMind">
       </div>
       <div class="col-sm-6 d-flex justify-content-center align-items-center">
         <div>
