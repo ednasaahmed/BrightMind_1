@@ -8,6 +8,7 @@ use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegistrarController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\CalendarController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 #Route::get('/materias', [MateriaController::class, 'index'])->name('materias');
@@ -21,6 +22,7 @@ Route::post('/login', [LoginController::class, 'ingresar'])->name('ingresar');
 Route::get('/registrar', [RegistrarController::class, 'registrar'])->name('registrar');
 Route::Post('/registrar', [RegistrarController::class, 'register'])->name('register');
 Route::get('/home', [HomeController::class, 'home'])->name('home');
+Route::get('/calendar', [CalendarController::class, 'calendar'])->name('calendar');
 
 
 
