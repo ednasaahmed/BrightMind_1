@@ -15,34 +15,34 @@
           <h1 class="centrar">Registrate</h1>
           <br>
           <div class="mb-3">
-            <input type="email" class="form-control estilo-campos ancho" placeholder="Correo Electrónico">
+            <input type="email" class="form-control estilo-campos ancho" name="email" placeholder="Correo Electrónico">
           </div>
           <div class="mb-3">
-            <input type="password" class="form-control estilo-campos ancho" placeholder="Contraseña">
+            <input type="password" class="form-control estilo-campos ancho" name="password" placeholder="Contraseña">
           </div>
           <div class="mb-3">
-            <input type="password" class="form-control estilo-campos ancho" placeholder="Confirmar Contraseña">
+            <input type="password" class="form-control estilo-campos ancho" name="confirm-password" placeholder="Confirmar Contraseña">
           </div>
 
           <div>
-            <input class="form-control estilo-campos mb-3 ancho" placeholder="Nombre">
+            <input class="form-control estilo-campos mb-3 ancho" name="nombre" placeholder="Nombre">
           </div>
           <div>
-            <input class="form-control estilo-campos mb-3 ancho" placeholder="Apellido Paterno">
+            <input class="form-control estilo-campos mb-3 ancho" name="apellido_paterno" placeholder="Apellido Paterno">
               
           </div>
           <div>
-            <input class="form-control estilo-campos mb-3 ancho" placeholder="Apellido Materno">
+            <input class="form-control estilo-campos mb-3 ancho" name="apellido_meterno " placeholder="Apellido Materno">
           </div>
 
           <div>
             <div class="form-floating mb-3" id="fecha">
-              <input type="date" class="form-control estilo-campos" placeholder="Fecha de Nacimiento" id="floatingFecha">
+              <input type="date" class="form-control estilo-campos" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" id="floatingFecha">
               <label for="floatingFecha">Fecha de Nacimiento</label>
             </div>     
 
             <div class="form-floating mb-3" id="select">
-              <select class="form-select estilo-campos" id="floatingSelect" placeholder="SEXO">
+              <select class="form-select estilo-campos" name="sexo" id="floatingSelect" placeholder="SEXO">
                 <option value="" disabled selected></option>
                 <option value="1">Femenino</option>
                 <option value="2">Masculino</option>
@@ -54,17 +54,17 @@
 
           <div style="text-align:center;">
             <p class="d-inline-flex gap-1">
-              <button id="radioAlumno" class="radio-btn" type="radio" name="alu-tut" autocomplete="off">
+              <button id="radioAlumno"  class="radio-btn" type="radio" name="alu-tut" value="alumno" autocomplete="off">
                 Alumno
               </button>
-              <button class="radio-btn" type="radio" name="alu-tut" autocomplete="off" checked data-bs-toggle="collapse" data-bs-target="#collapseTutor" aria-expanded="false" aria-controls="collapseTutor">
+              <button class="radio-btn" type="radio" name="alu-tut" value="tutor" autocomplete="off" checked data-bs-toggle="collapse" data-bs-target="#collapseTutor" aria-expanded="false" aria-controls="collapseTutor">
                 Tutor
               </button>
             </p>
             <div class="collapse" id="collapseTutor">
               <div class="card card-body" style="margin-bottom: 10px;">
-                <input class="form-control estilo-campos mb-3" type="text" placeholder="Grado Académico">
-                <textarea class="form-control estilo-campos mb-3" placeholder="Descripción" rows="3"></textarea>
+                <input class="form-control estilo-campos mb-3" type="text" name="grado" placeholder="Grado Académico">
+                <textarea class="form-control estilo-campos mb-3" name="descripcion" placeholder="Descripción" rows="3"></textarea>
               </div>
             </div>
           </div>
@@ -72,7 +72,7 @@
              
 
           <div class="centrar">
-            <a href="" id="guardar">GUARDAR</a>
+            <a href="{{route('register')}}" id="guardar">GUARDAR</a>
           </div>
         </div>
       </div>

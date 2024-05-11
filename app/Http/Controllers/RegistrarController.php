@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\Estudiantes;
 use App\Models\Tutor;
+use App\Models\Tutores;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -25,31 +27,42 @@ class RegistrarController extends Controller
 
         $user->save();
 
-        Auth::login($user);
+        //Auth::login($user);
 
-        if (radios.value()=="Estudiante") {
-            $tutor = new Tutor();
+        if ($_SERVER['REQUEST_METHOD']=="POST"){
 
-            $tutor->nombre = $request->nombre;
-            $tutor->apellido_paterno = $request->apellido_paterno;
-            $tutor->apellido_materno = $request->apellido_metrno;
-            $tutor->fecha_nacimiento = $request->fecha_nacimiento;
-            $tutor->sexo = $request->sexo;
+            if(isset($_POST['alu-tuto'])){
+                $opcion=$_POST['alu-tuto'];
 
-            $tutor->save();
-        }else {
-            $estudiante = new Estudiante();
-
-            $estudiante->nombre = $request->nombre;
-            $estudiante->apellido_paterno = $request->apellido_paterno;
-            $estudiante->apellido_materno = $request->apellido_metrno;
-            $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
-            $estudiante->sexo = $request->sexo;
-
-            $estudiante->save();
+                if ($opcion=="tutor") {
+                    $tutor = new Tutores();
+        
+                    $tutor->nombre = $request->nombre;
+                    $tutor->apellido_paterno = $request->apellido_paterno;
+                    $tutor->apellido_materno = $request->apellido_meterno;
+                    $tutor->fecha_nacimiento = $request->fecha_nacimiento;
+                    $tutor->sexo = $request->sexo;
+                    $tutor->grado= $request->grado;
+                    $tutor->descripcion = $request->descripcion;
+        
+                    $tutor->save();
+                }else {
+                    $estudiante = new Estudiantes();
+        
+                    $estudiante->nombre = $request->nombre;
+                    $estudiante->apellido_paterno = $request->apellido_paterno;
+                    $estudiante->apellido_materno = $request->apellido_metrno;
+                    $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
+                    $estudiante->sexo = $request->sexo;
+        
+                    $estudiante->save();
+                }
+        
+                return redirect(route('home'));
+            }
         }
 
-        return redirect(route('home'));
+       
     }
 
 }
