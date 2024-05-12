@@ -79,3 +79,13 @@
     color: #FFFFFF;
     background-color: #610C27;
 }
+img{
+    max-width: 100%; 
+    height: auto; 
+  }
+  
+  @media (max-width: 768px) {
+    img {
+      max-width: 60%; 
+    }
+  }
