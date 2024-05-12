@@ -41,6 +41,24 @@
     width: 40%;
 }
 
+.radio-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    width: 108px;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    background-color: #FFFFFF;
+    border: 3px solid #610C27;
+    border-radius: 20px;
+    cursor: pointer;
+    
+}
+
+.radio-btn:focus {
+    color: #FFFFFF;
+    background-color: #610C27;
+}
 
 #guardar {
     display: inline-block;
@@ -61,21 +79,4 @@
     text-decoration: none;
 }
 
-.radio-btn {
-    display: inline-block;
-    padding: 10px 20px;
-    width: 108px;
-    text-align: center;
-    text-decoration: none;
-    color: #000000;
-    background-color: #FFFFFF;
-    border: 3px solid #610C27;
-    border-radius: 20px;
-    cursor: pointer;
-    
-}
 
-.radio-btn:focus {
-    color: #FFFFFF;
-    background-color: #610C27;
-}
