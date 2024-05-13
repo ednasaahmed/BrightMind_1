@@ -1,8 +1,7 @@
-@extends('layout.inho')
+@extends('layout.inmat')
 @section('title','Brightmind')
 @section('content')
-<body oncontextmenu='return false' class='snippet-body'>
-<section class="home">
+<section class="home" style="margin-bottom:15px;">
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
@@ -38,7 +37,7 @@
             <i class="bi bi-person-fill"></i> Perfil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="{{route('index')}}" class="dropdown-item ">
+            <a href="#" class="dropdown-item ">
             <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </div>
@@ -48,45 +47,43 @@
 </div>
   </nav>
 </header>
-<div class="welcome">
-  <div class="overlay">
-    <h1>¡Bienvenido a Brightmind!</h1><img src="images/Home.png" class="welcome" alt="Tutor Photo" style="heigh:70%; width:60%">
-  </div>
-</div>
-<br><br>
-<div class="container">
-        <div class="row">
-            <div class="col-6">
-                <h3 class="mb-3">Sesiones</h3>
-            </div>
-            <div class="col-6 text-right">
-                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                    <i class="bi bi-arrow-left"></i>
-                </a>
-                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                    <i class="bi bi-arrow-right"></i>
-                </a>
-            </div>
-            <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
+
+
+    <div class="materias"> 
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col">
+                <div class="card h-100">
+                    <div class="card-body">
+                        <div class="container text-center">
                             <div class="row">
-                            <div class="col-md-4 mb-3"> 
-                                    <div class="card card-body">
-                                        <h5 class="card-title">Mathematics</h5>
-                                        <p class="card-text"><img src="images/t1.jpg" class="card-img-top rounded-circle" alt="Tutor Photo">Tutor: John Doe</p>
-                                    </div>
+                                <div class="col-3">
+                                    <img src="images/t1.jpg" class="card-img-top rounded-circle foto-tutor" alt="Tutor Foto">
+                                </div>
+                                <div class="col-9">
+                                    <p class="c-text"><strong>Tutor</strong></p>
+                                    <p class="c-text">Fabiola Elena Dominguez</p>
+                                    <p class="c-text">4.8
+                                        <i class="bi bi-star-fill star"></i>
+                                    </p>
                                 </div>
                             </div>
                         </div>
+                        <p class="c-title">Matemáticas discretas</p>
+                            <p class="c-text">De preferencia estos textos deberían ser de máximo 150 caracteres para que se vean bien.</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="#" class="c-link">Ver más</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script type='text/javascript'></script>
-</body>
+
+
 </section>
+
+
+
     
 @endsection
+

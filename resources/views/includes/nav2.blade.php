@@ -15,19 +15,19 @@
         <div class="menu">
             <ul class="menu-links">
                 <li class="nav-links">
-                    <a href="#">
+                    <a href="{{route('home')}}">
                     <i class='bx bx-home-alt-2 icon'></i>
                     <span class="text nav-text">Inicio</span>
                     </a>
                 </li>
                 <li class="nav-links">
-                    <a href="#">
+                    <a href="{{route('materias')}}">
                     <i class='bx bx-book icon'></i>
                     <span class="text nav-text">Materias</span>
                     </a>
                 </li>
                 <li class="nav-links">
-                    <a href="#">
+                    <a href="{{route('calendar')}}">
                     <i class='bx bx-calendar icon'></i>
                     <span class="text nav-text">Calendario</span>
                     </a>
