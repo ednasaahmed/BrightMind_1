@@ -1,6 +1,7 @@
 @extends('layout.inmat')
 @section('title','Brightmind')
 @section('content')
+<!-- Se supone que esta vista va en el boton Materias de la sesión del tutor -->
 <section class="home" style="margin-bottom:15px;">
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
@@ -54,20 +55,6 @@
             <div class="col">
                 <div class="card h-100">
                     <div class="card-body">
-                        <div class="container text-center">
-                            <div class="row">
-                                <div class="col-3">
-                                    <img src="images/t1.jpg" class="card-img-top rounded-circle foto-tutor" alt="Tutor Foto">
-                                </div>
-                                <div class="col-9">
-                                    <p class="c-text"><strong>Tutor</strong></p>
-                                    <p class="c-text">Fabiola Elena Dominguez</p>
-                                    <p class="c-text">4.8
-                                        <i class="bi bi-star-fill star"></i>
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
                         <p class="c-title">Matemáticas discretas</p>
                             <p class="c-text">De preferencia estos textos deberían ser de máximo 150 caracteres para que se vean bien.</p>
                     </div>
@@ -81,9 +68,5 @@
 
 
 </section>
-
-
-
-    
 @endsection
 

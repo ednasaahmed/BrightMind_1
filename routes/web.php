@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MateriaController;
+use App\Http\Controllers\TutMateriaController;
 use App\Http\Controllers\AcercaDeController;
 use App\Http\Controllers\ContactoController;
 use App\Http\Controllers\LoginController;
@@ -13,6 +14,7 @@ use App\Http\Controllers\PerfilAController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/materias', [MateriaController::class, 'materias'])->name('materias');
+Route::get('/tutmaterias', [TutMateriaController::class, 'tutmaterias'])->name('tutmaterias');
 Route::get('/acercade', [AcercaDeController::class, 'index'])->name('acercade');
 Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
