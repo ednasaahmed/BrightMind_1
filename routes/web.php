@@ -11,6 +11,7 @@ use App\Http\Controllers\RegistrarController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PerfilAController;
+use App\Http\Controllers\PerfilTController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/materias', [MateriaController::class, 'materias'])->name('materias');
@@ -27,6 +28,7 @@ Route::Post('/registrar', [RegistrarController::class, 'register'])->name('regis
 Route::get('/home', [HomeController::class, 'home'])->name('home');
 Route::get('/calendar', [CalendarController::class, 'calendar'])->name('calendar');
 Route::get('/perfila', [PerfilAController::class, 'perfil'])->name('perfila');
+Route::get('/perfilt', [PerfilTController::class, 'perfil'])->name('perfilt');
 
 
 
