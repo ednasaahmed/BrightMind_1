@@ -44,9 +44,9 @@
             <div class="form-floating mb-3" id="select">
               <select class="form-select estilo-campos" name="sexo" id="floatingSelect" placeholder="SEXO">
                 <option value="" disabled selected></option>
-                <option value="1">Femenino</option>
-                <option value="2">Masculino</option>
-                <option value="3">Otro...</option>
+                <option value="F">Femenino</option>
+                <option value="M">Masculino</option>
+                <option value="O">Otro...</option>
               </select>
               <label for="floatingSelect">Sexo</label>
             </div>
@@ -55,7 +55,7 @@
           <div style="text-align:center;">
             <p class="d-inline-flex gap-1">
               <button id="radioAlumno"  class="radio-btn" type="radio" name="alu-tut" value="alumno" autocomplete="off">
-                Alumno
+               Alumno
               </button>
               <button class="radio-btn" type="radio" name="alu-tut" value="tutor" autocomplete="off" checked data-bs-toggle="collapse" data-bs-target="#collapseTutor" aria-expanded="false" aria-controls="collapseTutor">
                 Tutor
