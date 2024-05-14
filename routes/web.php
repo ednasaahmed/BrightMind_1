@@ -16,7 +16,7 @@ use App\Http\Controllers\PerfilTController;
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/materias', [MateriaController::class, 'materias'])->name('materias');
 Route::get('/tutmaterias', [TutMateriaController::class, 'tutmaterias'])->name('tutmaterias');
-Route::get('/acercade', [AcercaDeController::class, 'index'])->name('acercade');
+Route::get('/nosotros', [AcercaDeController::class, 'index'])->name('nosotros');
 Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 

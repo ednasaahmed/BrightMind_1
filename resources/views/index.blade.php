@@ -45,7 +45,7 @@
             <p>
             Brightmind es una plataforma educativa en línea diseñada para conectar a estudiantes y docentes en un entorno virtual colaborativo. Ofrecemos una amplia gama de recursos y herramientas educativas para ayudar a los estudiantes a mejorar sus habilidades académicas y alcanzar sus metas educativas.
             </p>
-            <a href="">
+            <a href="{{ route('nosotros')}}">
               Leer más
             </a>
           </div>
