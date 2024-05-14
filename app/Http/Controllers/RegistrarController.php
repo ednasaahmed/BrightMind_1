@@ -19,18 +19,22 @@ class RegistrarController extends Controller
         return view('registrar');
     }
 
-    public function register(Request $request){
-        // $user= new User();
+    public function register(){
+        $user= new User();
 
-        // $user->email=$request->email;
-        // $user->password=Hash::make($request->password);
-
-        // $user->save();
-
-        // Auth::login($user);
-
-        return redirect('home');
         
+        $user->email=trim($_POST['email']);
+        $user->password=Hash::make(trim($_POST['password']));
+
+        $user->save();
+
+        Auth::login($user);
+
+        return redirect(route('home'));
+        
+
+
+        //-------------------------------------------------------
 
        /* if ($_SERVER['REQUEST_METHOD']=="POST"){
 

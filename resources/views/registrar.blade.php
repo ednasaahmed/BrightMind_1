@@ -10,6 +10,8 @@
       <div class="col-sm-6 d-flex justify-content-center align-items-center">
         <img src="images/logo2.png" alt="Logo BrightMind">
       </div>
+      <form method="POST" action="{{route('register')}}">
+      @csrf
       <div class="col-sm-6 d-flex justify-content-center align-items-center">
         <div>
           <h1 class="centrar">Registrate</h1>
@@ -78,6 +80,9 @@
       </div>
     </div>
   </div>
+
+   </form>
+      
 
 </main>
 

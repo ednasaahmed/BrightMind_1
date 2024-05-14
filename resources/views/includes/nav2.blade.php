@@ -36,7 +36,7 @@
         </div>
         <div class="bottom-content">
             <li class="">
-                <a href="{{route('index')}}">
+                <a href="{{route('logout')}}">
                     <i class='bx bx-log-out icon'></i>
                     <span class="text nav-text">Cerrar Sesión</span>
                 </a>
