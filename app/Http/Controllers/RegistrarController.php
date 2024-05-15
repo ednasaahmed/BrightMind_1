@@ -27,12 +27,7 @@ class RegistrarController extends Controller
         $user->password=Hash::make(trim($_POST['password']));
 
         $user->save();
-
-       // Auth::login($user);
-
-        //return redirect(route('home'));
-        
-        //-------------------------------------------------------
+        $usuario_id=$user->id; 
 
         if ($_SERVER['REQUEST_METHOD']=="POST"){
 
@@ -49,10 +44,10 @@ class RegistrarController extends Controller
                         $tutor->apellido_paterno =trim($_POST["apellido_paterno"]);
                         $tutor->apellido_materno = trim($_POST["apellido_materno"]);
                         $tutor->fecha_nacimiento = trim($_POST["fecha_nacimiento"]);
-                       $tutor->sexo = $sexo;
+                        $tutor->sexo = $sexo;
                         $tutor->grado=trim($_POST["grado"]);
                         $tutor->descripcion = trim($_POST["descripcion"]);
-                       # $tutor->id_usuario = $request->id_usuario;
+                        $tutor->id_usuario = $usuario_id;
             
                         $tutor->save();
                         $credentials = Request()->only('email','password');
