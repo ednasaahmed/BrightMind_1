@@ -41,6 +41,24 @@
     width: 40%;
 }
 
+.radio-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    width: 108px;
+    text-align: center;
+    text-decoration: none;
+    color: #000000;
+    background-color: #FFFFFF;
+    border: 3px solid #610C27;
+    border-radius: 20px;
+    cursor: pointer;
+    
+}
+
+.radio-btn:focus {
+    color: #FFFFFF;
+    background-color: #610c27c9;
+}
 
 #guardar {
     display: inline-block;
@@ -56,7 +74,7 @@
 
 #guardar:hover {
     transition: 0.3s;
-    background-color: #610c27e0;
+    background-color: #610c27c9;
     color: #FFFFFF;
     text-decoration: none;
 }
@@ -89,3 +107,4 @@ img{
       max-width: 60%; 
     }
   }
+

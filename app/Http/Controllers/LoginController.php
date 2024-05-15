@@ -55,17 +55,17 @@ class LoginController extends Controller
  
      }
 
-     public function register(Request $request){
-        $user= new User();
+    //  public function register(Request $request){
+    //     $user= new User();
 
-        $user->email=$request->email;
-        $user->password=Hash::make($request->password);
+    //     $user->email=$request->email;
+    //     $user->password=Hash::make($request->password);
 
-        $user->save();
+    //     $user->save();
 
-        Auth::login($user);
+    //     Auth::login($user);
 
-        return redirect(route('home'))->with("success","Guardado el registro");
-     }
+    //     return redirect(route('home'))->with("success","Guardado el registro");
+    //  }
 
 }
