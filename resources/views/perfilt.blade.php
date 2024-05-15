@@ -138,6 +138,27 @@
                   </div>
                 </div>
             </div>
+            <div class="row">
+  <div class="form-group col-12">
+    <label>Disponibilidad</label>
+    <div class="d-flex flex-wrap" style="padding-left:50px;">
+      <input type="checkbox" class="form-check-input me-2" id="disponibilidad">
+      <label class="form-check-label" for="disponibilidad">Seleccionar disponibilidad</label>
+    </div>
+    <div id="disponibilidad-container" class="d-none">
+      <div class="availability-item">
+        <div class="row">
+          <div class="col-md-6 col-12 mb-2">
+            <label>Fecha</label>
+            <input type="datetime-local" class="form-control" name="disponibilidad_fechas[]" required>
+          </div>
+        </div>
+      </div>
+      <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item">Agregar Horario</button>
+    </div>
+  </div>
+</div>
+
       <div class="col-12 text-center">
         <img src="images/logo4.png" alt="Logo" class="img-fluid">
       </div>
@@ -151,6 +172,47 @@
                   <button class="btn1" >Guardar Cambios</button>
                 </div>
                 <br>
+  <script>
+const disponibilidadContainer = document.getElementById('disponibilidad-container');
+const disponibilidadCheckbox = document.getElementById('disponibilidad');
+
+disponibilidadCheckbox.addEventListener('change', function() {
+    if (this.checked) {
+        disponibilidadContainer.classList.remove('d-none');
+    } else {
+        disponibilidadContainer.classList.add('d-none');
+    }
+});
+
+const addAvailabilityItemButton = document.querySelector('.add-availability-item');
+
+addAvailabilityItemButton.addEventListener('click', function() {
+  const availabilityItem = document.createElement('div');
+  availabilityItem.classList.add('availability-item');
+
+  availabilityItem.innerHTML = `
+    <div class="row">
+      <div class="col-md-6 col-12 mb-2">
+        <label>Fecha</label>
+        <input type="datetime-local" class="form-control" name="disponibilidad_fechas[]" required>
+      </div>
+      <div class="col-md-12 mb-2 text-right">
+        <button type="button" class="btn btn-sm btn-outline-danger remove-availability-item">Eliminar Horario</button>
+      </div>
+    </div>
+  `;
+
+  disponibilidadContainer.appendChild(availabilityItem);
+});
+
+disponibilidadContainer.addEventListener('click', function(event) {
+  const removeButton = event.target.closest('.remove-availability-item');
+  if (removeButton) {
+    const availabilityItem = removeButton.parentNode.parentNode;
+    availabilityItem.remove(); 
+  }
+});
+  </script>
   <script>
     document.getElementById('edit_profile_picture').addEventListener('click', function(event) {
         event.preventDefault(); 
