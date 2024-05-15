@@ -57,7 +57,7 @@
 
 .radio-btn:focus {
     color: #FFFFFF;
-    background-color: #610C27;
+    background-color: #610c27c9;
 }
 
 #guardar {
@@ -74,7 +74,7 @@
 
 #guardar:hover {
     transition: 0.3s;
-    background-color: #610c27;
+    background-color: #610c27c9;
     color: #FFFFFF;
     text-decoration: none;
 }

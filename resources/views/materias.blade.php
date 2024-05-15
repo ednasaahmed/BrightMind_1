@@ -68,8 +68,8 @@
                                 </div>
                             </div>
                         </div>
-                        <p class="c-title">Matemáticas discretas</p>
-                            <p class="c-text">De preferencia estos textos deberían ser de máximo 150 caracteres para que se vean bien.</p>
+                        <p class="c-title text-center">Matemáticas discretas</p>
+                            <p class="c-text text-center">Explora el mundo de la lógica, conjuntos, y estructuras algebraicas fundamentales en Matemáticas Discretas. Descubre aplicaciones en informática otras áreas y resuelve problemas con precisión y rigor.</p>
                     </div>
                     <div class="card-footer text-center">
                         <a href="#" class="c-link">Ver más</a>

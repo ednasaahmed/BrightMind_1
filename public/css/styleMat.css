@@ -72,4 +72,20 @@
     text-decoration: none;
 }
 
+.btn-estilo {
+    display: inline-block;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    color: #FFFFFF;
+    background-color: #610C27;
+    border-radius: 20px;
+    cursor: pointer;
+}
 
+.btn-estilo:hover {
+    transition: 0.3s;
+    background-color: #610c27c9;
+    color: #FFFFFF;
+    text-decoration: none;
+}
