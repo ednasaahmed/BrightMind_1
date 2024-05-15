@@ -15,7 +15,7 @@
         <div class="menu">
             <ul class="menu-links">
                 <li class="nav-links">
-                    <a href="#">
+                    <a href="{{route('home')}}">
                     <i class='bx bx-home-alt-2 icon'></i>
                     <span class="text nav-text">Inicio</span>
                     </a>
@@ -27,7 +27,7 @@
                     </a>
                 </li>
                 <li class="nav-links">
-                    <a href="#">
+                    <a href="{{route('calendar')}}">
                     <i class='bx bx-calendar icon'></i>
                     <span class="text nav-text">Calendario</span>
                     </a>
@@ -36,7 +36,7 @@
         </div>
         <div class="bottom-content">
             <li class="">
-                <a href="{{route('index')}}">
+                <a href="{{route('logout')}}">
                     <i class='bx bx-log-out icon'></i>
                     <span class="text nav-text">Cerrar Sesión</span>
                 </a>

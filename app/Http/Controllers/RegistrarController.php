@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Estudiante;
+use App\Models\Estudiantes;
 use App\Models\Tutor;
+use App\Models\Tutores;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -12,16 +14,17 @@ use Illuminate\Support\Facades\Hash;
 class RegistrarController extends Controller
 {
     #ruta del index al registro
-    public function registrar()
+    public function registrarte()
     {
         return view('registrar');
     }
 
-    public function register(Request $request){
+    public function register(){
         $user= new User();
 
-        $user->email=$request->email;
-        $user->password=Hash::make($request->password);
+        
+        $user->email=trim($_POST['email']);
+        $user->password=Hash::make(trim($_POST['password']));
 
         $user->save();
 
@@ -29,25 +32,50 @@ class RegistrarController extends Controller
 
         // if (radios.value()=="Estudiante") {
         //     $tutor = new Tutor();
+        return redirect(route('home'));
+        
 
-        //     $tutor->nombre = $request->nombre;
-        //     $tutor->apellido_paterno = $request->apellido_paterno;
-        //     $tutor->apellido_materno = $request->apellido_metrno;
-        //     $tutor->fecha_nacimiento = $request->fecha_nacimiento;
-        //     $tutor->sexo = $request->sexo;
 
-        //     $tutor->save();
-        // }else {
-        //     $estudiante = new Estudiante();
+        //-------------------------------------------------------
 
-        //     $estudiante->nombre = $request->nombre;
-        //     $estudiante->apellido_paterno = $request->apellido_paterno;
-        //     $estudiante->apellido_materno = $request->apellido_metrno;
-        //     $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
-        //     $estudiante->sexo = $request->sexo;
+       /* if ($_SERVER['REQUEST_METHOD']=="POST"){
 
-        //     $estudiante->save();
-        // }
+            if(isset($_POST['alu-tut'])){
+                $opcion=implode($_POST['alu-tut']);
+
+                if ($opcion=="tutor") {
+                    $tutor = new Tutores();
+
+                    if (isset($_POST['sexo'])){
+                        $sexo=implode($_POST['sexo']);
+
+                        $tutor->nombre = $request->nombre;
+                        $tutor->apellido_paterno = $request->apellido_paterno;
+                        $tutor->apellido_materno = $request->apellido_meterno;
+                       # $tutor->fecha_nacimiento = $request->fecha_nacimiento;
+                       # $tutor->sexo = $request->$sexo;
+                        $tutor->grado= $request->grado;
+                        $tutor->descripcion = $request->descripcion;
+                       # $tutor->id_usuario = $request->id_usuario;
+            
+                        $tutor->save();
+                        return redirect()->route('home')->with("success","Guardado el registro");
+                    } 
+                }else {
+                    $estudiante = new Estudiantes();
+
+                    
+                    if (isset($_POST['sexo'])){
+                        $sexo=implode($_POST['sexo']);
+
+            $estudiante->nombre = $request->nombre;
+            $estudiante->apellido_paterno = $request->apellido_paterno;
+            $estudiante->apellido_materno = $request->apellido_metrno;
+            $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
+            $estudiante->sexo = $request->sexo;
+
+            $estudiante->save();
+        }
 
         return redirect(route('home'));
     }

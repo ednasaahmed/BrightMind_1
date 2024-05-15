@@ -21,9 +21,8 @@ class LoginController extends Controller
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         
-        //return redirect('index');
-
-     }
+        return redirect(route('index'));
+    }
 
      public function ingresar(){
 
@@ -54,6 +53,19 @@ class LoginController extends Controller
             return view('login');
         }*/
  
+     }
+
+     public function register(Request $request){
+        $user= new User();
+
+        $user->email=$request->email;
+        $user->password=Hash::make($request->password);
+
+        $user->save();
+
+        Auth::login($user);
+
+        return redirect(route('home'))->with("success","Guardado el registro");
      }
 
 }

@@ -1,0 +1,73 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+*{
+    font-family: 'Poppins', sans-serif;
+}
+h2{
+     font-size: 52px;
+}
+.boton{
+    position: absolute; /* Establece la posición absoluta con respecto al contenedor */
+        right: 28%;
+        padding-bottom: 30px;
+}
+.img-fluid{
+    width: 320px;
+    height: auto;
+}
+.card{
+    background-color: transparent;
+    margin: 20px;
+    border: none;
+}
+.card1{
+    margin: 20px;
+    border-radius: 12px;
+    background-color: rgba(204, 197, 197, 0.568);
+}
+.circle-icon {
+    position: absolute;
+    top: 50%;
+    left: 30%;
+    transform: translate(-90%, -90%);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #610627;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.circle-icon .bi {
+    font-size: 22px;
+    padding-left: 10px;
+}
+
+.profile-widget-header {
+    text-align: center;
+}
+
+.profile-widget-picture {
+    width: 300px;
+    height: 300px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+.btn1 {
+    width: 200px;
+    height: 45px;
+    background: #610627;
+    border: none;
+    outline: none;
+    border-radius: 30px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #fff;
+    font-weight: 600;
+}
+.btn1:hover{
+    background-color: transparent;
+    border: 2px solid #610627;
+    color: #610627;
+}
