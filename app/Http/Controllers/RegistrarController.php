@@ -33,8 +33,6 @@ class RegistrarController extends Controller
         //     $tutor = new Tutor();
         return redirect(route('home'));
         
-
-
         //-------------------------------------------------------
 
        /* if ($_SERVER['REQUEST_METHOD']=="POST"){

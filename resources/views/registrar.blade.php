@@ -71,9 +71,6 @@
               </div>
             </div>
           </div>
-
-             
-
           <div class="centrar">
             <a href="{{route('register')}}" id="guardar">GUARDAR</a>
           </div>
@@ -82,7 +79,7 @@
     </div>
   </div>
 
-   </form>
+  </form>
       
 
 </main>
