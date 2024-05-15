@@ -3,7 +3,6 @@
 @section('content')
 <main>
   <div class="barra-registro">
-
   </div>
   <div class="container">
     <div class="row">
@@ -59,8 +58,10 @@
             <p class="d-inline-flex gap-1">
               <button id="radioAlumno"  class="radio-btn" type="radio" name="alu-tut" value="alumno" autocomplete="off">
                Alumno
+              <button id="radioAlumno" class="radio-btn" type="radio" name="alu-tut"  value="Alumno" autocomplete="off">
+                Alumno
               </button>
-              <button class="radio-btn" type="radio" name="alu-tut" value="tutor" autocomplete="off" checked data-bs-toggle="collapse" data-bs-target="#collapseTutor" aria-expanded="false" aria-controls="collapseTutor">
+              <button class="radio-btn" type="radio" name="alu-tut" value="tutor" autocomplete="off" value="Tutor" checked data-bs-toggle="collapse" data-bs-target="#collapseTutor" aria-expanded="false" aria-controls="collapseTutor">
                 Tutor
               </button>
             </p>
@@ -71,7 +72,6 @@
               </div>
             </div>
           </div>
-
           <div class="centrar">
             <a href="{{route('register')}}" id="guardar">GUARDAR</a>
           </div>
@@ -80,7 +80,7 @@
     </div>
   </div>
 
-   </form>
+  </form>
       
 
 </main>

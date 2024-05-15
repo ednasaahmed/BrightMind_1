@@ -34,6 +34,8 @@ Route::get('/perfila', [PerfilAController::class, 'perfil'])->name('perfila');
 Route::get('/perfilt', [PerfilTController::class, 'perfil'])->name('perfilt');
 
 
+Route::post('/registrar', [RegistrarController::class, 'register'])->name('register');
+
 
 
 
