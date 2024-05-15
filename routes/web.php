@@ -21,10 +21,12 @@ Route::post('/login', [LoginController::class, 'ingresar'])->name('ingresar');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/registrar', [RegistrarController::class, 'registrarte'])->name('registrar');
-Route::post('/registrar', [RegistrarController::class, 'register'])->name('register');
+
 Route::get('/home', [HomeController::class, 'home'])->middleware('auth')->name('home');
 Route::get('/calendar', [CalendarController::class, 'calendar'])->name('calendar');
 Route::get('/perfila', [PerfilAController::class, 'perfil'])->name('perfila');
+
+Route::post('/registrar', [RegistrarController::class, 'register'])->name('register');
 
 
 

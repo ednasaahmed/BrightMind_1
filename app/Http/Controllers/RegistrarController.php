@@ -22,7 +22,6 @@ class RegistrarController extends Controller
     public function register(){
         $user= new User();
 
-        
         $user->email=trim($_POST['email']);
         $user->password=Hash::make(trim($_POST['password']));
 
@@ -77,7 +76,7 @@ class RegistrarController extends Controller
             $estudiante->save();
         }
 
-        return redirect(route('home'));
+        return redirect(route('home'));*/
     }
 
 }
