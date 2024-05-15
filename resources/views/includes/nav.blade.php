@@ -8,10 +8,10 @@
     <div class="offcanvas-body" style="margin-right: 10px;">
       <ul class="navbar-nav ms-auto mb-2 mb-lg-0 text-center text-lg-start" style="margin-right: 10px;">
           <li class="nav-item">
-            <a class="nav-linkl" href="#">INICIO</a>
+            <a class="nav-linkl" href="{{route('index')}}">INICIO</a>
           </li>
           <li class="nav-item">
-            <a class="nav-linkl" href="#">NOSOTROS</a>
+            <a class="nav-linkl" href="{{route('nosotros')}}">NOSOTROS</a>
           </li>
           <li class="nav-item">
             <a class="nav-linkl" href="#">CONTACTO</a>

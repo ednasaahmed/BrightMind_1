@@ -21,7 +21,7 @@
                     </a>
                 </li>
                 <li class="nav-links">
-                    <a href="#">
+                    <a href="{{route('materias')}}">
                     <i class='bx bx-book icon'></i>
                     <span class="text nav-text">Materias</span>
                     </a>
@@ -40,16 +40,6 @@
                     <i class='bx bx-log-out icon'></i>
                     <span class="text nav-text">Cerrar Sesión</span>
                 </a>
-            </li>
-            <li class="mode">
-                <div class="sun-moon">
-                    <i class='bx bx-moon icon moon'></i>
-                    <i class='bx bx-sun icon sun'></i>
-                </div>
-                <span class="mode-text text">Dark Mode</span>
-                <div class="toggle-switch">
-                    <span class="switch"></span>
-                </div>
             </li>
         </div>
     </div>
