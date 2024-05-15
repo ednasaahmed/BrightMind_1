@@ -27,27 +27,27 @@ class RegistrarController extends Controller
 
         Auth::login($user);
 
-        if (radios.value()=="Estudiante") {
-            $tutor = new Tutor();
+        // if (radios.value()=="Estudiante") {
+        //     $tutor = new Tutor();
 
-            $tutor->nombre = $request->nombre;
-            $tutor->apellido_paterno = $request->apellido_paterno;
-            $tutor->apellido_materno = $request->apellido_metrno;
-            $tutor->fecha_nacimiento = $request->fecha_nacimiento;
-            $tutor->sexo = $request->sexo;
+        //     $tutor->nombre = $request->nombre;
+        //     $tutor->apellido_paterno = $request->apellido_paterno;
+        //     $tutor->apellido_materno = $request->apellido_metrno;
+        //     $tutor->fecha_nacimiento = $request->fecha_nacimiento;
+        //     $tutor->sexo = $request->sexo;
 
-            $tutor->save();
-        }else {
-            $estudiante = new Estudiante();
+        //     $tutor->save();
+        // }else {
+        //     $estudiante = new Estudiante();
 
-            $estudiante->nombre = $request->nombre;
-            $estudiante->apellido_paterno = $request->apellido_paterno;
-            $estudiante->apellido_materno = $request->apellido_metrno;
-            $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
-            $estudiante->sexo = $request->sexo;
+        //     $estudiante->nombre = $request->nombre;
+        //     $estudiante->apellido_paterno = $request->apellido_paterno;
+        //     $estudiante->apellido_materno = $request->apellido_metrno;
+        //     $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
+        //     $estudiante->sexo = $request->sexo;
 
-            $estudiante->save();
-        }
+        //     $estudiante->save();
+        // }
 
         return redirect(route('home'));
     }
