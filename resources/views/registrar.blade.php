@@ -17,7 +17,7 @@
           <form method="POST" class='login'>
           @csrf
           <div class="mb-3">
-            <input type="email" class="form-control estilo-campos ancho" name="email" placeholder="Correo Electrónico" required>
+            <input type="email" class="form-control estilo-campos ancho" name="email" placeholder="Correo Electrónico" value="{{ old('email') }}" required>
           </div>
           <div class="mb-3">
             <input type="password" class="form-control estilo-campos ancho" name="password" placeholder="Contraseña" required>
@@ -96,5 +96,4 @@
 //  document.getElementById("collapseTutor").classList.remove("show");
 //});
 </script>
-
 @endsection

@@ -30,7 +30,8 @@ class RegistrarController extends Controller
         $user->remember_token = $rememberToken;
 
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users,email'
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:8|confirmed'
         ]);
 
         if ($validator->fails()) {

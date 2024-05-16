@@ -39,35 +39,7 @@ class LoginController extends Controller
         }
 
         return redirect('login');
-
-       /* $credentials = [
-            "email"=> $request->email,
-            "password"=>$request->password
-        ];
-
-        $remember = ($request->has('remember')? true : false);
-
-        if (Auth::attempt($credentials,$remember)){
-            $request->session()->regenerate();
-            return redirect()->intended(route('home'));
-
-        }else{
-            return view('login');
-        }*/
  
      }
-
-    //  public function register(Request $request){
-    //     $user= new User();
-
-    //     $user->email=$request->email;
-    //     $user->password=Hash::make($request->password);
-
-    //     $user->save();
-
-    //     Auth::login($user);
-
-    //     return redirect(route('home'))->with("success","Guardado el registro");
-    //  }
 
 }
