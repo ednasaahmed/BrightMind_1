@@ -22,16 +22,10 @@ class RegistrarController extends Controller
     }
 
     public function register(Request $request){
-        $user= new User();
-
-        $user->email=trim($_POST['email']);
-        $user->password=Hash::make(trim($_POST['password']));
-        $rememberToken = Str::random(60);
-        $user->remember_token = $rememberToken;
 
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:8|confirmed'
+            'email' => 'required|email|unique:users,email'
+            //'password' => 'required|min:8|confirm-password'
         ]);
 
         if ($validator->fails()) {
@@ -39,6 +33,14 @@ class RegistrarController extends Controller
                         ->withErrors($validator)
                         ->withInput();
         }
+
+        $user= new User();
+
+        $user->email=trim($_POST['email']);
+        $user->password=Hash::make(trim($_POST['password']));
+        $rememberToken = Str::random(60);
+        $user->remember_token = $rememberToken;
+        $user->markEmailAsVerified();
 
         $user->save();
         $usuario_id=$user->id; 
