@@ -28,7 +28,9 @@ class LoginController extends Controller
 
        $credentials = Request()->only('email','password');
 
-        if ( Auth::attempt($credentials)){
+       $remember = (request()->filled('remember'));
+
+        if ( Auth::attempt($credentials, $remember)){
 
             Request()->session()->regenerate();
 

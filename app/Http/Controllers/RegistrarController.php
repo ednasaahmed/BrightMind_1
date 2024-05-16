@@ -10,6 +10,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Str;
 
 class RegistrarController extends Controller
 {
@@ -19,12 +21,23 @@ class RegistrarController extends Controller
         return view('registrar');
     }
 
-    public function register(){
+    public function register(Request $request){
         $user= new User();
 
         $user->email=trim($_POST['email']);
         $user->password=Hash::make(trim($_POST['password']));
-        //$user->setRememberToken($remember_token = Str::random(60));
+        $rememberToken = Str::random(60);
+        $user->remember_token = $rememberToken;
+
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email|unique:users,email'
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('registrar')
+                        ->withErrors($validator)
+                        ->withInput();
+        }
 
         $user->save();
         $usuario_id=$user->id; 
@@ -59,7 +72,7 @@ class RegistrarController extends Controller
                             return redirect('home');
                             
                         }
-                        //return redirect()->route('ingresar')->with("success","Guardado el registro");
+                        return redirect()->route('home')->with("success","Guardado el registro");
                     } 
                 }
                 // else {
@@ -85,7 +98,6 @@ class RegistrarController extends Controller
                
             }
         }
-
             
        // return redirect(route('home'));
     }

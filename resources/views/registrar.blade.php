@@ -17,34 +17,34 @@
           <form method="POST" class='login'>
           @csrf
           <div class="mb-3">
-            <input type="email" class="form-control estilo-campos ancho" name="email" placeholder="Correo Electrónico">
+            <input type="email" class="form-control estilo-campos ancho" name="email" placeholder="Correo Electrónico" required>
           </div>
           <div class="mb-3">
-            <input type="password" class="form-control estilo-campos ancho" name="password" placeholder="Contraseña">
+            <input type="password" class="form-control estilo-campos ancho" name="password" placeholder="Contraseña" required>
           </div>
           <div class="mb-3">
-            <input type="password" class="form-control estilo-campos ancho" name="confirm-password" placeholder="Confirmar Contraseña">
+            <input type="password" class="form-control estilo-campos ancho" name="confirm-password" placeholder="Confirmar Contraseña" required>
           </div>
 
           <div>
-            <input class="form-control estilo-campos mb-3 ancho" name="nombre" placeholder="Nombre">
+            <input class="form-control estilo-campos mb-3 ancho" name="nombre" placeholder="Nombre" value="{{ old('nombre') }}" required>
           </div>
           <div>
-            <input class="form-control estilo-campos mb-3 ancho" name="apellido_paterno" placeholder="Apellido Paterno">
+            <input class="form-control estilo-campos mb-3 ancho" name="apellido_paterno" placeholder="Apellido Paterno" value="{{ old('apellido_paterno') }}" required>
               
           </div>
           <div>
-            <input class="form-control estilo-campos mb-3 ancho" name="apellido_materno" placeholder="Apellido Materno">
+            <input class="form-control estilo-campos mb-3 ancho" name="apellido_materno" placeholder="Apellido Materno" value="{{ old('apellido_materno') }}" required>
           </div>
 
           <div>
             <div class="form-floating mb-3" id="fecha">
-              <input type="date" class="form-control estilo-campos" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" id="floatingFecha">
+              <input type="date" class="form-control estilo-campos" name="fecha_nacimiento" placeholder="Fecha de Nacimiento" id="floatingFecha" value="{{ old('fecha_nacimiento') }}" required>
               <label for="floatingFecha">Fecha de Nacimiento</label>
             </div>     
 
             <div class="form-floating mb-3" id="select">
-              <select class="form-select estilo-campos" name="sexo" id="floatingSelect" placeholder="SEXO">
+              <select class="form-select estilo-campos" name="sexo" id="floatingSelect" placeholder="SEXO" >
                 <option value="" disabled selected></option>
                 <option value="F">Femenino</option>
                 <option value="M">Masculino</option>
@@ -53,11 +53,17 @@
               <label for="floatingSelect">Sexo</label>
             </div>
           </div>
-
+          @if ($errors->any())
+          <div class="alert alert-danger">
+              <ul>
+                  @foreach ($errors->all() as $error)
+                      <li>{{ $error }}</li>
+                  @endforeach
+              </ul>
+          </div>
+          @endif
           <div style="text-align:center;">
             <p class="d-inline-flex gap-1">
-              <button id="radioAlumno"  class="radio-btn" type="radio" name="alu-tut" value="alumno" autocomplete="off">
-               Alumno
               <button id="radioAlumno" class="radio-btn" type="radio" name="alu-tut"  value="Alumno" autocomplete="off">
                 Alumno
               </button>
