@@ -23,9 +23,10 @@ Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
 
 Route::post('/login', [LoginController::class, 'ingresar'])->name('ingresar');
+Route::post('/registrar', [RegistrarController::class, 'register'])->name('register');
 Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-Route::get('/registrar', [RegistrarController::class, 'registrarte'])->name('registrar');
+Route::get('/registrar', [RegistrarController::class, 'registrar'])->name('registrar');
 
 Route::get('/home', [HomeController::class, 'home'])->middleware('auth')->name('home');
 Route::get('/calendar', [CalendarController::class, 'calendar'])->name('calendar');

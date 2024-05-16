@@ -9,12 +9,13 @@
       <div class="col-sm-6 d-flex justify-content-center align-items-center">
         <img src="images/logo2.png" alt="Logo BrightMind">
       </div>
-      <form method="POST" action="{{route('register')}}">
-      @csrf
+      
       <div class="col-sm-6 d-flex justify-content-center align-items-center">
         <div>
           <h1 class="centrar">Registrate</h1>
           <br>
+          <form method="POST" class='login'>
+          @csrf
           <div class="mb-3">
             <input type="email" class="form-control estilo-campos ancho" name="email" placeholder="Correo Electrónico">
           </div>
@@ -33,7 +34,7 @@
               
           </div>
           <div>
-            <input class="form-control estilo-campos mb-3 ancho" name="apellido_meterno " placeholder="Apellido Materno">
+            <input class="form-control estilo-campos mb-3 ancho" name="apellido_materno" placeholder="Apellido Materno">
           </div>
 
           <div>
@@ -85,9 +86,9 @@
 </main>
 
 <script>
-  document.getElementById("radioAlumno").addEventListener("click", function() {
-  document.getElementById("collapseTutor").classList.remove("show");
-});
+ // document.getElementById("radioAlumno").addEventListener("click", function() {
+//  document.getElementById("collapseTutor").classList.remove("show");
+//});
 </script>
 
 @endsection

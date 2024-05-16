@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Hash;
 class RegistrarController extends Controller
 {
     #ruta del index al registro
-    public function registrarte()
+    public function registrar()
     {
         return view('registrar');
     }
@@ -27,55 +27,67 @@ class RegistrarController extends Controller
         //$user->setRememberToken($remember_token = Str::random(60));
 
         $user->save();
+        $usuario_id=$user->id; 
 
-        Auth::login($user);
-
-        // if (radios.value()=="Estudiante") {
-        //     $tutor = new Tutor();
-        return redirect(route('home'));
-        
-        //-------------------------------------------------------
-
-       /* if ($_SERVER['REQUEST_METHOD']=="POST"){
+        if ($_SERVER['REQUEST_METHOD']=="POST"){
 
             if(isset($_POST['alu-tut'])){
-                $opcion=implode($_POST['alu-tut']);
+                $opcion=($_POST['alu-tut']);
 
                 if ($opcion=="tutor") {
                     $tutor = new Tutores();
 
                     if (isset($_POST['sexo'])){
-                        $sexo=implode($_POST['sexo']);
+                        $sexo=($_POST["sexo"]);
 
-                        $tutor->nombre = $request->nombre;
-                        $tutor->apellido_paterno = $request->apellido_paterno;
-                        $tutor->apellido_materno = $request->apellido_meterno;
-                       # $tutor->fecha_nacimiento = $request->fecha_nacimiento;
-                       # $tutor->sexo = $request->$sexo;
-                        $tutor->grado= $request->grado;
-                        $tutor->descripcion = $request->descripcion;
-                       # $tutor->id_usuario = $request->id_usuario;
+                        $tutor->nombre = trim($_POST["nombre"]);
+                        $tutor->apellido_paterno =trim($_POST["apellido_paterno"]);
+                        $tutor->apellido_materno = trim($_POST["apellido_materno"]);
+                        $tutor->fecha_nacimiento = trim($_POST["fecha_nacimiento"]);
+                        $tutor->sexo = $sexo;
+                        $tutor->grado=trim($_POST["grado"]);
+                        $tutor->descripcion = trim($_POST["descripcion"]);
+                        $tutor->id_usuario = $usuario_id;
             
                         $tutor->save();
-                        return redirect()->route('home')->with("success","Guardado el registro");
+                        $credentials = Request()->only('email','password');
+
+                        if ( Auth::attempt($credentials)){
+                
+                            Request()->session()->regenerate();
+                
+                            return redirect('home');
+                            
+                        }
+                        //return redirect()->route('ingresar')->with("success","Guardado el registro");
                     } 
-                }else {
-                    $estudiante = new Estudiantes();
+                }
+                // else {
+                //     $estudiante = new Estudiantes();
 
                     
-                    if (isset($_POST['sexo'])){
-                        $sexo=implode($_POST['sexo']);
+                //     if (isset($_POST['sexo'])){
+                //         $sexo=implode($_POST['sexo']);
 
-            $estudiante->nombre = $request->nombre;
-            $estudiante->apellido_paterno = $request->apellido_paterno;
-            $estudiante->apellido_materno = $request->apellido_metrno;
-            $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
-            $estudiante->sexo = $request->sexo;
-
-            $estudiante->save();
+                //         $estudiante->nombre = $request->nombre;
+                //         $estudiante->apellido_paterno = $request->apellido_paterno;
+                //         $estudiante->apellido_materno = $request->apellido_meterno;
+                //         $estudiante->fecha_nacimiento = $request->fecha_nacimiento;
+                //        $estudiante->sexo = $request->$sexo;
+                //        # $estudiante->id_usuario = $request->id_usuario;
+            
+                //         $estudiante->save();
+                //         return redirect()->route('home')->with("success","Guardado el registro");
+                //     }
+                   
+                // }
+        
+               
+            }
         }
 
-        return redirect(route('home'));*/
+            
+       // return redirect(route('home'));
     }
 
 }
