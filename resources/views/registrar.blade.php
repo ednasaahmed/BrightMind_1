@@ -79,7 +79,8 @@
             </div>
           </div>
           <div class="centrar">
-            <a href="{{route('register')}}" id="guardar">GUARDAR</a>
+            <button id="guardar" href="{{route('register')}}" name="guardar" type="submit">GUARDAR</button>
+            <!-- <a id="guardar" href="{{route('register')}}" name="guardar">GUARDAR</a> -->
           </div>
         </div>
       </div>
