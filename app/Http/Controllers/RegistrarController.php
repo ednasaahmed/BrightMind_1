@@ -24,6 +24,7 @@ class RegistrarController extends Controller
 
         $user->email=trim($_POST['email']);
         $user->password=Hash::make(trim($_POST['password']));
+        //$user->setRememberToken($remember_token = Str::random(60));
 
         $user->save();
 
