@@ -23,11 +23,13 @@ class RegistrarController extends Controller
 
     public function register(Request $request){
 
+        //validación para ver que el correo a registrar no exista ya en la base de datos.
         $validator = Validator::make($request->all(), [
             'email' => 'required|email|unique:users,email'
             //'password' => 'required|min:8|confirm-password'
         ]);
-
+        
+        //En caso de existir retornara un error, que se mostrara en la pantalla del registro, indicando que es lo que fallo
         if ($validator->fails()) {
             return redirect('registrar')
                         ->withErrors($validator)
