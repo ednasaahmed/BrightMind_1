@@ -13,7 +13,10 @@ return new class extends Migration
     {
         Schema::create('disponibilidad_tutor', function (Blueprint $table) {
             $table->integer('id_tutor') ;
-            $table->integer('id_tutor');
+            $table->foreign('id_tutor')->references('id_tutor')->on('tutores');
+            $table->date('fecha');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->timestamps();
         });
     }
