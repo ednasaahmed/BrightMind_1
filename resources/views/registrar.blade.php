@@ -71,21 +71,16 @@
                 Tutor
               </button>
             </p>
-            <div class="collapse" id="collapseTutor">
+            <!-- <div class="collapse" id="collapseTutor">
               <div class="card card-body" style="margin-bottom: 10px;">
                 <input class="form-control estilo-campos mb-3" type="text" name="grado" placeholder="Grado Académico">
                 <textarea class="form-control estilo-campos mb-3" name="descripcion" placeholder="Descripción" rows="3"></textarea>
               </div>
             </div>
-          </div>
-          <div class="centrar">
-<<<<<<< HEAD
+          </div> -->
+          <!-- <div class="centrar">
             <a  id="guardar" href="{{route('register')}}" name="">GUARDAR</a>
-=======
-            <button id="guardar" href="{{route('register')}}" name="guardar" >GUARDAR</button>
-            <!-- <a id="guardar" href="{{route('register')}}" name="guardar">GUARDAR</a> -->
->>>>>>> de6e376a1b8796f45a3a322d293c754069b137cd
-          </div>
+          </div> -->
         </div>
       </div>
     </div>

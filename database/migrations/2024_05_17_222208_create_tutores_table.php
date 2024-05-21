@@ -18,9 +18,9 @@ return new class extends Migration
             $table->string('apellido_materno');
             $table->date('fecha_nacimiento');
             $table->char('sexo',1);
-            $table->string('grado');
-            $table->string('descripcion');
-            $table->text('foto');
+            $table->string('grado')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->text('foto')->nullable();
             $table->integer('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->timestamps();
