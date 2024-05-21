@@ -67,7 +67,7 @@
               <button id="radioAlumno" class="radio-btn" type="radio" name="alu-tut"  value="Alumno" autocomplete="off">
                 Alumno
               </button>
-              <button class="radio-btn" type="radio" name="alu-tut" value="tutor" autocomplete="off" value="Tutor" checked data-bs-toggle="collapse" data-bs-target="#collapseTutor" aria-expanded="false" aria-controls="collapseTutor">
+              <button class="radio-btn" type="radio"  name="alu-tut" value="tutor" autocomplete="off" value="Tutor" checked data-bs-toggle="collapse" data-bs-target="#collapseTutor" aria-expanded="false" aria-controls="collapseTutor">
                 Tutor
               </button>
             </p>
@@ -79,7 +79,12 @@
             </div>
           </div>
           <div class="centrar">
+<<<<<<< HEAD
             <a  id="guardar" href="{{route('register')}}" name="">GUARDAR</a>
+=======
+            <button id="guardar" href="{{route('register')}}" name="guardar" >GUARDAR</button>
+            <!-- <a id="guardar" href="{{route('register')}}" name="guardar">GUARDAR</a> -->
+>>>>>>> de6e376a1b8796f45a3a322d293c754069b137cd
           </div>
         </div>
       </div>
@@ -90,10 +95,9 @@
       
 
 </main>
-
 <script>
- // document.getElementById("radioAlumno").addEventListener("click", function() {
-//  document.getElementById("collapseTutor").classList.remove("show");
-//});
+  document.getElementById("radioAlumno").addEventListener("click", function() {
+  document.getElementById("collapseTutor").classList.remove("show");
+  });
 </script>
 @endsection
