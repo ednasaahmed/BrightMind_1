@@ -79,7 +79,7 @@
             </div>
           </div>
           <div class="centrar">
-            <a href="{{route('register')}}" id="guardar">GUARDAR</a>
+            <a  id="guardar" href="{{route('register')}}" name="">GUARDAR</a>
           </div>
         </div>
       </div>
