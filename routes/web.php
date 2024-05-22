@@ -14,6 +14,7 @@ use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PerfilAController;
 use App\Http\Controllers\PerfilTController;
 use App\Http\Controllers\HomeTutController;
+use App\Http\Controllers\CalendarTController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/materias', [MateriaController::class, 'materias'])->name('materias');
@@ -32,8 +33,11 @@ Route::get('/registrar', [RegistrarController::class, 'registrar'])->name('regis
 Route::get('/home', [HomeController::class, 'home'])->middleware('auth')->name('home');
 Route::get('/homeTut', [HomeTutController::class, 'homeTut'])->middleware('auth')->name('homeTut');
 Route::get('/calendar', [CalendarController::class, 'calendar'])->name('calendar');
+Route::get('/calendarT', [CalendarTController::class, 'calendar'])->name('calendarT');
 Route::get('/perfila', [PerfilAController::class, 'perfil'])->name('perfila');
+Route::post('/perfila/update{id}', [PerfilAController::class, 'update'])->name('perfila.update');
 Route::get('/perfilt', [PerfilTController::class, 'perfil'])->name('perfilt');
+Route::post('/perfilt/update{id}', [PerfilTController::class, 'update'])->name('perfilt.update');
 
 
 Route::post('/registrar', [RegistrarController::class, 'register'])->name('register');

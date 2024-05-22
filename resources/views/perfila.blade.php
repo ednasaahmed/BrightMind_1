@@ -30,14 +30,14 @@
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-            <img alt="image" src="images/c1.jpg" class="rounded-circle mr-1"> 
+          <i class="bi bi-person-circle icono-grande"></i>{{ $estudiante->nombre }}
         </a>
           <div class="dropdown-menu dropdown-menu-right">
             <a href="{{route('perfila')}}" class="dropdown-item">
             <i class="bi bi-person-fill"></i> Perfil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item ">
+            <a href="{{route('index')}}" class="dropdown-item ">
             <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </div>
@@ -60,45 +60,49 @@
             <form method="post" enctype="multipart/form-data">
                 @csrf 
                 <div class="profile-widget-headet text-center">
-                    <img alt="image" src="images/t1.jpg" class="rounded-circle profile-widget-picture">
+                  <i class="bi bi-person-circle" style="font-size: 12rem;"></i>
                 </div>
-                <div class="mb-4 position-relative">
-    <input type="file" class="form-control d-none" id="profile_picture" name="profile_picture">
-    <a href="#" id="edit_profile_picture" class="d-inline-block circle-icon">
-        <span class="bi bi-pencil text-white"></span>
-    </a>
-</div>
+                @if($estudiante->sexo == 'F')
+                    <h5 class="card-title text-center" style="font-size: 35px;">Alumna {{ $estudiante->nombre }}</h5>
+                @else
+                    <h5 class="card-title text-center" style="font-size: 35px;">Alumno {{ $estudiante->nombre }}</h5>
+                @endif
 
-            <h5 class="card-title text-center">Nombre Alumno</h5>
             </form>
           </div>
         </div>
       </div>
       <div class="col-md-8"> 
+      @if($mensaje = Session::get('success'))
+                <div class="alert alert-success" role="alert">
+                    {{ $mensaje}}
+                </div>
+                @endif
         <div class="card1">
-          <form method="post" class="needs-validation" novalidate="">
-            <div class="card-header">
+        <form method="post" class="needs-validation" novalidate="" action="{{ url('/perfila/update' . $estudiante->id_estudiante) }}">
+        @csrf  
+        <div class="card-header">
               <h4>Editar Perfil</h4>
             </div>
             <div class="card-body">
               <div class="row">                               
                 <div class="form-group col-md-4 col-12">
                   <label>Nombres</label>
-                  <input type="text" class="form-control" value="Nombre" required="">
+                  <input type="text" class="form-control" name="nombre" value="{{ $estudiante->nombre }}" required>
                   <div class="invalid-feedback">
                     Por favor ingresa un nombre
                   </div>
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label>Apellido Paterno</label>
-                  <input type="text" class="form-control" value="Apellido Paterno" required="">
+                  <input type="text" class="form-control" name="apellido paterno" value="{{ $estudiante->apellido_paterno }}" required>
                   <div class="invalid-feedback">
                     Por favor ingresa un apellido paterno
                   </div>
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label>Apellido Materno</label>
-                  <input type="text" class="form-control" value="Apellido Materno" required="">
+                  <input type="text" class="form-control" name="apellido_materno" value="{{ $estudiante->apellido_materno }}" required>
                   <div class="invalid-feedback">
                     Por favor ingresa un apellido materno
                   </div>
@@ -108,16 +112,16 @@
               <div class="row">
                 <div class="form-group col-md-6 col-12">
                   <label>Fecha de Nacimiento</label>
-                  <input type="date" class="form-control" value="" required="">
+                  <input type="date" class="form-control" name="fecha_nacimiento" value="{{ $estudiante->fecha_nacimiento }}" required>
                   <div class="invalid-feedback">
                     Por favor ingresa una fecha de nacimiento válida
                   </div>
                 </div>
                 <div class="form-group col-md-6 col-12">
                   <label>Sexo</label>
-                  <select class="form-select">
-                    <option value="1" selected>Hombre</option>
-                    <option value="2">Mujer</option>
+                  <select class="form-select" name="sexo">
+                    <option value="M" {{ $estudiante->sexo == 'M' ? 'selected' : '' }}>Hombre</option>
+                    <option value="F" {{ $estudiante->sexo == 'F' ? 'selected' : '' }}>Mujer</option>
                   </select>
                 </div>
               </div>
@@ -125,16 +129,16 @@
       <div class="col-12 text-center">
         <img src="images/logo4.png" alt="Logo" class="img-fluid">
       </div>
+      <div class="boton"> 
+      <button type="submit" class="btn1" >Guardar Cambios</button>
+    </div>
+
           </form>
-          
         </div>
       </div>
     </div>
   </div>
-  <div class="boton">
-                  <button class="btn1" >Guardar Cambios</button>
-                </div>
-                <br>
+<br>
   <script>
     document.getElementById('edit_profile_picture').addEventListener('click', function(event) {
         event.preventDefault(); 

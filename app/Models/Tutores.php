@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tutores extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id_tutor';
     protected $fillable = [
         'nombre',
         'apellido_paterno',
@@ -19,4 +20,10 @@ class Tutores extends Model
         'foto',
         'id_usuario',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_usuario');
+    }
 }
+
