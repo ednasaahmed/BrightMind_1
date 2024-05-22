@@ -11,7 +11,7 @@ use Illuminate\Foundation\Auth\Estudiante as Authenticatable;
 class Estudiantes extends Model
 {
     use HasFactory, HasApiTokens,Notifiable;
-
+    protected $primaryKey = 'id_estudiante';
     
     protected $fillable = [
         'nombre',

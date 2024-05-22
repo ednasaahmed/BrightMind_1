@@ -6,9 +6,9 @@ h2{
      font-size: 52px;
 }
 .boton{
-    position: absolute; /* Establece la posición absoluta con respecto al contenedor */
-        right: 28%;
-        padding-bottom: 30px;
+    position: absolute; 
+        right: 33%;
+        padding: 30px;
 }
 .img-fluid{
     width: 320px;

@@ -35,6 +35,7 @@ Route::get('/homeTut', [HomeTutController::class, 'homeTut'])->middleware('auth'
 Route::get('/calendar', [CalendarController::class, 'calendar'])->name('calendar');
 Route::get('/calendarT', [CalendarTController::class, 'calendar'])->name('calendarT');
 Route::get('/perfila', [PerfilAController::class, 'perfil'])->name('perfila');
+Route::post('/perfila/update{id}', [PerfilAController::class, 'update'])->name('perfila.update');
 Route::get('/perfilt', [PerfilTController::class, 'perfil'])->name('perfilt');
 
 
