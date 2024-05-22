@@ -13,6 +13,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CalendarController;
 use App\Http\Controllers\PerfilAController;
 use App\Http\Controllers\PerfilTController;
+use App\Http\Controllers\HomeTutController;
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/materias', [MateriaController::class, 'materias'])->name('materias');
@@ -29,6 +30,7 @@ Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 Route::get('/registrar', [RegistrarController::class, 'registrar'])->name('registrar');
 
 Route::get('/home', [HomeController::class, 'home'])->middleware('auth')->name('home');
+Route::get('/homeTut', [HomeTutController::class, 'homeTut'])->middleware('auth')->name('homeTut');
 Route::get('/calendar', [CalendarController::class, 'calendar'])->name('calendar');
 Route::get('/perfila', [PerfilAController::class, 'perfil'])->name('perfila');
 Route::get('/perfilt', [PerfilTController::class, 'perfil'])->name('perfilt');

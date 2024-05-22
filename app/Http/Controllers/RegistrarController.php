@@ -63,8 +63,8 @@ class RegistrarController extends Controller
                         $tutor->apellido_materno = trim($_POST["apellido_materno"]);
                         $tutor->fecha_nacimiento = trim($_POST["fecha_nacimiento"]);
                         $tutor->sexo = $sexo;
-                        $tutor->grado=trim($_POST["grado"]);
-                        $tutor->descripcion = trim($_POST["descripcion"]);
+                        // $tutor->grado=trim($_POST["grado"]);
+                        // $tutor->descripcion = trim($_POST["descripcion"]);
                         $tutor->id_usuario = $usuario_id;
             
                         $tutor->save();

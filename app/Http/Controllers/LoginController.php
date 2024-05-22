@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estudiantes;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Psy\Readline\Hoa\Console;
+use Illuminate\Console\Command;
 
 class LoginController extends Controller
 {
@@ -16,7 +20,8 @@ class LoginController extends Controller
     }
     
      public function ingresar(){
-
+        $user= new User();
+        $estudiante= new Estudiantes();
         //se obtienen las credenciales del inicio de sesion
        $credentials = Request()->only('email','password');
 
@@ -29,7 +34,23 @@ class LoginController extends Controller
             //Si la autenticacion fue exitosa se regenera la sesion del usuario, y se ingresa al dashboard
             Request()->session()->regenerate();
 
-            return redirect('home');
+           $usuario_id=(int)Auth::id();
+           
+            $tipoE=DB::table('estudiantes')->where('id_usuario',$usuario_id)->exists();
+            $tipoT=DB::table('tutores')->where('id_usuario',$usuario_id);
+
+            
+
+            if ($tipoE){
+                
+                return redirect('home');
+            }
+            else{
+                
+                return redirect('homeTut');
+            }
+
+          // return redirect('home');
             
         }
 
