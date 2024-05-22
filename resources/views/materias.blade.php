@@ -30,14 +30,14 @@
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-          <img alt="image" src="images/c1.jpg" class="rounded-circle mr-1">
+          <i class="bi bi-person-circle icono-grande"></i>{{ $estudiante->nombre }}
           </a>
           <div class="dropdown-menu dropdown-menu-right">
             <a href="{{route('perfila')}}" class="dropdown-item">
             <i class="bi bi-person-fill"></i> Perfil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item ">
+            <a href="{{route('index')}}" class="dropdown-item ">
             <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </div>
@@ -72,7 +72,7 @@
                             <p class="c-text text-center">Explora el mundo de la lógica, conjuntos, y estructuras algebraicas fundamentales en Matemáticas Discretas. Descubre aplicaciones en informática otras áreas y resuelve problemas con precisión y rigor.</p>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="#" class="c-link">Ver más</a>
+                        <a href="{{route('detmaterias')}}" class="c-link">Ver más</a>
                     </div>
                 </div>
             </div>

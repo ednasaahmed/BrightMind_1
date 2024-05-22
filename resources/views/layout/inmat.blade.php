@@ -10,7 +10,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/styleNav2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleHome.css') }}">
-    <link rel="stylesheet" href="{{ asset('css/styleMat.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleMat2.css') }}">
 </head>
 <body>
 @include('includes.nav2')

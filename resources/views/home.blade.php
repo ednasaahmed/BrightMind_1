@@ -31,7 +31,7 @@
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-          <img alt="image" src="images/c1.jpg" class="rounded-circle mr-1">
+          <i class="bi bi-person-circle icono-grande"></i>{{ $estudiante->nombre }}
           </a>
           <div class="dropdown-menu dropdown-menu-right">
             <a href="{{route('perfila')}}" class="dropdown-item">

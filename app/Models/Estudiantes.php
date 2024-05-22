@@ -22,4 +22,9 @@ class Estudiantes extends Model
         'foto',
         'id_usuario',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_usuario');
+    }
 }

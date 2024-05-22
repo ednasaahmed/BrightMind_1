@@ -10,6 +10,8 @@ class PerfilAController extends Controller
 {
     public function perfil()
     {
-        return view('perfila');
+        $user = Auth::user();
+        $estudiante = $user->estudiante; 
+        return view('perfila', compact('user', 'estudiante'));
     }
 }
