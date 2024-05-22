@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="{{ asset('css/styleNav2.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleHome.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styleMat2.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styleMat.css') }}">
 </head>
 <body>
 @include('includes.nav2')
