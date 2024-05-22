@@ -37,6 +37,7 @@ Route::get('/calendarT', [CalendarTController::class, 'calendar'])->name('calend
 Route::get('/perfila', [PerfilAController::class, 'perfil'])->name('perfila');
 Route::post('/perfila/update{id}', [PerfilAController::class, 'update'])->name('perfila.update');
 Route::get('/perfilt', [PerfilTController::class, 'perfil'])->name('perfilt');
+Route::post('/perfilt/update{id}', [PerfilTController::class, 'update'])->name('perfilt.update');
 
 
 Route::post('/registrar', [RegistrarController::class, 'register'])->name('register');

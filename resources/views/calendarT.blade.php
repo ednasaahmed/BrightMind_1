@@ -30,7 +30,7 @@
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-          <img alt="image" src="images/c1.jpg" class="rounded-circle mr-1">
+          <img alt="image" src="{{ $tutor->foto ?? 'images/t1.jpg' }}" class="rounded-circle mr-1">
           </a>
           <div class="dropdown-menu dropdown-menu-right">
             <a href="{{route('perfilt')}}" class="dropdown-item">

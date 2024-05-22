@@ -62,8 +62,12 @@
                 <div class="profile-widget-headet text-center">
                   <i class="bi bi-person-circle" style="font-size: 12rem;"></i>
                 </div>
+                @if($estudiante->sexo == 'F')
+                    <h5 class="card-title text-center" style="font-size: 35px;">Alumna {{ $estudiante->nombre }}</h5>
+                @else
+                    <h5 class="card-title text-center" style="font-size: 35px;">Alumno {{ $estudiante->nombre }}</h5>
+                @endif
 
-            <h5 class="card-title text-center" style="font-size: 35px;">Alumno</h5>
             </form>
           </div>
         </div>
@@ -75,7 +79,7 @@
                 </div>
                 @endif
         <div class="card1">
-        <form method="post" class="needs-validation" novalidate="" action="{{ url('/perfila/update' . $user->id) }}">
+        <form method="post" class="needs-validation" novalidate="" action="{{ url('/perfila/update' . $estudiante->id_estudiante) }}">
         @csrf  
         <div class="card-header">
               <h4>Editar Perfil</h4>
