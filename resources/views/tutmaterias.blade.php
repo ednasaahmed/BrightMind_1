@@ -1,4 +1,4 @@
-@extends('layout.inmat')
+@extends('layout.inmat2')
 @section('title','Brightmind')
 @section('content')
 <!-- Se supone que esta vista va en el boton Materias de la sesión del tutor -->
@@ -34,11 +34,11 @@
           <img alt="image" src="images/c1.jpg" class="rounded-circle mr-1">
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a href="{{route('perfila')}}" class="dropdown-item">
+            <a href="{{route('perfilt')}}" class="dropdown-item">
             <i class="bi bi-person-fill"></i> Perfil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item ">
+            <a href="{{route('logout')}}" class="dropdown-item ">
             <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </div>

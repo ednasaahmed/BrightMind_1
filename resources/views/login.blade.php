@@ -23,7 +23,7 @@
         </label>
       </div>
     </div>
-    <button type="submit" class="btn1"><a href="{{route('ingresar')}}">INGRESAR</a></button>
+    <button type="submit" class="btn1"><a href="{{route('ingresar')}}"></a>INGRESAR</button>
   </form>
   <div class="register-link">
   <p>¿No tienes cuenta? <a href="{{route('registrar')}}">Regístrate</a></p>
