@@ -74,7 +74,7 @@ class RegistrarController extends Controller
                 
                             Request()->session()->regenerate();
                 
-                            return redirect('home');
+                            return redirect('homeTut');
                             
                         }
                         //return redirect()->route('home')->with("success","Guardado el registro");

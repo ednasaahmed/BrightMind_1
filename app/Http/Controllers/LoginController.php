@@ -37,9 +37,6 @@ class LoginController extends Controller
            $usuario_id=(int)Auth::id();
            
             $tipoE=DB::table('estudiantes')->where('id_usuario',$usuario_id)->exists();
-            $tipoT=DB::table('tutores')->where('id_usuario',$usuario_id);
-
-            
 
             if ($tipoE){
                 

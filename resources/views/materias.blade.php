@@ -72,7 +72,7 @@
                             <p class="c-text text-center">Explora el mundo de la lógica, conjuntos, y estructuras algebraicas fundamentales en Matemáticas Discretas. Descubre aplicaciones en informática otras áreas y resuelve problemas con precisión y rigor.</p>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="#" class="c-link">Ver más</a>
+                        <a href="{{route('detmaterias')}}" class="c-link">Ver más</a>
                     </div>
                 </div>
             </div>
