@@ -15,9 +15,16 @@ use App\Http\Controllers\PerfilAController;
 use App\Http\Controllers\PerfilTController;
 use App\Http\Controllers\HomeTutController;
 use App\Http\Controllers\CalendarTController;
+use App\Http\Controllers\AluTutoresController;
+
+
+//Route::get('/alututores', [AluTutoresController::class, 'alututores'])->name('alututores');
+Route::get('/alututores/{id}', [AluTutoresController::class, 'alututores'])->where('id','[0-9]+')->name('alututores');
+//
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/materias', [MateriaController::class, 'materias'])->name('materias');
+
 Route::get('/tutmaterias', [TutMateriaController::class, 'tutmaterias'])->name('tutmaterias');
 Route::get('/detmaterias', [DetMateriaController::class, 'detmaterias'])->name('detmaterias');
 Route::get('/nosotros', [AcercaDeController::class, 'index'])->name('nosotros');

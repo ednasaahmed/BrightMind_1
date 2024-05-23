@@ -50,17 +50,30 @@
 
 
     <div class="materias"> 
-      <h4>Materias</h4>
+        <h4>Tutores de NOMBRE DE LA MATERIA</h4>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-          @foreach($datos as $materia)
+            @foreach($datos as $tutores)
             <div class="col">
                 <div class="card h-100">
                     <div class="card-body">
-                        <p class="c-title text-center">{{$materia->Nombre}}</p>
-                            <p class="c-text text-center">{{$materia->Descripcion}}</p>
+                        <div class="container text-center">
+                            <div class="row">
+                                <div class="col-3">
+                                    <img src="{{ asset('images/t1.jpg') }}" class="card-img-top rounded-circle foto-tutor" alt="Tutor Foto">
+                                </div>
+                                <div class="col-9">
+                                    <p class="c-text"><strong>{{$tutores->grado}}</strong></p>
+                                    <p class="c-text">{{$tutores->nombre}} {{$tutores->apellido_paterno}} {{$tutores->apellido_materno}}</p>
+                                    <p class="c-text">4.8
+                                        <i class="bi bi-star-fill star"></i>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="c-text text-center">{{$tutores->descripcion}}</p>
                     </div>
                     <div class="card-footer text-center">
-                        <a href='{{url("/alututores/{$materia->id_materia}")}}' class="c-link">Ver más</a>
+                        <a href="{{route('detmaterias')}}" class="c-link">Ver más</a>
                     </div>
                 </div>
             </div>

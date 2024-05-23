@@ -3,7 +3,7 @@
     <header>
         <div class="image-text">
             <span class="image">
-                <img src="images/icon.png" alt="logo">
+                <img src="{{ asset('images/icon.png') }}" alt="logo">
             </span>
             <div class="text header-text">
                 <span class="name">BrightMind</span>
@@ -44,6 +44,6 @@
         </div>
     </div>
 </nav>
-<script src="js/script.js"></script>
+<script src="{{ asset('js/script.js') }}"></script>
 
 </body>
