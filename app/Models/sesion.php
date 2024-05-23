@@ -16,4 +16,18 @@ class sesion extends Model
         'id_materia',
         'estado',
     ];
+
+    protected $casts = [
+        'fecha' => 'datetime',
+    ];
+
+    public function estudiante()
+    {
+        return $this->hasOne(Estudiantes::class, 'id_estudiante');
+    }
+
+    public function tutor()
+    {
+        return $this->hasOne(Tutores::class, 'id_tutor');
+    }
 }

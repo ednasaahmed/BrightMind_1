@@ -62,8 +62,8 @@
                                     <img src="{{ asset('images/t1.jpg') }}" class="card-img-top rounded-circle foto-tutor" alt="Tutor Foto">
                                 </div>
                                 <div class="col-9">
-                                    <p class="c-text"><strong>{{$tutores->grado}}</strong></p>
-                                    <p class="c-text">{{$tutores->nombre}} {{$tutores->apellido_paterno}} {{$tutores->apellido_materno}}</p>
+                                    <p class="c-text" name="grado"><strong>{{$tutores->grado}}</strong></p>
+                                    <p class="c-text" name="">{{$tutores->nombre}} {{$tutores->apellido_paterno}} {{$tutores->apellido_materno}}</p>
                                     <p class="c-text">4.8
                                         <i class="bi bi-star-fill star"></i>
                                     </p>
@@ -73,7 +73,7 @@
                         <p class="c-text text-center">{{$tutores->descripcion}}</p>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="{{route('detmaterias')}}" class="c-link">Ver más</a>
+                        <a href="{{route('detmaterias', ['id' => $tutores->id_tutor])}}" class="c-link">Ver más</a>
                     </div>
                 </div>
             </div>

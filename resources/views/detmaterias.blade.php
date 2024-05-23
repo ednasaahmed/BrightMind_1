@@ -60,6 +60,8 @@
             <button type="button" class="btn-estilo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agendarModal">Agendar Sesión</button>
 
             <!-- Modal -->
+            <form method="POST">
+            @csrf
             <div class="modal fade" id="agendarModal" tabindex="-1" aria-labelledby="agendarModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -70,15 +72,17 @@
                         <div class="modal-body">
                             ¡Recuerda que solo puedes agendar sesiones dentro de la disponibilidad del tutor!
                             <div class="mb-3" id="fecha">
-                            <input class="disponibilidad" type="datetime-local">
+                            <input class="disponibilidad" type="datetime-local" name="fecha" required>
                             </div>    
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn-estilo" name="agendar">Agendar</button>
+                            <button type="submit" class="btn-estilo" ><a href="{{route('agendarS')}}"></a>Agendar</button>
                         </div>
                     </div>
                 </div>
             </div>
+            </form>
+           
             <!-- Acaba el Modal -->
         </div>
       </div>
@@ -90,7 +94,7 @@
             <img alt="image" src="images/t1.jpg" class="rounded-circle profile-widget-picture">
             <hr>
             
-            <h5 class="info-tutor">Fabiola Elena Dominguez Valencia</h5><hr>
+            <h5 class="info-tutor">{{ $tutor->nombre }}</h5><hr>
             <p class="info-tutor">Calificación: 3.87
                 <i class="bi bi-star-fill star"></i>
             </p>     
