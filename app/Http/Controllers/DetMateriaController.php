@@ -20,7 +20,7 @@ class DetMateriaController extends Controller
     }
 
 
-    public function agendarS(Request $request){
+    public function agendarS(Request $request,$id){
         $user = Auth::user();
         $estudiante = $user->estudiante;
         $sesion = new sesion();
@@ -30,7 +30,7 @@ class DetMateriaController extends Controller
                 'fecha' => 'required|date_format:Y-m-d\TH:i',
             ]); 
             $fecha1 = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i', $request->fecha);
-                $sesion->id_tutor=$tutor->id_tutor;
+                $sesion->id_tutor=$id;
                 $sesion->id_estudiante=$estudiante->id_estudiante;
                 $sesion->fecha= $fecha1;
                 $sesion->id_materia= 1;
@@ -38,7 +38,7 @@ class DetMateriaController extends Controller
 
                 $sesion->save();
 
-                return redirect('home');
+                return redirect('calendar');
 
             //sreturn redirect()->back()->with('success', 'Cita guardada correctamente.');
         }

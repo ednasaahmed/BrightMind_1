@@ -76,7 +76,7 @@
                             </div>    
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn-estilo" ><a href="{{route('agendarS')}}"></a>Agendar</button>
+                            <button type="submit" class="btn-estilo" ><a href="{{route('agendarS',['id' => $tutor->id_tutor])}})}}"></a>Agendar</button>
                         </div>
                     </div>
                 </div>
@@ -91,15 +91,15 @@
       <div class="col-sm-4 d-flex justify-content-center align-items-center">
         <div class="profile-widget-header text-center">
             <h5 class="info-tutor">Tutor</h5><hr>
-            <img alt="image" src="images/t1.jpg" class="rounded-circle profile-widget-picture">
+            <img alt="image" src="{{ $tutor->foto }}" class="rounded-circle profile-widget-picture">
             <hr>
             
-            <h5 class="info-tutor">{{ $tutor->nombre }}</h5><hr>
+            <h5 class="info-tutor">{{ $tutor->nombre }} {{ $tutor->apellido_paterno }} {{ $tutor->apellido_materno}}</h5><hr>
             <p class="info-tutor">Calificación: 3.87
                 <i class="bi bi-star-fill star"></i>
             </p>     
-            <p class="info-tutor">Grado académico</p>
-            <p class="info-tutor">Experto en Matemáticas Discretas con enfoque práctico y didáctico. ¡Aprende conmigo y domina los conceptos clave!</p>
+            <p class="info-tutor">{{ $tutor->grado }}</p>
+            <p class="info-tutor">{{ $tutor->descripcion }}</p>
         </div>
       </div>
     </div>

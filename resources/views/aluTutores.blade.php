@@ -59,7 +59,7 @@
                         <div class="container text-center">
                             <div class="row">
                                 <div class="col-3">
-                                    <img src="{{ asset('images/t1.jpg') }}" class="card-img-top rounded-circle foto-tutor" alt="Tutor Foto">
+                                    <img src="{{ asset($tutores->foto) }}" class="card-img-top rounded-circle foto-tutor" alt="Tutor Foto">
                                 </div>
                                 <div class="col-9">
                                     <p class="c-text" name="grado"><strong>{{$tutores->grado}}</strong></p>
