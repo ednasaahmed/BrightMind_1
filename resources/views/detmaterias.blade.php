@@ -74,7 +74,7 @@
                             </div>    
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn-estilo">Agendar</button>
+                            <button type="button" class="btn-estilo" name="agendar">Agendar</button>
                         </div>
                     </div>
                 </div>
