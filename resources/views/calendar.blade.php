@@ -67,10 +67,11 @@
           </button>
         </div>
         <div class="modal-body">
-          <p id="materia"></p>
-          <p id="eventTitle"></p>
-          <p id="eventStart"></p>
-          <p id="eventEnd"></p>
+          <p id="id_sesion"></p>
+          <p id="nombre_tutor"></p>         
+          <p id="nombre_materia"></p>
+          <p id="fecha"></p>
+          <p id="estado"></p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
@@ -85,40 +86,42 @@
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
 
-<script>
+  <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const calendarEl = document.getElementById('calendar');
 
-      document.addEventListener('DOMContentLoaded', function() {
-        const calendarEl = document.getElementById('calendar')
-        const calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth',
+            // Recoge las sesiones desde la variable PHP
+            const sesiones = @json($sesiones);
 
-          events: [
-          {
-            title: 'Evento 1',
-            start: '2024-05-23',
-            end: '2024-05-24'
-          },
-          {
-            title: 'Evento 2',
-            start: '2024-05-25',
-          }
-        ],
-        eventClick: function(info) {
-          // Muestra el modal
-          $('#eventModal').modal('show');
-          // Rellena el contenido del modal con los detalles del evento
-          document.getElementById('eventTitle').innerText = info.event.title;
-          document.getElementById('eventStart').innerText = 'Inicio: ' + info.event.start.toLocaleString();
-          document.getElementById('eventEnd').innerText = 'Fin: ' + (info.event.end ? info.event.end.toLocaleString() : 'No especificado');
-        }
-        })
-      
-       
-      
-      calendar.render()
-        
-      })
+            // Mapea las sesiones a los eventos de FullCalendar
+            const events = sesiones.map(sesion => ({
+                title: `Sesion ${sesion.id_sesion}`,
+                start: sesion.fecha ,
+                end: sesion.fecha, // Asegúrate de que tienes esta columna en tu tabla si la necesitas
+                extendedProps: {
+                    id_sesion: sesion.id_sesion,
+                    nombre_tutor: sesion.nombre_tutor,
+                    nombre_materia: sesion.nombre_materia,
+                    estado: sesion.estado,
+                }
+            }));
 
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: events,
+                eventClick: function(info) {
+                    // Muestra el modal
+                    $('#eventModal').modal('show');
+                    // Rellena el contenido del modal con los detalles del evento
+                    document.getElementById('id_sesion').innerText = `ID Sesión: ${info.event.extendedProps.id_sesion}`;
+                    document.getElementById('nombre_tutor').innerText = `Tutor: ${info.event.extendedProps.nombre_tutor}`;
+                    document.getElementById('nombre_materia').innerText = `Materia: ${info.event.extendedProps.nombre_materia}`;
+                    document.getElementById('fecha').innerText = `Fecha: ${info.event.start.toLocaleString()}`;
+                    document.getElementById('estado').innerText = `Estado: ${info.event.extendedProps.estado ? 'Activo' : 'Inactivo'}`;
+                }
+            });
+            calendar.render();
+        });
     </script>
 </section>
     

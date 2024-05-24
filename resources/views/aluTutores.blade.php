@@ -48,7 +48,7 @@
   </nav>
 </header>
 
-
+    <form method="POST">
     <div class="materias"> 
         <h4>Tutores de {{$materia->Nombre}}</h4>
         <div class="row row-cols-1 row-cols-md-3 g-4">
@@ -73,13 +73,16 @@
                         <p class="c-text text-center">{{$tutores->descripcion}}</p>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="{{route('detmaterias', ['id' => $tutores->id_tutor])}}" class="c-link">Ver más</a>
+                        <a href="{{route('detmaterias', ['id' => $tutores->id_tutor,'id_materia' => $materia->id_materia])}}" class="c-link">Ver más</a>
                     </div>
                 </div>
             </div>
             @endforeach
         </div>
     </div>
+
+    </form>
+    
 
 
 </section>

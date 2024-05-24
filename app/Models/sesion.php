@@ -9,6 +9,7 @@ class sesion extends Model
 {
     use HasFactory;
 
+   // protected $table = 'sesion';
     protected $primaryKey = 'id_sesion';
 
     protected $fillable = [
@@ -20,10 +21,11 @@ class sesion extends Model
     ];
 
     protected $casts = [
-        'fecha' => 'datetime',
+        'fecha' => 'datetime' ,
     ];
+    
 
-    public function estudiante()
+   /* public function estudiante()
     {
         return $this->hasOne(Estudiantes::class, 'id_estudiante');
     }
@@ -31,5 +33,19 @@ class sesion extends Model
     public function tutor()
     {
         return $this->hasOne(Tutores::class, 'id_tutor');
+    }*/
+    public function tutores()
+    {
+        return $this->belongsTo(Tutores::class, 'id_tutor');
+    }
+
+    public function estudiantes()
+    {
+        return $this->belongsTo(Estudiantes::class, 'id_estudiante');
+    }
+
+    public function materia()
+    {
+        return $this->belongsTo(Materia::class, 'id_materia');
     }
 }
