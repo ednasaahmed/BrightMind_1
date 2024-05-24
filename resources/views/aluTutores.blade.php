@@ -50,7 +50,7 @@
 
 
     <div class="materias"> 
-        <h4>Tutores de NOMBRE DE LA MATERIA</h4>
+        <h4>Tutores de {{$materia->Nombre}}</h4>
         <div class="row row-cols-1 row-cols-md-3 g-4">
             @foreach($datos as $tutores)
             <div class="col">

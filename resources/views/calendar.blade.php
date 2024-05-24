@@ -47,15 +47,76 @@
 </div>
   </nav>
 </header>
+
+ 
+ <!-- Incluye FullCalendar CSS -->
+ <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.css' rel='stylesheet' />
+  <!-- Incluye Bootstrap CSS -->
+  <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet' />
+
 <div id='calendar'></div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="eventModal" tabindex="-1" aria-labelledby="eventModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="eventModalLabel">Evento</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="materia"></p>
+          <p id="eventTitle"></p>
+          <p id="eventStart"></p>
+          <p id="eventEnd"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+   <!-- Incluye FullCalendar JS -->
+   <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.js'></script>
+  <!-- Incluye jQuery y Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 <script>
 
       document.addEventListener('DOMContentLoaded', function() {
         const calendarEl = document.getElementById('calendar')
         const calendar = new FullCalendar.Calendar(calendarEl, {
-          initialView: 'dayGridMonth'
+          initialView: 'dayGridMonth',
+
+          events: [
+          {
+            title: 'Evento 1',
+            start: '2024-05-23',
+            end: '2024-05-24'
+          },
+          {
+            title: 'Evento 2',
+            start: '2024-05-25',
+          }
+        ],
+        eventClick: function(info) {
+          // Muestra el modal
+          $('#eventModal').modal('show');
+          // Rellena el contenido del modal con los detalles del evento
+          document.getElementById('eventTitle').innerText = info.event.title;
+          document.getElementById('eventStart').innerText = 'Inicio: ' + info.event.start.toLocaleString();
+          document.getElementById('eventEnd').innerText = 'Fin: ' + (info.event.end ? info.event.end.toLocaleString() : 'No especificado');
+        }
         })
-        calendar.render()
+      
+       
+      
+      calendar.render()
+        
       })
 
     </script>
