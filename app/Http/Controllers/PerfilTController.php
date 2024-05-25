@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tutores;
+use App\Models\Disponibilidad;
 
 class PerfilTController extends Controller
 {
@@ -13,7 +14,8 @@ class PerfilTController extends Controller
     {
         $user = Auth::user();
         $tutor = $user->tutor; 
-        return view('perfilt', compact('user', 'tutor'));
+        $disponibilidad = $tutor->disponibilidad;
+        return view('perfilt', compact('user', 'tutor', 'disponibilidad'));
     }
 
     public function update(Request $request, int $id_tutor)
@@ -38,7 +40,30 @@ class PerfilTController extends Controller
             $tutor->descripcion = $request->input('descripcion', $tutor->descripcion);
             $tutor->save();
     
+            Disponibilidad::where('id_tutor', $tutor->id_tutor)->delete();
+
+            // Crear las nuevas disponibilidades
+            if ($request->has('disponibilidad_fechas')) {
+                foreach ($request->disponibilidad_fechas as $disponibilidad) {
+                    Disponibilidad::create([
+                        'id_tutor' => $tutor->id_tutor,
+                        'fecha' => $disponibilidad['fecha'],
+                        'hora_inicio' => $disponibilidad['hora_inicio'],
+                        'hora_fin' => $disponibilidad['hora_fin'],
+                    ]);
+                }
+            }
             return redirect()->route('perfilt')->with("success", "¡Cambios guardados correctamente!");
 
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $disponibilidad = Disponibilidad::find($id);
+        if ($disponibilidad) {
+            $disponibilidad->delete();
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false, 'message' => 'Disponibilidad no encontrada'], 404);
     }
 }

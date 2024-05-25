@@ -26,6 +26,11 @@ class Tutores extends Model
         return $this->belongsTo(User::class, 'id_usuario');
     }
 
+    public function disponibilidad()
+    {
+        return $this->hasMany(Disponibilidad::class, 'id_tutor');
+    }
+
     public function materias()
     {
         return $this->belongsToMany(Materia::class, 'materia_tutor', 'id_tutor', 'id_materia')->withPivot('precio');
