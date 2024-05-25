@@ -95,9 +95,7 @@
             <hr>
             
             <h5 class="info-tutor">{{ $tutor->nombre }} {{ $tutor->apellido_paterno }} {{ $tutor->apellido_materno}}</h5><hr>
-            <p class="info-tutor">Calificación: 3.87
-                <i class="bi bi-star-fill star"></i>
-            </p>     
+ 
             <p class="info-tutor">{{ $tutor->grado }}</p>
             <p class="info-tutor">{{ $tutor->descripcion }}</p>
         </div>

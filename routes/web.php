@@ -18,16 +18,16 @@ use App\Http\Controllers\CalendarTController;
 use App\Http\Controllers\AluTutoresController;
 
 
-//Route::get('/alututores', [AluTutoresController::class, 'alututores'])->name('alututores');
-Route::get('/alututores/{id}', [AluTutoresController::class, 'alututores'])->where('id','[0-9]+')->name('alututores');
-//
+
+Route::get('/alututores/{id}', [AluTutoresController::class, 'alututores'])->name('alututores');
+
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/materias', [MateriaController::class, 'materias'])->name('materias');
 
 Route::get('/tutmaterias', [TutMateriaController::class, 'tutmaterias'])->name('tutmaterias');
-Route::get('/detmaterias/{id}', [DetMateriaController::class, 'detmaterias'])->name('detmaterias');
-Route::post('/detmaterias/{id}', [DetMateriaController::class, 'agendarS'])->name('agendarS');
+Route::get('/detmaterias/{id}/{id_materia}', [DetMateriaController::class, 'detmaterias'])->name('detmaterias');
+Route::post('/detmaterias/{id}/{id_materia}', [DetMateriaController::class, 'agendarS'])->name('agendarS');
 Route::get('/nosotros', [AcercaDeController::class, 'index'])->name('nosotros');
 Route::get('/contacto', [ContactoController::class, 'index'])->name('contacto');
 Route::get('/login', [LoginController::class, 'login'])->name('login');
