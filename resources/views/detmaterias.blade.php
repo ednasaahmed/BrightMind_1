@@ -52,9 +52,9 @@
     <div class="row">
       <div class="col-sm-8 d-flex justify-content-center align-items-center">
         <div>
-            <h2 class="">Matemáticas Discretas</h2>
+            <h2 class="">{{ $materia->Nombre }} </h2>
             <hr>
-            <p class="">Explora el mundo de la lógica, conjuntos, y estructuras algebraicas fundamentales en Matemáticas Discretas. Descubre aplicaciones en informática otras áreas y resuelve problemas con precisión y rigor.</p>   
+            <p class="">{{ $materia->Descripcion }}</p>   
             
             <!-- Button modal -->
             <button type="button" class="btn-estilo" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#agendarModal">Agendar Sesión</button>
@@ -76,7 +76,7 @@
                             </div>    
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn-estilo" ><a href="{{route('agendarS',['id' => $tutor->id_tutor])}})}}"></a>Agendar</button>
+                            <button type="submit" class="btn-estilo" ><a href="{{route('agendarS',['id' => $tutor->id_tutor,'id_materia' => $materia->id_materia])}})}}"></a>Agendar</button>
                         </div>
                     </div>
                 </div>
