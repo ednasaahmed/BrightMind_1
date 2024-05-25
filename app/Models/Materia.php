@@ -14,4 +14,9 @@ class Materia extends Model
         'Nombre',
         'Descripcion',
     ];
+
+    public function tutores()
+    {
+        return $this->belongsToMany(Tutores::class, 'materia_tutor', 'id_materia', 'id_tutor')->withPivot('precio');
+    }
 }

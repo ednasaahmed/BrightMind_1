@@ -52,28 +52,28 @@
     <div class="materias"> 
         <h4>Tutores de {{$materia->Nombre}}</h4>
         <div class="row row-cols-1 row-cols-md-3 g-4">
-            @foreach($datos as $tutores)
+            @foreach($tutores as $tutor)
             <div class="col">
                 <div class="card h-100">
                     <div class="card-body">
                         <div class="container text-center">
                             <div class="row">
                                 <div class="col-3">
-                                    <img src="{{ asset($tutores->foto) }}" class="card-img-top rounded-circle foto-tutor" alt="Tutor Foto">
+                                    <img src="{{ asset($tutor->foto) }}" class="card-img-top rounded-circle foto-tutor" alt="Tutor Foto">
                                 </div>
-                                <div class="col-9">
-                                    <p class="c-text" name="grado"><strong>{{$tutores->grado}}</strong></p>
-                                    <p class="c-text" name="">{{$tutores->nombre}} {{$tutores->apellido_paterno}} {{$tutores->apellido_materno}}</p>
-                                    <p class="c-text">4.8
-                                        <i class="bi bi-star-fill star"></i>
-                                    </p>
+                                <div class="col-9 d-flex justify-content-center align-items-center">
+                                    
+                                    <p class="c-title text-center" name="">{{$tutor->nombre}} {{$tutor->apellido_paterno}} {{$tutor->apellido_materno}}</p>
+                                    
                                 </div>
                             </div>
                         </div>
-                        <p class="c-text text-center">{{$tutores->descripcion}}</p>
+                        <p class="c-text" name="grado"><strong>{{$tutor->grado}}</strong></p>
+                        <p class="c-text text-center">{{$tutor->descripcion}}</p>
+                        <p class="c-text text-center">Precio por sesión: <strong>${{$tutor->pivot->precio}}</strong></p>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="{{route('detmaterias', ['id' => $tutores->id_tutor,'id_materia' => $materia->id_materia])}}" class="c-link">Ver más</a>
+                        <a href="{{route('detmaterias', ['id' => $tutor->id_tutor,'id_materia' => $materia->id_materia])}}" class="c-link">Ver más</a>
                     </div>
                 </div>
             </div>

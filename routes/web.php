@@ -18,14 +18,17 @@ use App\Http\Controllers\CalendarTController;
 use App\Http\Controllers\AluTutoresController;
 
 
-//Route::get('/alututores', [AluTutoresController::class, 'alututores'])->name('alututores');
+
 Route::get('/alututores/{id}', [AluTutoresController::class, 'alututores'])->name('alututores');
-//
+
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
 Route::get('/materias', [MateriaController::class, 'materias'])->name('materias');
 
 Route::get('/tutmaterias', [TutMateriaController::class, 'tutmaterias'])->name('tutmaterias');
+Route::post('/tutmaterias/store/{id_tutor}', [TutMateriaController::class, 'store'])->name('tutmaterias.store');
+
+
 Route::get('/detmaterias/{id}/{id_materia}', [DetMateriaController::class, 'detmaterias'])->name('detmaterias');
 Route::post('/detmaterias/{id}/{id_materia}', [DetMateriaController::class, 'agendarS'])->name('agendarS');
 Route::get('/nosotros', [AcercaDeController::class, 'index'])->name('nosotros');

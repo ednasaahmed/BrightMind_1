@@ -12,11 +12,11 @@ class AluTutoresController extends Controller
     public function alututores($id_materia)
     {
         $materia = Materia::findOrFail($id_materia);
-        $datos = Tutores::all();
+        $tutores = $materia->tutores;
+        //$datos = Tutores::all();
         $user = Auth::user();
         $estudiante = $user->estudiante; 
-        return view('aluTutores', compact('user', 'estudiante','datos','materia'));
+        return view('aluTutores', compact('user', 'estudiante', 'tutores', 'materia'));
     }
-
 
 }
