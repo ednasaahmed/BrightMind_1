@@ -140,68 +140,96 @@
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label>Descripción</label>
-                <textarea class="form-control estilo-campos mb-3" name ="descripcion" rows="3">{{ $tutor->grado ?? 'Descripción' }}</textarea>
+                <textarea class="form-control estilo-campos mb-3" name ="descripcion" rows="3">{{ $tutor->descripcion ?? 'Descripción' }}</textarea>
                   <div class="invalid-feedback">
                     Por favor ingresa una descripción
                   </div>
                 </div>
             </div>
             <div class="row">
-              <div class="form-group col-12">
-                <label>Disponibilidad</label>
-                <div class="d-flex flex-wrap" style="padding-left:50px;">
-                  <input type="checkbox" class="form-check-input me-2" id="disponibilidad">
-                  <label class="form-check-label" for="disponibilidad">Seleccionar disponibilidad</label>
-                </div>
-                <div id="disponibilidad-container" class="d-none">
-                  <div class="availability-item">
-                    <div class="row">
-                      <div class="col-md-6 col-12 mb-2">
-                        <label>Fecha</label>
-                        <input type="datetime-local" class="form-control" name="disponibilidad_fechas[]" required>
-                      </div>
-                    </div>
+                <div class="form-group col-12">
+                  <label>Disponibilidad</label>
+                  <div class="d-flex flex-wrap" style="padding-left:50px;">
+                    <input type="checkbox" class="form-check-input me-2 " id="disponibilidad" {{ count($disponibilidad) > 0 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="disponibilidad">Seleccionar disponibilidad</label>
                   </div>
-                  <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item">Agregar Horario</button>
+                  <div id="disponibilidad-container" class="{{ count($disponibilidad) == 0 ? 'd-none' : '' }}">
+                    @foreach($disponibilidad as $d)
+                    <div class="availability-item">
+                      <div class="row">
+                        <div class="col-md-4 col-12 mb-2">
+                          <label>Fecha</label>
+                          <input type="date" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][fecha]" value="{{ $d->fecha }}" required>
+                        </div>
+                        <div class="col-md-4 col-12 mb-2">
+                          <label>Hora Inicio</label>
+                          <input type="time" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][hora_inicio]" value="{{ $d->hora_inicio }}" required>
+                        </div>
+                        <div class="col-md-4 col-12 mb-2">
+                          <label>Hora Fin</label>
+                          <input type="time" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][hora_fin]" value="{{ $d->hora_fin }}" required>
+                        </div>
+                      </div>
+                    <div class="text-right">
+                      <button type="button" class="btn btn-sm btn-outline-danger mb-2 remove-availability-item ms-auto">Eliminar Horario</button>
+                    </div>
+                    </div>
+                    @endforeach
+                  </div>
+                  <div class="b" style="padding-top:10px;">
+                  <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }}">Agregar Horario</button>
+                  </div>
                 </div>
               </div>
-            </div>
-          <div class="col-12 text-center">
-            <img src="images/logo4.png" alt="Logo" class="img-fluid">
-          </div>
-          <div class="boton">
-              <button type="submit" class="btn1" >Guardar Cambios</button>
-          </div>
-        </form>
+
+              <div class="col-12 text-center">
+                <img src="images/logo4.png" alt="Logo" class="img-fluid">
+              </div>
+              <div class="boton">
+                  <button type="submit" class="btn1" >Guardar Cambios</button>
+              </div>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-</div>
-
+</section>
+</section>
 <br>
 <script>
 const disponibilidadContainer = document.getElementById('disponibilidad-container');
 const disponibilidadCheckbox = document.getElementById('disponibilidad');
+const addAvailabilityItemButton = document.querySelector('.add-availability-item');
 
 disponibilidadCheckbox.addEventListener('change', function() {
     if (this.checked) {
-        disponibilidadContainer.classList.remove('d-none');
+            disponibilidadContainer.classList.remove('d-none');
+            addAvailabilityItemButton.style.display = 'block';
     } else {
         disponibilidadContainer.classList.add('d-none');
+        addAvailabilityItemButton.style.display = 'none';
     }
 });
 
-const addAvailabilityItemButton = document.querySelector('.add-availability-item');
-
 addAvailabilityItemButton.addEventListener('click', function() {
+  const index = document.querySelectorAll('.availability-item').length;
+
   const availabilityItem = document.createElement('div');
   availabilityItem.classList.add('availability-item');
 
   availabilityItem.innerHTML = `
     <div class="row">
-      <div class="col-md-6 col-12 mb-2">
+      <div class="col-md-4 col-12 mb-2">
         <label>Fecha</label>
-        <input type="datetime-local" class="form-control" name="disponibilidad_fechas[]" required>
+          <input type="date" class="form-control" name="disponibilidad_fechas[${index}][fecha]" required>
+      </div>
+      <div class="col-md-4 col-12 mb-2">
+        <label>Hora Inicio</label>
+          <input type="time" class="form-control" name="disponibilidad_fechas[${index}][hora_inicio]" required>
+      </div>
+      <div class="col-md-4 col-12 mb-2">
+        <label>Hora Fin</label>
+          <input type="time" class="form-control" name="disponibilidad_fechas[${index}][hora_fin]" required>
       </div>
       <div class="col-md-12 mb-2 text-right">
         <button type="button" class="btn btn-sm btn-outline-danger remove-availability-item">Eliminar Horario</button>
@@ -210,22 +238,42 @@ addAvailabilityItemButton.addEventListener('click', function() {
   `;
 
   disponibilidadContainer.appendChild(availabilityItem);
+  addAvailabilityItemButton.style.display = 'block';
 });
 
 disponibilidadContainer.addEventListener('click', function(event) {
-  const removeButton = event.target.closest('.remove-availability-item');
-  if (removeButton) {
-    const availabilityItem = removeButton.parentNode.parentNode;
-    availabilityItem.remove(); 
-  }
-});
-  </script>
-  <script>
-    document.getElementById('edit_profile_picture').addEventListener('click', function(event) {
-        event.preventDefault(); 
-        document.getElementById('profile_picture').click(); 
+        const removeButton = event.target.closest('.remove-availability-item');
+        if (removeButton) {
+            const availabilityItem = removeButton.closest('.availability-item');
+            const availabilityId = availabilityItem.dataset.id;
+
+            if (availabilityId) {
+                fetch(`/perfilt/delete/${availabilityId}`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => response.json()).then(data => {
+                    if (data.success) {
+                        availabilityItem.remove();
+                    } else {
+                        alert(data.message || 'Error al eliminar la disponibilidad');
+                    }
+                }).catch(error => console.error('Error:', error));
+            } else {
+                availabilityItem.remove();
+                if (document.querySelectorAll('.availability-item').length === 0) {
+                    addAvailabilityItemButton.style.display = 'none'; // Ocultar el botón si no hay más horarios
+                }
+            }
+        }
     });
 </script>
-</section>
-</section>
+<script>
+document.getElementById('edit_profile_picture').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    document.getElementById('profile_picture').click(); 
+});
+</script>
 @endsection

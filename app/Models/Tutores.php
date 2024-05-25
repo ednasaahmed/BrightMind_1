@@ -25,5 +25,10 @@ class Tutores extends Model
     {
         return $this->belongsTo(User::class, 'id_usuario');
     }
+
+    public function disponibilidad()
+    {
+        return $this->hasMany(Disponibilidad::class, 'id_tutor');
+    }
 }
 
