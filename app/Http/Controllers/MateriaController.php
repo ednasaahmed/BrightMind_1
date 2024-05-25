@@ -16,5 +16,15 @@ class MateriaController extends Controller
         return view('materias', compact('user', 'estudiante','datos'));
     }
 
+    public function obtenerTutores($id)
+    {
+        // Encuentra la materia por el ID
+        $materia = Materia::findOrFail($id);
+
+        // Obtén los tutores asociados a la materia
+        $tutores = $materia->tutores;
+
+        return response()->json($tutores);
+    }
 
 }

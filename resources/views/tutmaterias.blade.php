@@ -59,31 +59,47 @@
                             <p class="c-text">¿Tienes conocimientos únicos para compartir? ¡Agrega una nueva materia y ayuda a estudiantes a descubrir nuevas pasiones!</p>
                     </div>
                     <div class="card-footer text-center">
-                        <a href="#" class="c-link" data-bs-toggle="modal" data-bs-target="#crearModal">Crear nueva materia</a>
+                        <a href="#" class="c-link" data-bs-toggle="modal" data-bs-target="#crearModal">Añadir materia</a>
 
                         <!-- Modal -->
                         <div class="modal fade" id="crearModal" tabindex="-1" aria-labelledby="crearModalLabel" aria-hidden="true">
                           <div class="modal-dialog">
                             <div class="modal-content">
                               <div class="modal-header">
-                                <h5 class="modal-title fs-5" id="crearModalLabel">Crear Materia</h5>
+                                <h5 class="modal-title fs-5" id="crearModalLabel">Añadir Materia</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" style="border:none; background-color: #FFFFFF;" aria-label="Close"><i class="bi bi-x-lg"></i></button>
                               </div>
                               <div class="modal-body">
-                                <form>
+                                <form action="{{ route('tutmaterias.store', ['id_tutor' => $tutor->id_tutor]) }}" method=post>
+                                  @csrf
                                   <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Nombre de la materia</label>
-                                    <input type="text" class="form-control" id="recipient-name">
+                                    <div class="dropdown">
+                                      <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                        Elige una materia
+                                      </button>
+                                      <ul class="dropdown-menu">
+                                        @foreach($datos as $materia)
+                                        <li><a class="dropdown-item" data-materia="{{ $materia->id_materia }}" data-descripcion="{{ $materia->Descripcion }}">{{$materia->Nombre}}</a></li>
+                                        @endforeach
+                                      </ul>
+                                    </div>
                                   </div>
+                                  <input type="hidden" name="id_tutor" value="{{ $tutor->id_tutor }}">
+                                  <input type="hidden" name="id_materia" id="id_materia" value="">
                                   <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Descripción</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                    <label for="descripcion" class="col-form-label">Descripción</label>
+                                    <textarea class="form-control" id="descripcion" readonly></textarea>
+                                  </div>
+                                  <div class="mb-3 d-flex justify-content-center align-items-center">
+                                      <label for="precio" class="col-form-label">Precio</label>
+                                      <input type="number" class="precio" id="precio" name="precio">
+                                  </div>
+                                  <div class="modal-footer">
+                                    <button type="submit" class="btn-estilo">Guardar</button>
                                   </div>
                                 </form>  
                               </div>
-                              <div class="modal-footer">
-                                <button type="button" class="btn-estilo">Guardar</button>
-                              </div>
+                              
                             </div>
                           </div>
                         </div>
@@ -91,50 +107,34 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <p class="c-title">Matemáticas discretas</p>
-                            <p class="c-text">Estudia estructuras y objetos separados. Fundamental en informática y resolución de problemas complejos.</p>
-                    </div>
-                    <div class="card-footer text-center">
-                      <a href="#" class="c-link" data-bs-toggle="modal" data-bs-target="#editarModal">Editar</a>
-
-                      <!-- Modal -->
-                      <div class="modal fade" id="editarModal" tabindex="-1" aria-labelledby="editarModalLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                          <div class="modal-content">
-                            <div class="modal-header">
-                              <h5 class="modal-title fs-5" id="editarModalLabel">Editar Materia</h5>
-                              <button type="button" class="btn-close" data-bs-dismiss="modal" style="border:none; background-color: #FFFFFF;" aria-label="Close"><i class="bi bi-x-lg"></i></button>
-                            </div>
-                            <div class="modal-body">
-                              <form>
-                                <div class="mb-3">
-                                  <label for="recipient-name" class="col-form-label">Nombre de la materia</label>
-                                  <input type="text" class="form-control" id="recipient-name" value="">
-                                </div>
-                                <div class="mb-3">
-                                  <label for="message-text" class="col-form-label">Descripción</label>
-                                  <textarea class="form-control" id="message-text" value=""></textarea>
-                                </div>
-                              </form>  
-                            </div>
-                            <div class="modal-footer">
-                              <button type="button" class="btn-estilo">Guardar</button>
-                            </div>
-                          </div>
+            
+                <div class="col">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <p class="c-title">Nombre</p>
+                            <p class="c-text">Descripcion</p>
+                            <p class="c-text">Precio</p>
                         </div>
-                      </div>
-                      <!-- Acaba el Modal -->
+                        <div class="card-footer text-center">
+                            <a href="#" class="c-link">Editar</a>
+                        </div>
                     </div>
                 </div>
-            </div>
+            
         </div>
     </div>
 
 
 </section>
 @endsection
-
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.dropdown-item').click(function() {
+            var idMateria = $(this).data('materia');
+            var descripcion = $(this).data('descripcion');
+            $('#id_materia').val(idMateria);
+            $('#descripcion').val(descripcion);
+        });
+    });
+</script>
