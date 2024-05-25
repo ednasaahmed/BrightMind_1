@@ -19,7 +19,7 @@ use App\Http\Controllers\AluTutoresController;
 
 
 //Route::get('/alututores', [AluTutoresController::class, 'alututores'])->name('alututores');
-Route::get('/alututores/{id}', [AluTutoresController::class, 'alututores'])->where('id','[0-9]+')->name('alututores');
+Route::get('/alututores/{id}', [AluTutoresController::class, 'alututores'])->name('alututores');
 //
 
 Route::get('/', [IndexController::class, 'index'])->name('index');
