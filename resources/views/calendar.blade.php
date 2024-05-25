@@ -3,6 +3,7 @@
 @section('content')
 <section class="home">
 <header>
+  
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
     <a class="navbar-brand" href="#"></a>
@@ -48,7 +49,7 @@
   </nav>
 </header>
 
- 
+<link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet' />
  <!-- Incluye FullCalendar CSS -->
  <link href='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.css' rel='stylesheet' />
   <!-- Incluye Bootstrap CSS -->
@@ -74,6 +75,8 @@
           <p id="estado"></p>
         </div>
         <div class="modal-footer">
+        <button type="submit" class="btn btn-secondary" ><a href="#"></a>Chat</button>
+        <button type="submit" class="btn btn-secondary" ><a href="#"></a>Finalizar</button>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
