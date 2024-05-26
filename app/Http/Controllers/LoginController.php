@@ -30,7 +30,6 @@ class LoginController extends Controller
             Request()->session()->regenerate();
 
             return redirect('home');
-            
         }
 
         //Si la autenticación no es correcta se redirige al usuario al login de nuevo
