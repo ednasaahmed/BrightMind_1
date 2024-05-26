@@ -104,6 +104,8 @@
                 extendedProps: {
                     id_sesion: sesion.id_sesion,
                     nombre_tutor: sesion.nombre_tutor,
+                    apellidoPat_tutor: sesion.apellidoPat_tutor,
+                    apellidoMat_tutor: sesion.apellidoMat_tutor,
                     nombre_materia: sesion.nombre_materia,
                     estado: sesion.estado,
                 }
@@ -117,7 +119,7 @@
                     $('#eventModal').modal('show');
                     // Rellena el contenido del modal con los detalles del evento
                     document.getElementById('id_sesion').innerText = `ID Sesión: ${info.event.extendedProps.id_sesion}`;
-                    document.getElementById('nombre_tutor').innerText = `Tutor: ${info.event.extendedProps.nombre_tutor}`;
+                    document.getElementById('nombre_tutor').innerText = `Tutor: ${info.event.extendedProps.nombre_tutor}`+` ${info.event.extendedProps.apellidoPat_tutor}`+` ${info.event.extendedProps.apellidoMat_tutor}`;
                     document.getElementById('nombre_materia').innerText = `Materia: ${info.event.extendedProps.nombre_materia}`;
                     document.getElementById('fecha').innerText = `Fecha: ${info.event.start.toLocaleString()}`;
                     document.getElementById('estado').innerText = `Estado: ${info.event.extendedProps.estado ? 'Activo' : 'Inactivo'}`;
