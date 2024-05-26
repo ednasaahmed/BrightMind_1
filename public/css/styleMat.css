@@ -106,3 +106,14 @@
 .precio:focus {
     outline: none;
 }
+
+#selectMateria {
+    width: 100%;
+    padding: 3px;
+    border: 1px solid #a3a3a3;
+    border-radius: 5px;
+}
+
+#selectMateria:focus {
+    outline: none;
+}
