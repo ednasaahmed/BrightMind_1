@@ -11,13 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('users', function (Blueprint $table) {
-            // $table->string('name');
-            $table->integer('id')->autoIncrement();
-            $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->rememberToken();
+        Schema::create('disponibilidad_tutor', function (Blueprint $table) {
+            $table->integer('id_tutor') ;
+            $table->foreign('id_tutor')->references('id_tutor')->on('tutores');
+            $table->date('fecha');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('users');
+        Schema::dropIfExists('disponibilidad_tutor');
     }
 };

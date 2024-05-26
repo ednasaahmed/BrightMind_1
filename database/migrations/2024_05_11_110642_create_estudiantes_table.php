@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('estudiantes', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_estudiante')->autoIncrement();
             $table->string('nombre');
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
             $table->date('fecha_nacimiento');
             $table->char('sexo',1);
-            $table->text('foto');
             $table->integer('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->timestamps();

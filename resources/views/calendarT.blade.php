@@ -1,7 +1,7 @@
-@extends('layout.inmat')
+@extends('layout.inca2')
 @section('title','Brightmind')
 @section('content')
-<section class="home" style="margin-bottom:15px;">
+<section class="home">
 <header>
   <nav class="navbar navbar-expand-lg navbar-light">
     <div class="container-fluid">
@@ -30,14 +30,14 @@
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-          <i class="bi bi-person-circle icono-grande"></i>{{ $estudiante->nombre }}
+          <img alt="image" src="{{ $tutor->foto ?? 'images/t1.jpg' }}" class="rounded-circle mr-1">
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a href="{{route('perfila')}}" class="dropdown-item">
+            <a href="{{route('perfilt')}}" class="dropdown-item">
             <i class="bi bi-person-fill"></i> Perfil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="{{route('index')}}" class="dropdown-item ">
+            <a href="{{route('logout')}}" class="dropdown-item ">
             <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </div>
@@ -47,32 +47,18 @@
 </div>
   </nav>
 </header>
+<div id='calendar'></div>
+<script>
 
+      document.addEventListener('DOMContentLoaded', function() {
+        const calendarEl = document.getElementById('calendar')
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: 'dayGridMonth'
+        })
+        calendar.render()
+      })
 
-    <div class="materias"> 
-      <h4>Materias</h4>
-        <div class="row row-cols-1 row-cols-md-3 g-4">
-          @foreach($datos as $materia)
-            <div class="col">
-                <div class="card h-100">
-                    <div class="card-body">
-                        <p class="c-title text-center">{{$materia->Nombre}}</p>
-                            <p class="c-text text-center">{{$materia->Descripcion}}</p>
-                    </div>
-                    <div class="card-footer text-center">
-                        <a href='{{url("/alututores/{$materia->id_materia}")}}' class="c-link">Ver más</a>
-                    </div>
-                </div>
-            </div>
-            @endforeach
-        </div>
-    </div>
-
-
+    </script>
 </section>
-
-
-
     
 @endsection
-

@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Tutores extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'id_tutor';
     protected $fillable = [
         'nombre',
         'apellido_paterno',
@@ -19,4 +20,21 @@ class Tutores extends Model
         'foto',
         'id_usuario',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'id_usuario');
+    }
+
+    public function disponibilidad()
+    {
+        return $this->hasMany(Disponibilidad::class, 'id_tutor');
+    }
+
+    public function materias()
+    {
+        return $this->belongsToMany(Materia::class, 'materia_tutor', 'id_tutor', 'id_materia')->withPivot('precio');
+    }
+
 }
+

@@ -34,7 +34,7 @@
 }
 
 .star {
-    color: #e1e1e1;
+    color: #efdc5f;
 }
 
 .card-card {
@@ -60,6 +60,11 @@
     font-size: small;
     margin: 0%;
     text-align: center;
+}
+
+.nom-tut {
+    font-size: medium;
+    font-style:italic;
 }
 
 .c-link {
@@ -88,4 +93,27 @@
     background-color: #610c27c9;
     color: #FFFFFF;
     text-decoration: none;
+}
+
+.precio {
+    width: 30%;
+    margin-left: 10px;
+    text-align: center;
+    border: 1px solid #a3a3a3;
+    border-radius: 5px;
+}
+
+.precio:focus {
+    outline: none;
+}
+
+#selectMateria {
+    width: 100%;
+    padding: 3px;
+    border: 1px solid #a3a3a3;
+    border-radius: 5px;
+}
+
+#selectMateria:focus {
+    outline: none;
 }

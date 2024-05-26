@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Estudiantes;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Psy\Readline\Hoa\Console;
+use Illuminate\Console\Command;
 
 class LoginController extends Controller
 {
@@ -16,7 +20,8 @@ class LoginController extends Controller
     }
     
      public function ingresar(){
-
+        $user= new User();
+        $estudiante= new Estudiantes();
         //se obtienen las credenciales del inicio de sesion
        $credentials = Request()->only('email','password');
 

@@ -1,4 +1,4 @@
-@extends('layout.inpa')
+@extends('layout.inpa2')
 @section('title','Brightmind')
 @section('content')
 <section class="home">
@@ -30,14 +30,14 @@
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-            <img alt="image" src="images/c1.jpg" class="rounded-circle mr-1"> 
+            <img alt="image" src="{{ $tutor->foto }}" class="rounded-circle mr-1"> 
         </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a href="{{route('perfila')}}" class="dropdown-item">
+            <a href="{{route('perfilt')}}" class="dropdown-item">
             <i class="bi bi-person-fill"></i> Perfil
             </a>
             <div class="dropdown-divider"></div>
-            <a href="#" class="dropdown-item ">
+            <a href="{{route('logout')}}" class="dropdown-item ">
             <i class="bi bi-box-arrow-left"></i> Logout
             </a>
           </div>
@@ -57,26 +57,34 @@
       <div class="col-md-4"> 
         <div class="card">
           <div class="card-body">
-            <form method="post" enctype="multipart/form-data">
+            <form method="post" enctype="multipart/form-data" action="{{ url('/perfilt/update' . $tutor->id_tutor) }}">
                 @csrf 
                 <div class="profile-widget-headet text-center">
-                    <img alt="image" src="images/t1.jpg" class="rounded-circle profile-widget-picture">
+                    <img alt="image" src="{{ $tutor->foto ?? 'images/t1.jpg' }}" class="rounded-circle profile-widget-picture">
                 </div>
                 <div class="mb-4 position-relative">
-    <input type="file" class="form-control d-none" id="profile_picture" name="profile_picture">
-    <a href="#" id="edit_profile_picture" class="d-inline-block circle-icon">
-        <span class="bi bi-pencil text-white"></span>
-    </a>
-</div>
-
-            <h5 class="card-title text-center">Nombre Tutor</h5>
+                  <input type="file" class="form-control d-none" id="profile_picture" name="foto">
+                  <a href="#" id="edit_profile_picture" class="d-inline-block circle-icon">
+                      <span class="bi bi-pencil text-white"></span>
+                  </a>
+              </div>
+            <h5 class="card-title text-center" style="font-size: 30px;">Tutor {{ $tutor->nombre }}</h5>
+            <div class="boton1 text-center">
+              <button type="submit" class="btn1" >Guardar Foto</button>
+          </div>
             </form>
           </div>
         </div>
       </div>
       <div class="col-md-8"> 
+      @if($mensaje = Session::get('success'))
+        <div class="alert alert-success" role="alert">
+          {{ $mensaje}}
+        </div>
+      @endif
         <div class="card1">
-          <form method="post" class="needs-validation" novalidate="">
+          <form method="post" class="needs-validation" novalidate="" action="{{ url('/perfilt/update' . $tutor->id_tutor) }}">
+          @csrf 
             <div class="card-header">
               <h4>Editar Perfil</h4>
             </div>
@@ -84,21 +92,21 @@
               <div class="row">                               
                 <div class="form-group col-md-4 col-12">
                   <label>Nombres</label>
-                  <input type="text" class="form-control" value="Nombre" required="">
+                  <input type="text" class="form-control" name="nombre" value="{{ $tutor->nombre }}" required="">
                   <div class="invalid-feedback">
                     Por favor ingresa un nombre
                   </div>
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label>Apellido Paterno</label>
-                  <input type="text" class="form-control" value="Apellido Paterno" required="">
+                  <input type="text" class="form-control" name="apellido_paterno" value="{{ $tutor->apellido_paterno }}" required="">
                   <div class="invalid-feedback">
                     Por favor ingresa un apellido paterno
                   </div>
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label>Apellido Materno</label>
-                  <input type="text" class="form-control" value="Apellido Materno" required="">
+                  <input type="text" class="form-control" name="apellido_materno" value="{{ $tutor->apellido_materno }}" required="">
                   <div class="invalid-feedback">
                     Por favor ingresa un apellido materno
                   </div>
@@ -108,16 +116,16 @@
               <div class="row">
                 <div class="form-group col-md-6 col-12">
                   <label>Fecha de Nacimiento</label>
-                  <input type="date" class="form-control" value="" required="">
+                  <input type="date" class="form-control" name="fecha_nacimiento" value="{{ $tutor->fecha_nacimiento }}" required="">
                   <div class="invalid-feedback">
                     Por favor ingresa una fecha de nacimiento válida
                   </div>
                 </div>
                 <div class="form-group col-md-6 col-12">
                   <label>Sexo</label>
-                  <select class="form-select">
-                    <option value="1" selected>Hombre</option>
-                    <option value="2">Mujer</option>
+                  <select class="form-select" name="sexo">
+                  <option value="M" {{ $tutor->sexo == 'M' ? 'selected' : '' }}>Hombre</option>
+                    <option value="F" {{ $tutor->sexo == 'F' ? 'selected' : '' }}>Mujer</option>
                   </select>
                 </div>
               </div>
@@ -125,76 +133,103 @@
             <div class="row">                               
                 <div class="form-group col-md-4 col-12">
                   <label>Grado Académico</label>
-                  <input type="text" class="form-control" value="Grado Académico" required="">
+                  <input type="text" class="form-control" name="grado" value="{{ $tutor->grado ?? 'Grado Académico' }}" required="">
                   <div class="invalid-feedback">
                     Por favor ingresa un grado académico
                   </div>
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label>Descripción</label>
-                <textarea class="form-control estilo-campos mb-3" rows="3">Descripción</textarea>
+                <textarea class="form-control estilo-campos mb-3" name ="descripcion" rows="3">{{ $tutor->descripcion ?? 'Descripción' }}</textarea>
                   <div class="invalid-feedback">
                     Por favor ingresa una descripción
                   </div>
                 </div>
             </div>
             <div class="row">
-  <div class="form-group col-12">
-    <label>Disponibilidad</label>
-    <div class="d-flex flex-wrap" style="padding-left:50px;">
-      <input type="checkbox" class="form-check-input me-2" id="disponibilidad">
-      <label class="form-check-label" for="disponibilidad">Seleccionar disponibilidad</label>
-    </div>
-    <div id="disponibilidad-container" class="d-none">
-      <div class="availability-item">
-        <div class="row">
-          <div class="col-md-6 col-12 mb-2">
-            <label>Fecha</label>
-            <input type="datetime-local" class="form-control" name="disponibilidad_fechas[]" required>
-          </div>
-        </div>
-      </div>
-      <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item">Agregar Horario</button>
-    </div>
-  </div>
-</div>
-
-      <div class="col-12 text-center">
-        <img src="images/logo4.png" alt="Logo" class="img-fluid">
-      </div>
-          </form>
-          
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="boton">
-                  <button class="btn1" >Guardar Cambios</button>
+                <div class="form-group col-12">
+                  <label>Disponibilidad</label>
+                  <div class="d-flex flex-wrap" style="padding-left:50px;">
+                    <input type="checkbox" class="form-check-input me-2 " id="disponibilidad" {{ count($disponibilidad) > 0 ? 'checked' : '' }}>
+                    <label class="form-check-label" for="disponibilidad">Seleccionar disponibilidad</label>
+                  </div>
+                  <div id="disponibilidad-container" class="{{ count($disponibilidad) == 0 ? 'd-none' : '' }}">
+                    @foreach($disponibilidad as $d)
+                    <div class="availability-item">
+                      <div class="row">
+                        <div class="col-md-4 col-12 mb-2">
+                          <label>Fecha</label>
+                          <input type="date" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][fecha]" value="{{ $d->fecha }}" required>
+                        </div>
+                        <div class="col-md-4 col-12 mb-2">
+                          <label>Hora Inicio</label>
+                          <input type="time" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][hora_inicio]" value="{{ $d->hora_inicio }}" required>
+                        </div>
+                        <div class="col-md-4 col-12 mb-2">
+                          <label>Hora Fin</label>
+                          <input type="time" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][hora_fin]" value="{{ $d->hora_fin }}" required>
+                        </div>
+                      </div>
+                    <div class="text-right">
+                      <button type="button" class="btn btn-sm btn-outline-danger mb-2 remove-availability-item ms-auto">Eliminar Horario</button>
+                    </div>
+                    </div>
+                    @endforeach
+                  </div>
+                  <div class="b" style="padding-top:10px;">
+                  <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }}">Agregar Horario</button>
+                  </div>
                 </div>
-                <br>
-  <script>
+              </div>
+
+              <div class="col-12 text-center">
+                <img src="images/logo4.png" alt="Logo" class="img-fluid">
+              </div>
+              <div class="boton">
+                  <button type="submit" class="btn1" >Guardar Cambios</button>
+              </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</section>
+<br>
+<script>
 const disponibilidadContainer = document.getElementById('disponibilidad-container');
 const disponibilidadCheckbox = document.getElementById('disponibilidad');
+const addAvailabilityItemButton = document.querySelector('.add-availability-item');
 
 disponibilidadCheckbox.addEventListener('change', function() {
     if (this.checked) {
-        disponibilidadContainer.classList.remove('d-none');
+            disponibilidadContainer.classList.remove('d-none');
+            addAvailabilityItemButton.style.display = 'block';
     } else {
         disponibilidadContainer.classList.add('d-none');
+        addAvailabilityItemButton.style.display = 'none';
     }
 });
 
-const addAvailabilityItemButton = document.querySelector('.add-availability-item');
-
 addAvailabilityItemButton.addEventListener('click', function() {
+  const index = document.querySelectorAll('.availability-item').length;
+
   const availabilityItem = document.createElement('div');
   availabilityItem.classList.add('availability-item');
 
   availabilityItem.innerHTML = `
     <div class="row">
-      <div class="col-md-6 col-12 mb-2">
+      <div class="col-md-4 col-12 mb-2">
         <label>Fecha</label>
-        <input type="datetime-local" class="form-control" name="disponibilidad_fechas[]" required>
+          <input type="date" class="form-control" name="disponibilidad_fechas[${index}][fecha]" required>
+      </div>
+      <div class="col-md-4 col-12 mb-2">
+        <label>Hora Inicio</label>
+          <input type="time" class="form-control" name="disponibilidad_fechas[${index}][hora_inicio]" required>
+      </div>
+      <div class="col-md-4 col-12 mb-2">
+        <label>Hora Fin</label>
+          <input type="time" class="form-control" name="disponibilidad_fechas[${index}][hora_fin]" required>
       </div>
       <div class="col-md-12 mb-2 text-right">
         <button type="button" class="btn btn-sm btn-outline-danger remove-availability-item">Eliminar Horario</button>
@@ -203,22 +238,42 @@ addAvailabilityItemButton.addEventListener('click', function() {
   `;
 
   disponibilidadContainer.appendChild(availabilityItem);
+  addAvailabilityItemButton.style.display = 'block';
 });
 
 disponibilidadContainer.addEventListener('click', function(event) {
-  const removeButton = event.target.closest('.remove-availability-item');
-  if (removeButton) {
-    const availabilityItem = removeButton.parentNode.parentNode;
-    availabilityItem.remove(); 
-  }
-});
-  </script>
-  <script>
-    document.getElementById('edit_profile_picture').addEventListener('click', function(event) {
-        event.preventDefault(); 
-        document.getElementById('profile_picture').click(); 
+        const removeButton = event.target.closest('.remove-availability-item');
+        if (removeButton) {
+            const availabilityItem = removeButton.closest('.availability-item');
+            const availabilityId = availabilityItem.dataset.id;
+
+            if (availabilityId) {
+                fetch(`/perfilt/delete/${availabilityId}`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(response => response.json()).then(data => {
+                    if (data.success) {
+                        availabilityItem.remove();
+                    } else {
+                        alert(data.message || 'Error al eliminar la disponibilidad');
+                    }
+                }).catch(error => console.error('Error:', error));
+            } else {
+                availabilityItem.remove();
+                if (document.querySelectorAll('.availability-item').length === 0) {
+                    addAvailabilityItemButton.style.display = 'none'; // Ocultar el botón si no hay más horarios
+                }
+            }
+        }
     });
 </script>
-</section>
-</section>
+<script>
+document.getElementById('edit_profile_picture').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    document.getElementById('profile_picture').click(); 
+});
+</script>
 @endsection

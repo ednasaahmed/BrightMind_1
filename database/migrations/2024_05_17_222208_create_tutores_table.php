@@ -12,15 +12,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('tutores', function (Blueprint $table) {
-            $table->id();
+            $table->integer('id_tutor')->autoIncrement();
             $table->string('nombre');
             $table->string('apellido_paterno');
             $table->string('apellido_materno');
             $table->date('fecha_nacimiento');
             $table->char('sexo',1);
-            $table->string('grado');
-            $table->string('descripcion');
-            $table->text('foto');
+            $table->string('grado')->nullable();
+            $table->string('descripcion')->nullable();
+            $table->text('foto')->nullable();
             $table->integer('id_usuario');
             $table->foreign('id_usuario')->references('id')->on('users');
             $table->timestamps();

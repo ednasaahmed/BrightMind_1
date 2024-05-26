@@ -3,7 +3,7 @@
     <header>
         <div class="image-text">
             <span class="image">
-                <img src="{{ asset('images/icon.png') }}" alt="logo">
+                <img src="images/icon.png" alt="logo">
             </span>
             <div class="text header-text">
                 <span class="name">BrightMind</span>
@@ -15,19 +15,19 @@
         <div class="menu">
             <ul class="menu-links">
                 <li class="nav-links">
-                    <a href="{{route('home')}}">
+                    <a href="{{route('homeTut')}}">
                     <i class='bx bx-home-alt-2 icon'></i>
                     <span class="text nav-text">Inicio</span>
                     </a>
                 </li>
                 <li class="nav-links">
-                    <a href="{{route('materias')}}">
+                    <a href="{{route('tutmaterias')}}">
                     <i class='bx bx-book icon'></i>
                     <span class="text nav-text">Materias</span>
                     </a>
                 </li>
                 <li class="nav-links">
-                    <a href="{{route('calendar')}}">
+                    <a href="{{route('calendarT')}}">
                     <i class='bx bx-calendar icon'></i>
                     <span class="text nav-text">Calendario</span>
                     </a>
@@ -44,6 +44,6 @@
         </div>
     </div>
 </nav>
-<script src="{{ asset('js/script.js') }}"></script>
+<script src="js/script.js"></script>
 
 </body>

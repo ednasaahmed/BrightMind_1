@@ -1,4 +1,4 @@
-@extends('layout.inho')
+@extends('layout.inho2')
 @section('title','Brightmind')
 @section('content')
 <body oncontextmenu='return false' class='snippet-body'>
@@ -31,10 +31,10 @@
         </li>
         <li class="nav-item dropdown">
           <a href="#" class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown">
-          <i class="bi bi-person-circle icono-grande"></i>{{ $estudiante->nombre }}
+          <img alt="image" src="{{ $tutor->foto ?? 'images/t1.jpg' }}" class="rounded-circle mr-1">
           </a>
           <div class="dropdown-menu dropdown-menu-right">
-            <a href="{{route('perfila')}}" class="dropdown-item">
+            <a href="{{route('perfilt')}}" class="dropdown-item">
             <i class="bi bi-person-fill"></i> Perfil
             </a>
             <div class="dropdown-divider"></div>
@@ -50,7 +50,7 @@
 </header>
 <div class="welcome">
   <div class="overlay">
-    <h1>¡Bienvenido a Brightmind!</h1><img src="images/Home.png" class="welcome" alt="Tutor Photo" style="heigh:70%; width:60%">
+    <h1>¡Bienvenido a Brightmind Tutor!</h1><img src="images/Home.png" class="welcome" alt="Tutor Photo" style="heigh:70%; width:60%">
   </div>
 </div>
 <br><br>

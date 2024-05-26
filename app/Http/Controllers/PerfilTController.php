@@ -5,11 +5,65 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Tutores;
+use App\Models\Disponibilidad;
 
 class PerfilTController extends Controller
 {
     public function perfil()
     {
-        return view('perfilt');
+        $user = Auth::user();
+        $tutor = $user->tutor; 
+        $disponibilidad = $tutor->disponibilidad;
+        return view('perfilt', compact('user', 'tutor', 'disponibilidad'));
+    }
+
+    public function update(Request $request, int $id_tutor)
+    { 
+            $tutor = Tutores::find($id_tutor);
+            
+
+            if($request->hasFile('foto')){
+                $image = $request->foto;
+                $imageName =rand().'_'.$image->getClientOriginalName();
+                $image->move(public_path('uploads'), $imageName);
+                $path = "/uploads/".$imageName;
+                $tutor->foto = $path;
+            }
+
+            $tutor->nombre = $request->input('nombre', $tutor->nombre);
+            $tutor->apellido_paterno = $request->input('apellido_paterno', $tutor->apellido_paterno);
+            $tutor->apellido_materno = $request->input('apellido_materno', $tutor->apellido_materno);
+            $tutor->fecha_nacimiento = $request->input('fecha_nacimiento', $tutor->fecha_nacimiento);
+            $tutor->sexo = $request->input('sexo', $tutor->sexo);
+            $tutor->grado = $request->input('grado', $tutor->grado);
+            $tutor->descripcion = $request->input('descripcion', $tutor->descripcion);
+            $tutor->save();
+    
+            Disponibilidad::where('id_tutor', $tutor->id_tutor)->delete();
+
+            // Crear las nuevas disponibilidades
+            if ($request->has('disponibilidad_fechas')) {
+                foreach ($request->disponibilidad_fechas as $disponibilidad) {
+                    Disponibilidad::create([
+                        'id_tutor' => $tutor->id_tutor,
+                        'fecha' => $disponibilidad['fecha'],
+                        'hora_inicio' => $disponibilidad['hora_inicio'],
+                        'hora_fin' => $disponibilidad['hora_fin'],
+                    ]);
+                }
+            }
+            return redirect()->route('perfilt')->with("success", "¡Cambios guardados correctamente!");
+
+    }
+
+    public function delete(Request $request, $id)
+    {
+        $disponibilidad = Disponibilidad::find($id);
+        if ($disponibilidad) {
+            $disponibilidad->delete();
+            return response()->json(['success' => true]);
+        }
+        return response()->json(['success' => false, 'message' => 'Disponibilidad no encontrada'], 404);
     }
 }
