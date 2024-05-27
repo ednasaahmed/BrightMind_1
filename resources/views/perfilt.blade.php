@@ -150,7 +150,7 @@
                 <div class="form-group col-12">
                   <label>Disponibilidad</label>
                   <div class="d-flex flex-wrap" style="padding-left:50px;">
-                    <input type="checkbox" class="form-check-input me-2 " id="disponibilidad" {{ count($disponibilidad) > 0 ? 'checked' : '' }}>
+                    <input type="checkbox" class="form-check-input me-2 " id="disponibilidad" name="disponibildad" {{ count($disponibilidad) > 0 ? 'checked' : '' }}>
                     <label class="form-check-label" for="disponibilidad">Seleccionar disponibilidad</label>
                   </div>
                   <div id="disponibilidad-container" class="{{ count($disponibilidad) == 0 ? 'd-none' : '' }}">

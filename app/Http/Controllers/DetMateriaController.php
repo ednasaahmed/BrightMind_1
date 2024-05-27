@@ -18,7 +18,8 @@ class DetMateriaController extends Controller
         $tutor = Tutores::findOrFail($id);
         $user = Auth::user();
         $estudiante = $user->estudiante; 
-        return view('detmaterias', compact('user', 'estudiante','tutor','materia'));
+        $disponibilidad = $tutor->disponibilidad;
+        return view('detmaterias', compact('user', 'estudiante','tutor','materia','disponibilidad'));
     }
 
 

@@ -23,9 +23,8 @@ class CalendarController extends Controller
                     'id_sesion' => $sesion->id_sesion,
                     'fecha' => $sesion->fecha->format('Y-m-d\TH:i:s'),
                     'nombre_tutor' => $sesion->tutores ? $sesion->tutores->nombre : 'No especificado',
-                    'nombre_estudiante' => $sesion->estudiantes ? $sesion->estudiantes->nombre : 'No especificado',
-                    'apellidoPat_tutor' => $sesion->estudiantes ? $sesion->tutores->apellido_paterno : 'No especificado',
-                    'apellidoMat_tutor' => $sesion->estudiantes ? $sesion->tutores->apellido_materno : 'No especificado',
+                    'apellidoPat_tutor' => $sesion->tutores ? $sesion->tutores->apellido_paterno : 'No especificado',
+                    'apellidoMat_tutor' => $sesion->tutores ? $sesion->tutores->apellido_materno : 'No especificado',
                     'nombre_materia' => $sesion->materia ? $sesion->materia->Nombre : 'No especificado',
                     'estado' => $sesion->estado,
                 ];

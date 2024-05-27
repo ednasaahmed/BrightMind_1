@@ -69,6 +69,50 @@
                             <h5 class="modal-title fs-5" id="agendarModalLabel">Agendar Sesión</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" style="border:none; background-color: #FFFFFF;" aria-label="Close"><i class="bi bi-x-lg"></i></button>
                         </div>
+
+                        <div class="modal-body">
+                        @foreach($disponibilidad as $d)
+                    <div class="availability-item">
+                      <div class="row">
+                        <div class="col-md-4 col-12 mb-2">
+                        <input type="checkbox" class="form-check-input me-2 " id="disponibilidad" {{ count($disponibilidad) > 0 ? 'checked' : '' }}>
+                          <label>Fecha</label>
+                          <input type="date" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][fecha]" value="{{ $d->fecha }}" required>
+                        </div>
+                        <div class="col-md-4 col-12 mb-2">
+                          <label>Hora Inicio</label>
+                          <input type="time" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][hora_inicio]" value="{{ $d->hora_inicio }}" required>
+                        </div>
+                        <div class="col-md-4 col-12 mb-2">
+                          <label>Hora Fin</label>
+                          <input type="time" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][hora_fin]" value="{{ $d->hora_fin }}" required>
+                        </div>
+                      </div>
+                    </div>
+                    @endforeach   
+                    </div>
+
+                        <div class="modal-footer">
+                            <button type="submit" class="btn-estilo" ><a href="{{route('agendarS',['id' => $tutor->id_tutor,'id_materia' => $materia->id_materia])}})}}"></a>Agendar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            </form>
+           
+            <!-- Acaba el Modal -->
+
+            
+            <!-- Modal -->
+            <!-- <form method="POST">
+            @csrf
+            <div class="modal fade" id="agendarModal" tabindex="-1" aria-labelledby="agendarModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title fs-5" id="agendarModalLabel">Agendar Sesión</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" style="border:none; background-color: #FFFFFF;" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+                        </div>
                         <div class="modal-body">
                             ¡Recuerda que solo puedes agendar sesiones dentro de la disponibilidad del tutor!
                             <div class="mb-3" id="fecha">
@@ -81,7 +125,7 @@
                     </div>
                 </div>
             </div>
-            </form>
+            </form> -->
            
             <!-- Acaba el Modal -->
         </div>
