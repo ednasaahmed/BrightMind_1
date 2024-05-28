@@ -85,9 +85,9 @@
         <div class="card1">
           <form method="post" class="needs-validation" novalidate="" action="{{ url('/perfilt/update' . $tutor->id_tutor) }}">
           @csrf 
-            <div class="card-header">
-              <h4 style="margin: 10px;">Editar Perfil
-              <button type="submit" class="btn1" style="margin-top: -20px; margin-left:150px" >Guardar Cambios</button></h4>
+            <div class="card-header d-flex justify-content-between">
+              <h4 style="margin: 10px;">Editar Perfil</h4>
+              <button type="submit" class="btn1">Guardar Cambios</button>
             </div>
             <div class="card-body">
               <div class="row">                               
