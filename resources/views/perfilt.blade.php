@@ -148,6 +148,9 @@
                   </div>
                 </div>
             </div>
+</form> 
+            <form method="post" enctype="multipart/form-data" action="{{ url('/perfilt/updateD' . $tutor->id_tutor) }}">
+                @csrf
             <div class="row">
                 <div class="form-group col-12">
                   <label>Disponibilidad</label>
@@ -182,17 +185,14 @@
                   <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }} margin-right: 100px;">Agregar Horario</button>
                   <button type="submit" class="btn1 add-availability-item2" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }}">Guardar Disponibilidad</button>  
                 </div>
-                  <div class="boton">
-                  
-              </div>
                 </div>
               </div>
+          </form>
               <br>
               <div class="col-12 text-center">
                 <img src="images/logo4.png" alt="Logo" class="img-fluid">
               </div>
               
-          </form>
         </div>
       </div>
     </div>

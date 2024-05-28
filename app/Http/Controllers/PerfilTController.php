@@ -21,9 +21,7 @@ class PerfilTController extends Controller
     public function update(Request $request, int $id_tutor)
     { 
             $tutor = Tutores::find($id_tutor);
-            $disponibilidad=new Disponibilidad();
             
-
             if($request->hasFile('foto')){
                 $image = $request->foto;
                 $imageName =rand().'_'.$image->getClientOriginalName();
@@ -41,12 +39,6 @@ class PerfilTController extends Controller
             $tutor->descripcion = $request->input('descripcion', $tutor->descripcion);
             $tutor->save();
     
-            $disponibilidad->id_tutor=$id_tutor;
-            $disponibilidad->fecha=trim($_POST["fechaN"]);
-            $disponibilidad->hora_inicio=trim($_POST["hora_inicioN"]);
-            $disponibilidad->hora_fin=trim($_POST["hora_finN"]);
-
-            $disponibilidad->save();
             // Disponibilidad::where('id_tutor', $tutor->id_tutor)->delete();
 
             // // Crear las nuevas disponibilidades
@@ -63,6 +55,19 @@ class PerfilTController extends Controller
 
             return redirect()->route('perfilt')->with("success", "¡Cambios guardados correctamente!");
 
+    }
+
+    public function updateD(Request $request, int $id_tutor)
+    {
+        $tutor = Tutores::find($id_tutor);
+        $disponibilidad=new Disponibilidad();
+            $disponibilidad->id_tutor=$id_tutor;
+            $disponibilidad->fecha=trim($_POST["fechaN"]);
+            $disponibilidad->hora_inicio=trim($_POST["hora_inicioN"]);
+            $disponibilidad->hora_fin=trim($_POST["hora_finN"]);
+
+            $disponibilidad->save();
+            return redirect()->route('perfilt')->with("success", "¡Cambios guardados correctamente!");
     }
 
     public function delete(Request $request, $id)
