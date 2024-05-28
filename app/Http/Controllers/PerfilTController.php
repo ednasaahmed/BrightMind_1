@@ -41,25 +41,16 @@ class PerfilTController extends Controller
             $tutor->descripcion = $request->input('descripcion', $tutor->descripcion);
             $tutor->save();
     
+
+
+            //agregar nueva disponibilidad
             $disponibilidad->id_tutor=$id_tutor;
             $disponibilidad->fecha=trim($_POST["fechaN"]);
             $disponibilidad->hora_inicio=trim($_POST["hora_inicioN"]);
             $disponibilidad->hora_fin=trim($_POST["hora_finN"]);
 
             $disponibilidad->save();
-            // Disponibilidad::where('id_tutor', $tutor->id_tutor)->delete();
-
-            // // Crear las nuevas disponibilidades
-            // if ($request->has('disponibilidad_fechas')) {
-            //     foreach ($request->disponibilidad_fechas as $disponibilidad) {
-            //         Disponibilidad::create([
-            //             'id_tutor' => $tutor->id_tutor,
-            //             'fecha' => $disponibilidad['fecha'],
-            //             'hora_inicio' => $disponibilidad['hora_inicio'],
-            //             'hora_fin' => $disponibilidad['hora_fin'],
-            //         ]);
-            //     }
-            // }
+        
 
             return redirect()->route('perfilt')->with("success", "¡Cambios guardados correctamente!");
 
