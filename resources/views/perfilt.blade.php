@@ -139,10 +139,6 @@
                     <option value="Maestria" {{ $tutor->grado == 'Maestria' ? 'selected' : '' }}>Maestría</option>
                     <option value="Doctorado" {{ $tutor->grado == 'Doctorado' ? 'selected' : '' }}>Doctorado</option>
                   </select>
-                  <!-- <input type="text" class="form-control" name="grado" value="{{ $tutor->grado ?? 'Grado Académico' }}" required="">
-                  <div class="invalid-feedback">
-                    Por favor ingresa un grado académico
-                  </div> -->
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label>Descripción</label>
