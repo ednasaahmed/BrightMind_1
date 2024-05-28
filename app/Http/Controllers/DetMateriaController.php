@@ -105,6 +105,8 @@ class DetMateriaController extends Controller
                             'hora_fin' => $sesion->hora_fin,
                             'nombre_tutor' => $sesion->tutores ? $sesion->tutores->nombre : 'No especificado',
                             'nombre_estudiante' => $sesion->estudiantes ? $sesion->estudiantes->nombre : 'No especificado',
+                            'apellidoPat_tutor' => $sesion->tutores ? $sesion->tutores->apellido_paterno : 'No especificado',
+                            'apellidoMat_tutor' => $sesion->tutores ? $sesion->tutores->apellido_materno : 'No especificado',
                             'nombre_materia' => $sesion->materia ? $sesion->materia->Nombre : 'No especificado',
                             'estado' => $sesion->estado,
                         ];
