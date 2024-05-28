@@ -85,9 +85,9 @@
         <div class="card1">
           <form method="post" class="needs-validation" novalidate="" action="{{ url('/perfilt/update' . $tutor->id_tutor) }}">
           @csrf 
-            <div class="card-header">
-              <button type="submit" class="btn1" style="margin-top: -20px;" >Guardar Cambios</button>
-              <h4>Editar Perfil</h4>
+            <div class="card-header d-flex justify-content-between">
+              <h4 style="margin: 10px;">Editar Perfil</h4>
+              <button type="submit" class="btn1">Guardar Cambios</button>
             </div>
             <div class="card-body">
               <div class="row">                               
@@ -115,7 +115,7 @@
               </div>
               <br>
               <div class="row">
-                <div class="form-group col-md-6 col-12">
+                <div class="form-group1 col-md-6 col-12">
                   <label>Fecha de Nacimiento</label>
                   <input type="date" class="form-control" name="fecha_nacimiento" value="{{ $tutor->fecha_nacimiento }}" required="">
                   <div class="invalid-feedback">
@@ -123,7 +123,7 @@
                   </div>
                 </div>
                 <div class="form-group col-md-6 col-12">
-                  <label>Sexo</label>
+                  <label class="S">Sexo</label><br>
                   <select class="form-select" name="sexo">
                   <option value="M" {{ $tutor->sexo == 'M' ? 'selected' : '' }}>Hombre</option>
                     <option value="F" {{ $tutor->sexo == 'F' ? 'selected' : '' }}>Mujer</option>
@@ -134,14 +134,15 @@
             <div class="row">                               
                 <div class="form-group col-md-4 col-12">
                   <label>Grado Académico</label>
-                  <input type="text" class="form-control" name="grado" value="{{ $tutor->grado ?? 'Grado Académico' }}" required="">
-                  <div class="invalid-feedback">
-                    Por favor ingresa un grado académico
-                  </div>
+                  <select class="form-select" name="grado">
+                  <option value="Licenciatura" {{ $tutor->grado == 'Licenciatura' ? 'selected' : '' }}>Licenciatura</option>
+                    <option value="Maestria" {{ $tutor->grado == 'Maestria' ? 'selected' : '' }}>Maestría</option>
+                    <option value="Doctorado" {{ $tutor->grado == 'Doctorado' ? 'selected' : '' }}>Doctorado</option>
+                  </select>
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label>Descripción</label>
-                <textarea class="form-control estilo-campos mb-3" name ="descripcion" rows="3">{{ $tutor->descripcion ?? 'Descripción' }}</textarea>
+                  <textarea class="form-control estilo-campos mb-3" name ="descripcion" rows="3" >{{ $tutor->descripcion ?? 'Descripción' }}</textarea>
                   <div class="invalid-feedback">
                     Por favor ingresa una descripción
                   </div>
@@ -177,11 +178,12 @@
                     </div>
                     @endforeach
                   </div>
-                  <div class="b" style="padding-top:10px;">
-                  <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }}">Agregar Horario</button>
-                  </div>
+                  <div class="d-flex" style="padding-top:10px;">
+                  <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }} margin-right: 100px;">Agregar Horario</button>
+                  <button type="submit" class="btn1 add-availability-item2" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }}">Guardar Disponibilidad</button>  
+                </div>
                   <div class="boton">
-                  <button type="submit" class="btn1 add-availability-item2" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }}">Guardar Disponibilidad</button>
+                  
               </div>
                 </div>
               </div>
