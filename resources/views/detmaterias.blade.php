@@ -71,21 +71,21 @@
                         </div>
 
                         <div class="modal-body">
-                        @foreach($disponibilidad as $d)
+                    @foreach($disponibilidad as $d)
                     <div class="availability-item">
                       <div class="row">
                         <div class="col-md-4 col-12 mb-2">
-                        <input type="checkbox" class="form-check-input me-2 " id="disponibilidad" {{ count($disponibilidad) > 0 ? 'checked' : '' }}>
+                        <input id="check1" class="form-check-input" type="radio" name="check"  autocomplete="off"> </>
                           <label>Fecha</label>
-                          <input type="date" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][fecha]" value="{{ $d->fecha }}" required>
+                          <input type="date" class="form-control" name="fecha" value="{{ $d->fecha }}" required>
                         </div>
                         <div class="col-md-4 col-12 mb-2">
                           <label>Hora Inicio</label>
-                          <input type="time" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][hora_inicio]" value="{{ $d->hora_inicio }}" required>
+                          <input type="time" class="form-control" name="hora_inicio" value="{{ $d->hora_inicio }}" required>
                         </div>
                         <div class="col-md-4 col-12 mb-2">
                           <label>Hora Fin</label>
-                          <input type="time" class="form-control" name="disponibilidad_fechas[{{ $loop->index }}][hora_fin]" value="{{ $d->hora_fin }}" required>
+                          <input type="time" class="form-control" name="hora_fin" value="{{ $d->hora_fin }}" required>
                         </div>
                       </div>
                     </div>
@@ -146,6 +146,8 @@
       </div>
     </div>
   </div>
-
+<script>
+ 
+</script>
 </section>
 @endsection
