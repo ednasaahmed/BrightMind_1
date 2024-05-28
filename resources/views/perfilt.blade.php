@@ -88,6 +88,7 @@
             <div class="card-header d-flex justify-content-between">
               <h4 style="margin: 10px;">Editar Perfil</h4>
               <button type="submit" class="btn1">Guardar Cambios</button>
+              <!-- <a href="{{route('perfilt.updateD', ['id' => $tutor->id_tutor])}}"></a> -->
             </div>
             <div class="card-body">
               <div class="row">                               

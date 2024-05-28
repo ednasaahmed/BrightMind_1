@@ -47,6 +47,7 @@ Route::get('/perfila', [PerfilAController::class, 'perfil'])->name('perfila');
 Route::post('/perfila/update{id}', [PerfilAController::class, 'update'])->name('perfila.update');
 Route::get('/perfilt', [PerfilTController::class, 'perfil'])->name('perfilt');
 Route::post('/perfilt/updateD{id}', [PerfilTController::class, 'updateD'])->name('perfilt.updateD');
+Route::post('/perfilt/update{id}', [PerfilTController::class, 'update'])->name('perfilt.update');
 Route::post('/perfilt/delete{id}', [PerfilTController::class, 'delete'])->name('perfilt.delete');
 
 
