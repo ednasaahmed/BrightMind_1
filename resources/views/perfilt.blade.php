@@ -85,8 +85,10 @@
         <div class="card1">
           <form method="post" class="needs-validation" novalidate="" action="{{ url('/perfilt/update' . $tutor->id_tutor) }}">
           @csrf 
-            <div class="card-header">
-              <h4>Editar Perfil</h4>
+            <div class="card-header d-flex justify-content-between">
+              <h4 style="margin: 10px;">Editar Perfil</h4>
+              <button type="submit" class="btn1">Guardar Cambios</button>
+              <!-- <a href="{{route('perfilt.updateD', ['id' => $tutor->id_tutor])}}"></a> -->
             </div>
             <div class="card-body">
               <div class="row">                               
@@ -114,7 +116,7 @@
               </div>
               <br>
               <div class="row">
-                <div class="form-group col-md-6 col-12">
+                <div class="form-group1 col-md-6 col-12">
                   <label>Fecha de Nacimiento</label>
                   <input type="date" class="form-control" name="fecha_nacimiento" value="{{ $tutor->fecha_nacimiento }}" required="">
                   <div class="invalid-feedback">
@@ -122,7 +124,7 @@
                   </div>
                 </div>
                 <div class="form-group col-md-6 col-12">
-                  <label>Sexo</label>
+                  <label class="S">Sexo</label><br>
                   <select class="form-select" name="sexo">
                   <option value="M" {{ $tutor->sexo == 'M' ? 'selected' : '' }}>Hombre</option>
                     <option value="F" {{ $tutor->sexo == 'F' ? 'selected' : '' }}>Mujer</option>
@@ -133,24 +135,28 @@
             <div class="row">                               
                 <div class="form-group col-md-4 col-12">
                   <label>Grado Académico</label>
-                  <input type="text" class="form-control" name="grado" value="{{ $tutor->grado ?? 'Grado Académico' }}" required="">
-                  <div class="invalid-feedback">
-                    Por favor ingresa un grado académico
-                  </div>
+                  <select class="form-select" name="grado">
+                  <option value="Licenciatura" {{ $tutor->grado == 'Licenciatura' ? 'selected' : '' }}>Licenciatura</option>
+                    <option value="Maestria" {{ $tutor->grado == 'Maestria' ? 'selected' : '' }}>Maestría</option>
+                    <option value="Doctorado" {{ $tutor->grado == 'Doctorado' ? 'selected' : '' }}>Doctorado</option>
+                  </select>
                 </div>
                 <div class="form-group col-md-4 col-12">
                   <label>Descripción</label>
-                <textarea class="form-control estilo-campos mb-3" name ="descripcion" rows="3">{{ $tutor->descripcion ?? 'Descripción' }}</textarea>
+                  <textarea class="form-control estilo-campos mb-3" name ="descripcion" rows="3" >{{ $tutor->descripcion ?? 'Descripción' }}</textarea>
                   <div class="invalid-feedback">
                     Por favor ingresa una descripción
                   </div>
                 </div>
             </div>
+</form> 
+            <form method="post" enctype="multipart/form-data" action="{{ url('/perfilt/updateD' . $tutor->id_tutor) }}">
+                @csrf
             <div class="row">
                 <div class="form-group col-12">
                   <label>Disponibilidad</label>
                   <div class="d-flex flex-wrap" style="padding-left:50px;">
-                    <input type="checkbox" class="form-check-input me-2 " id="disponibilidad" {{ count($disponibilidad) > 0 ? 'checked' : '' }}>
+                    <input type="checkbox" class="form-check-input me-2 " id="disponibilidad" name="disponibildad" {{ count($disponibilidad) > 0 ? 'checked' : '' }}>
                     <label class="form-check-label" for="disponibilidad">Seleccionar disponibilidad</label>
                   </div>
                   <div id="disponibilidad-container" class="{{ count($disponibilidad) == 0 ? 'd-none' : '' }}">
@@ -176,19 +182,18 @@
                     </div>
                     @endforeach
                   </div>
-                  <div class="b" style="padding-top:10px;">
-                  <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }}">Agregar Horario</button>
-                  </div>
+                  <div class="d-flex" style="padding-top:10px;">
+                  <button type="button" class="btn btn-sm btn-outline-secondary mb-2 add-availability-item" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }} margin-right: 100px;">Agregar Horario</button>
+                  <button type="submit" class="btn1 add-availability-item2" style="{{ count($disponibilidad) > 0 ? 'display:block;' : 'display:none;' }}">Guardar Disponibilidad</button>  
+                </div>
                 </div>
               </div>
-
+          </form>
+              <br>
               <div class="col-12 text-center">
                 <img src="images/logo4.png" alt="Logo" class="img-fluid">
               </div>
-              <div class="boton">
-                  <button type="submit" class="btn1" >Guardar Cambios</button>
-              </div>
-          </form>
+              
         </div>
       </div>
     </div>
@@ -200,14 +205,17 @@
 const disponibilidadContainer = document.getElementById('disponibilidad-container');
 const disponibilidadCheckbox = document.getElementById('disponibilidad');
 const addAvailabilityItemButton = document.querySelector('.add-availability-item');
+const addAvailabilityItemButton2 = document.querySelector('.add-availability-item2');
 
 disponibilidadCheckbox.addEventListener('change', function() {
     if (this.checked) {
             disponibilidadContainer.classList.remove('d-none');
             addAvailabilityItemButton.style.display = 'block';
+            addAvailabilityItemButton2.style.display = 'block';
     } else {
         disponibilidadContainer.classList.add('d-none');
         addAvailabilityItemButton.style.display = 'none';
+        addAvailabilityItemButton2.style.display = 'none';
     }
 });
 
@@ -221,15 +229,15 @@ addAvailabilityItemButton.addEventListener('click', function() {
     <div class="row">
       <div class="col-md-4 col-12 mb-2">
         <label>Fecha</label>
-          <input type="date" class="form-control" name="disponibilidad_fechas[${index}][fecha]" required>
+          <input type="date" class="form-control" name="fechaN" required>
       </div>
       <div class="col-md-4 col-12 mb-2">
         <label>Hora Inicio</label>
-          <input type="time" class="form-control" name="disponibilidad_fechas[${index}][hora_inicio]" required>
+          <input type="time" class="form-control" name="hora_inicioN" required>
       </div>
       <div class="col-md-4 col-12 mb-2">
         <label>Hora Fin</label>
-          <input type="time" class="form-control" name="disponibilidad_fechas[${index}][hora_fin]" required>
+          <input type="time" class="form-control" name="hora_finN" required>
       </div>
       <div class="col-md-12 mb-2 text-right">
         <button type="button" class="btn btn-sm btn-outline-danger remove-availability-item">Eliminar Horario</button>

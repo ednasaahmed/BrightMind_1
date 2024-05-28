@@ -16,6 +16,8 @@ class sesion extends Model
         'id_tutor',
         'id_estudiante',
         'fecha',
+        'hora_inicio',
+        'hora_fin',
         'id_materia',
         'estado',
     ];
