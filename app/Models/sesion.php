@@ -9,7 +9,7 @@ class sesion extends Model
 {
     use HasFactory;
 
-   // protected $table = 'sesion';
+    protected $table = 'sesion';
     protected $primaryKey = 'id_sesion';
 
     protected $fillable = [
