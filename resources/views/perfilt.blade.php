@@ -176,7 +176,7 @@
                         </div>
                       </div>
                     <div class="text-right">
-                      <button type="button" class="btn btn-sm btn-outline-danger mb-2 remove-availability-item ms-auto"><a  href="{{route('perfilt.delete',['id' => $d->id])}}"></a>Eliminar Horario</button>
+                      <button type="button" class="btn btn-sm btn-outline-danger mb-2 remove-availability-item ms-auto">Eliminar Horario</button>
                     </div>
                     </div>
                     @endforeach
