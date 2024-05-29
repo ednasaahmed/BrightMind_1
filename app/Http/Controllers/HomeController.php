@@ -11,7 +11,6 @@ class HomeController extends Controller
 {
     public function home()
     {
-        //$sesiones=sesion::all();
         $user = Auth::user();
         $estudiante = $user->estudiante; 
         $sesiones = $estudiante->sesiones()->with('tutores', 'materia')->get();
