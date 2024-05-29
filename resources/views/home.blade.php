@@ -70,6 +70,8 @@
             <div class="col-12">
                 <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner">
+                    <div class="carousel-item">
+                    </div>
                         <div class="carousel-item active">
                             <div class="row">
                               @foreach ($sesiones as $sesion)
