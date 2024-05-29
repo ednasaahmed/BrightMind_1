@@ -36,5 +36,11 @@ class Tutores extends Model
         return $this->belongsToMany(Materia::class, 'materia_tutor', 'id_tutor', 'id_materia')->withPivot('precio');
     }
 
+    
+    public function sesiones()
+    {
+        return $this->hasMany(sesion::class, 'id_tutor');
+    }
+
 }
 

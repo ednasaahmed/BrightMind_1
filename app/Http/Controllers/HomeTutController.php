@@ -11,7 +11,8 @@ class HomeTutController extends Controller
     {
         $user = Auth::user();
         $tutor = $user->tutor; 
-        return view('homeTut', compact('user', 'tutor'));
+        $sesiones = $tutor->sesiones()->with('estudiantes', 'materia')->get();
+        return view('homeTut', compact('user', 'tutor','sesiones'));
     }
   
 }
