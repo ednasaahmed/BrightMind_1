@@ -76,6 +76,7 @@
                       <div class="row">
                         <div class="col-md-4 col-12 mb-2">
                         <input id="check1" class="form-check-input" type="radio" name="check"  autocomplete="off"> </>
+                        <label name="id_disponibildad" value="{{ $d->id }}"></label>
                           <label>Fecha</label>
                           <input type="date" class="form-control" name="fecha" value="{{ $d->fecha }}" required>
                         </div>
