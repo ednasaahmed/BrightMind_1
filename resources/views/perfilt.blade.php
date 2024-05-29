@@ -78,7 +78,7 @@
       </div>
       <div class="col-md-8"> 
       @if($mensaje = Session::get('success'))
-        <div class="alert alert-success" role="alert">
+        <div id="successMessage" class="alert alert-success" role="alert">
           {{ $mensaje}}
         </div>
       @endif
@@ -161,7 +161,7 @@
                   </div>
                   <div id="disponibilidad-container" class="{{ count($disponibilidad) == 0 ? 'd-none' : '' }}">
                     @foreach($disponibilidad as $d)
-                    <div class="availability-item">
+                    <div class="availability-item" data-id="{{ $d->id }}">
                       <div class="row">
                         <div class="col-md-4 col-12 mb-2">
                           <label>Fecha</label>
@@ -218,7 +218,12 @@ disponibilidadCheckbox.addEventListener('change', function() {
         addAvailabilityItemButton2.style.display = 'none';
     }
 });
-
+setTimeout(function() {
+    var successMessage = document.getElementById('successMessage');
+    if (successMessage) {
+        successMessage.style.display = 'none';
+    }
+}, 3000);
 addAvailabilityItemButton.addEventListener('click', function() {
   const index = document.querySelectorAll('.availability-item').length;
 
@@ -250,33 +255,56 @@ addAvailabilityItemButton.addEventListener('click', function() {
 });
 
 disponibilidadContainer.addEventListener('click', function(event) {
-        const removeButton = event.target.closest('.remove-availability-item');
-        if (removeButton) {
-            const availabilityItem = removeButton.closest('.availability-item');
-            const availabilityId = availabilityItem.dataset.id;
+  const removeButton = event.target.closest('.remove-availability-item');
+//   if (removeButton) {
+//     // const availabilityItem = removeButton.parentNode.parentNode;
+//     // alert('¡Horario eliminado correctamente!');
+//     // availabilityItem.remove();
+//     window.location.href = '/homeTut'; 
+//     } else {
+//       availabilityItem.remove();
+//       if (document.querySelectorAll('.availability-item').length === 0) {
+//         addAvailabilityItemButton.style.display = 'none'; // Hide button if no availabilities
+//       }
+//     }
+//   }
+// );
+if (removeButton) {
+    const availabilityItem = removeButton.closest('.availability-item');
+    const availabilityId = availabilityItem.dataset.id;
 
-            if (availabilityId) {
-                fetch(`/perfilt/delete/${availabilityId}`, {
-                    method: 'POST',
-                    headers: {
-                        'X-CSRF-TOKEN': '{{ csrf_token() }}',
-                        'Content-Type': 'application/json'
-                    }
-                }).then(response => response.json()).then(data => {
-                    if (data.success) {
-                        availabilityItem.remove();
-                    } else {
-                        alert(data.message || 'Error al eliminar la disponibilidad');
-                    }
-                }).catch(error => console.error('Error:', error));
-            } else {
-                availabilityItem.remove();
-                if (document.querySelectorAll('.availability-item').length === 0) {
-                    addAvailabilityItemButton.style.display = 'none'; // Ocultar el botón si no hay más horarios
-                }
+    if (availabilityId) {
+        fetch(`/delete/${availabilityId}`, {
+            method: 'DELETE',
+            headers: {
+                'X-CSRF-TOKEN': '{{ csrf_token() }}',
+                'Content-Type': 'application/json'
             }
+        }).then(response => {
+            if (response.ok) {
+                alert('Error al eliminar el horario');
+            } 
+        }).catch(error => console.error('Error:', error));
+        setTimeout(function() {
+                        availabilityItem.remove();
+                        const successMessage = document.createElement('div');
+                    successMessage.classList.add('alert', 'alert-success');
+                    successMessage.textContent = '¡Horario eliminado correctamente!';
+                    disponibilidadContainer.insertAdjacentElement('beforebegin', successMessage);
+
+                    setTimeout(function() {
+                        successMessage.remove();
+                    }, 2000);
+                    }, 600);
+               
+    } else {
+        availabilityItem.remove();
+        if (document.querySelectorAll('.availability-item').length === 0) {
+            addAvailabilityItemButton.style.display = 'none';
         }
-    });
+    }
+}
+});
 </script>
 <script>
 document.getElementById('edit_profile_picture').addEventListener('click', function(event) {
