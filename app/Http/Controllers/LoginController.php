@@ -13,7 +13,7 @@ use Illuminate\Console\Command;
 
 class LoginController extends Controller
 {
-    #ruta del index al login
+    #ruta del index al login de anda
     public function login()
     {
         return view('login');
