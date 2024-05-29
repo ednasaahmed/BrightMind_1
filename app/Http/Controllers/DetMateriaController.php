@@ -46,8 +46,13 @@ class DetMateriaController extends Controller
             $sesion->hora_fin=trim($_POST["hora_fin"]);
             $sesion->id_materia=$id_materia;
             $sesion->estado=1;
-                    
+ 
+            //$id_disponiblidad=trim($_POST["id_disponibilidad"]);
+           
             $sesion->save(); 
+            $id_disponiblidad = $request->input('id_disponibilidad');
+            $disponibilidad = Disponibilidad::find($id_disponiblidad);
+            $disponibilidad->delete();
             
             }
                
