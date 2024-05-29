@@ -69,15 +69,16 @@ class PerfilTController extends Controller
             $disponibilidad->save();
             return redirect()->route('perfilt')->with("success", "¡Cambios guardados correctamente!");
     }
-
-    public function delete(Request $request, $id)
+    
+    public function delete(int $id)
     {
-        dd($request->all());
         $disponibilidad = Disponibilidad::find($id);
-        if ($disponibilidad) {
-            $disponibilidad->delete();
-            return response()->json(['success' => true]);
-        }
-        return response()->json(['success' => false, 'message' => 'Disponibilidad no encontrada'], 404);
+        $disponibilidad->delete();
+        Session::flash('success', '¡Horario eliminado correctamente!');
+        // if ($disponibilidad) {
+        //     $disponibilidad->delete();
+        //     return redirect()->route('perfilt')->with("success", "¡Horario eliminado correctamente!");
+        // }
+        // return redirect()->route('perfilt')->with('error', 'Error al eliminar la disponibilidad');
     }
 }
