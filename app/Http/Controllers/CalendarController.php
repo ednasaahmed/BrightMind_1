@@ -21,7 +21,9 @@ class CalendarController extends Controller
         ->map(function ($sesion) {
                 return [
                     'id_sesion' => $sesion->id_sesion,
-                    'fecha' => $sesion->fecha->format('Y-m-d\TH:i:s'),
+                    'fecha' => $sesion->fecha->format('Y-m-d'),  
+                    'hora_inicio' => $sesion->hora_inicio,
+                    'hora_fin' => $sesion->hora_fin,
                     'nombre_tutor' => $sesion->tutores ? $sesion->tutores->nombre : 'No especificado',
                     'apellidoPat_tutor' => $sesion->tutores ? $sesion->tutores->apellido_paterno : 'No especificado',
                     'apellidoMat_tutor' => $sesion->tutores ? $sesion->tutores->apellido_materno : 'No especificado',

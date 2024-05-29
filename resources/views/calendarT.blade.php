@@ -66,6 +66,8 @@
           <p id="nombre_estudiante"></p>         
           <p id="nombre_materia"></p>
           <p id="fecha"></p>
+          <p id="hora_inicio"></p>
+          <p id="hora_fin"></p>
           <p id="estado"></p>
         </div>
         <div class="modal-footer">
@@ -95,7 +97,9 @@
             const events = sesiones.map(sesion => ({
                 title: `Sesion ${sesion.id_sesion}`,
                 start: sesion.fecha ,
-                end: sesion.fecha, // Asegúrate de que tienes esta columna en tu tabla si la necesitas
+                hourstart:sesion.hora_inicio,
+                hourend: sesion.hora_fin,
+                //end: sesion.fecha, // Asegúrate de que tienes esta columna en tu tabla si la necesitas
                 extendedProps: {
                     id_sesion: sesion.id_sesion,
                     nombre_estudiante: sesion.nombre_estudiante,
@@ -116,7 +120,9 @@
                     document.getElementById('id_sesion').innerText = `ID Sesión: ${info.event.extendedProps.id_sesion}`;
                     document.getElementById('nombre_estudiante').innerText = `Estudiante: ${info.event.extendedProps.nombre_estudiante}` + ` ${info.event.extendedProps.apellidoPat_estudiante}`+` ${info.event.extendedProps.apellidoMat_estudiante}`;
                     document.getElementById('nombre_materia').innerText = `Materia: ${info.event.extendedProps.nombre_materia}`;
-                    document.getElementById('fecha').innerText = `Fecha: ${info.event.start.toLocaleString()}`;
+                    document.getElementById('fecha').innerText = `Fecha: ${info.event.start.toLocaleDateString()}`;
+                    document.getElementById('hora_inicio').innerText = `Hora de inicio: ${info.event.extendedProps.hourstart}`;
+                   document.getElementById('hora_fin').innerText = `Hora fin: ${info.event.extendedProps.hourend}`;
                     document.getElementById('estado').innerText = `Estado: ${info.event.extendedProps.estado ? 'Activo' : 'Inactivo'}`;
                 }
             });
