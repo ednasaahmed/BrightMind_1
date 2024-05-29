@@ -27,4 +27,8 @@ class Estudiantes extends Model
     {
         return $this->belongsTo(User::class, 'id_usuario');
     }
+    public function sesiones()
+    {
+        return $this->hasMany(sesion::class, 'id_estudiante');
+    }
 }
