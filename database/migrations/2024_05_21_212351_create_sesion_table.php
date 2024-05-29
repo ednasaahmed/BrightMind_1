@@ -20,8 +20,8 @@ return new class extends Migration
             $table->date('fecha');
             $table->integer('id_materia');
             $table->foreign('id_materia')->references('id_materia')->on('materia');
-            // $table->time('hora_inicio');
-            // $table->time('hora_fin');
+            $table->time('hora_inicio');
+            $table->time('hora_fin');
             $table->binary('estado');
             $table->timestamps();
 
