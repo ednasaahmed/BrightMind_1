@@ -18,7 +18,9 @@ class CalendarTController extends Controller
         ->map(function ($sesion) {
                 return [
                     'id_sesion' => $sesion->id_sesion,
-                    'fecha' => $sesion->fecha->format('Y-m-d\TH:i:s'),
+                    'fecha' => $sesion->fecha->format('Y-m-d'),
+                    'hora_inicio' => $sesion->hora_inicio,
+                    'hora_fin' => $sesion->hora_fin,
                     'nombre_tutor' => $sesion->tutores ? $sesion->tutores->nombre : 'No especificado',
                     'nombre_estudiante' => $sesion->estudiantes ? $sesion->estudiantes->nombre : 'No especificado',
                     'apellidoPat_estudiante' => $sesion->estudiantes ? $sesion->estudiantes->apellido_paterno : 'No especificado',
