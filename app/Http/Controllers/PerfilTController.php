@@ -72,7 +72,6 @@ class PerfilTController extends Controller
     
     public function delete(int $id)
     {
-        dd($request->all());
         $disponibilidad = Disponibilidad::find($id);
         $disponibilidad->delete();
         Session::flash('success', '¡Horario eliminado correctamente!');
