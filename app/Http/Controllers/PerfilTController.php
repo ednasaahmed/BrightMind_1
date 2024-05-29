@@ -72,6 +72,7 @@ class PerfilTController extends Controller
 
     public function delete(Request $request, $id)
     {
+        dd($request->all());
         $disponibilidad = Disponibilidad::find($id);
         if ($disponibilidad) {
             $disponibilidad->delete();

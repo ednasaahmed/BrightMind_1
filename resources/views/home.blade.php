@@ -72,13 +72,21 @@
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             <div class="row">
-                            <div class="col-md-4 mb-3"> 
-                                    <div class="card card-body">
-                                        <h5 class="card-title">Mathematics</h5>
-                                        <p class="card-text"><img src="images/t1.jpg" class="card-img-top rounded-circle" alt="Tutor Photo">Tutor: John Doe</p>
-                                    </div>
+                              @foreach ($sesiones as $sesion)
+                               <!-- empieza la card -->
+                                <div class="col-md-4 mb-3"> 
+                                        <div class="card card-body">
+                                            <h5 class="card-title">{{$sesion->materia->Nombre}}</h5>
+                                            <p class="card-text"><img src="{{$sesion->tutores->foto}}" class="card-img-top rounded-circle" alt="Tutor Photo">Tutor: {{$sesion->tutores->nombre}}</p>
+                                            <p class="card-text">Fecha: {{$sesion->fecha->format('Y-m-d')}}</p>
+                                            
+                                        </div>
                                 </div>
+                              <!-- termina la card -->
+                              @endforeach
+                             
                             </div>
+                            
                         </div>
                     </div>
                 </div>

@@ -88,7 +88,6 @@
             <div class="card-header d-flex justify-content-between">
               <h4 style="margin: 10px;">Editar Perfil</h4>
               <button type="submit" class="btn1">Guardar Cambios</button>
-              <!-- <a href="{{route('perfilt.updateD', ['id' => $tutor->id_tutor])}}"></a> -->
             </div>
             <div class="card-body">
               <div class="row">                               
@@ -177,7 +176,7 @@
                         </div>
                       </div>
                     <div class="text-right">
-                      <button type="button" class="btn btn-sm btn-outline-danger mb-2 remove-availability-item ms-auto">Eliminar Horario</button>
+                      <button type="button" class="btn btn-sm btn-outline-danger mb-2 remove-availability-item ms-auto"><a  href="{{route('perfilt.delete',['id' => $d->id])}}"></a>Eliminar Horario</button>
                     </div>
                     </div>
                     @endforeach

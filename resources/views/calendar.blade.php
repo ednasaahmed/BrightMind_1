@@ -72,6 +72,8 @@
           <p id="nombre_tutor"></p>         
           <p id="nombre_materia"></p>
           <p id="fecha"></p>
+          <p id="hora_inicio"></p>
+          <p id="hora_fin"></p>
           <p id="estado"></p>
         </div>
         <div class="modal-footer">
@@ -99,8 +101,9 @@
             // Mapea las sesiones a los eventos de FullCalendar
             const events = sesiones.map(sesion => ({
                 title: `Sesion ${sesion.id_sesion}`,
-                start: sesion.fecha ,
-                end: sesion.fecha, // Asegúrate de que tienes esta columna en tu tabla si la necesitas
+                start: sesion.fecha,
+                hourstart:sesion.hora_inicio,
+                hourend: sesion.hora_fin, // Asegúrate de que tienes esta columna en tu tabla si la necesitas
                 extendedProps: {
                     id_sesion: sesion.id_sesion,
                     nombre_tutor: sesion.nombre_tutor,
@@ -121,7 +124,9 @@
                     document.getElementById('id_sesion').innerText = `ID Sesión: ${info.event.extendedProps.id_sesion}`;
                     document.getElementById('nombre_tutor').innerText = `Tutor: ${info.event.extendedProps.nombre_tutor}`+` ${info.event.extendedProps.apellidoPat_tutor}`+` ${info.event.extendedProps.apellidoMat_tutor}`;
                     document.getElementById('nombre_materia').innerText = `Materia: ${info.event.extendedProps.nombre_materia}`;
-                    document.getElementById('fecha').innerText = `Fecha: ${info.event.start.toLocaleString()}`;
+                    document.getElementById('fecha').innerText = `Fecha: ${info.event.start.toLocaleDateString()}`;
+                    document.getElementById('hora_inicio').innerText = `Hora de inicio: ${info.event.extendedProps.hourstart}`;
+                   document.getElementById('hora_fin').innerText = `Hora de fin: ${info.event.extendedProps.hourend}`;
                     document.getElementById('estado').innerText = `Estado: ${info.event.extendedProps.estado ? 'Activo' : 'Inactivo'}`;
                 }
             });
