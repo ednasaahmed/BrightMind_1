@@ -242,7 +242,7 @@ body.dark .sidebar li a:hover .text{
   }
 
   /* mensajes */
-  /* #message-panel {
+  #message-panel {
     display: none;
     position: fixed;
     right: 0;
@@ -253,4 +253,29 @@ body.dark .sidebar li a:hover .text{
     border-left: 1px solid #ccc;
     overflow-y: auto;
     z-index: 1000;
-}     */
+    transition: transform 0.3s ease;
+    transform: translateX(100%); /* Inicialmente fuera de la vista */
+}
+
+#message-panel.open {
+    display: block;
+    transform: translateX(0); /* Desliza el panel a la vista */
+}
+
+.message-header {
+    padding: 10px;
+    background: #f5f5f5;
+    border-bottom: 1px solid #ccc;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.message-body {
+    padding: 10px;
+}
+
+.message {
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+}

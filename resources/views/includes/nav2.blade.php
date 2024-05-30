@@ -32,12 +32,12 @@
                     <span class="text nav-text">Calendario</span>
                     </a>
                 </li>
-                <!-- <li class="nav-links">
+                <li class="nav-links">
                     <a href="#" id="messages-button">
                         <i class='bx bx-message icon'></i>
                         <span class="text nav-text">Mensajes</span>
                     </a>
-                </li> -->
+                </li>
             </ul>
         </div>
         <div class="bottom-content">
@@ -51,20 +51,16 @@
     </div>
 </nav>
 
-<!-- <div class="main-content close">
-    @yield('content')
-</div> -->
 
-<!-- <div id="message-panel">
+<div id="message-panel">
     <div class="message-header">
         <h5>Mensajes</h5>
         <button id="close-message-panel" class="btn btn-secondary">Cerrar</button>
     </div>
-    <div class="message-body"> -->
+    <div class="message-body">
         <!-- Aquí irán los mensajes -->
-    <!-- </div>
-</div> -->
-
+    </div>
+</div>
 <script src="{{ asset('js/script.js') }}"></script>
 
 </body>

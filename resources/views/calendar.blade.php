@@ -104,7 +104,7 @@
                 title: `Sesion ${sesion.id_sesion}`,
                 start: sesion.fecha,
                 hourstart:sesion.hora_inicio,
-                hourend: sesion.hora_fin, // Asegúrate de que tienes esta columna en tu tabla si la necesitas
+                hourend: sesion.hora_fin, 
                 extendedProps: {
                     id_sesion: sesion.id_sesion,
                     nombre_tutor: sesion.nombre_tutor,
