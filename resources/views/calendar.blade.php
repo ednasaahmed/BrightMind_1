@@ -68,7 +68,7 @@
           </button>
         </div>
         <div class="modal-body">
-          <p id="id_sesion"></p>
+          <p name="id_sesion "id="id_sesion"></p>
           <p id="nombre_tutor"></p>         
           <p id="nombre_materia"></p>
           <p id="fecha"></p>
@@ -78,7 +78,7 @@
         </div>
         <div class="modal-footer">
         <button type="submit" class="btn btn-secondary" ><a href="#"></a>Chat</button>
-        <button type="submit" class="btn btn-secondary" ><a href="#"></a>Finalizar</button>
+        <a href="#" id="btnFinalizar" class="btn btn-primary">Finalizar</a>
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
         </div>
       </div>
@@ -128,6 +128,9 @@
                     document.getElementById('hora_inicio').innerText = `Hora de inicio: ${info.event.extendedProps.hourstart}`;
                    document.getElementById('hora_fin').innerText = `Hora de fin: ${info.event.extendedProps.hourend}`;
                     document.getElementById('estado').innerText = `Estado: ${info.event.extendedProps.estado ? 'Activo' : 'Inactivo'}`;
+
+                const finalizarUrl = "{{ route('finalizarS', ':id') }}".replace(':id', info.event.extendedProps.id_sesion);
+                document.getElementById('btnFinalizar').setAttribute('href', finalizarUrl);
                 }
             });
             calendar.render();
