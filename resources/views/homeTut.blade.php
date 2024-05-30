@@ -74,14 +74,17 @@
                             <div class="row">
                             @foreach ($sesiones as $sesion)
                                <!-- empieza la card -->
+                               @if ($sesion->estado==1)
                                 <div class="col-md-4 mb-3"> 
-                                        <div class="card card-body">
-                                            <h5 class="card-title">{{$sesion->materia->Nombre}}</h5>
-                                            <p class="card-text"><i class="bi bi-person-circle" style="font-size: 3rem;"></i> Estudiante: {{$sesion->estudiantes->nombre}}</p>
-                                            <p class="card-text">Fecha: {{$sesion->fecha->format('Y-m-d')}}</p>
-                                            
-                                        </div>
-                                </div>
+                                          <div class="card card-body">
+                                              <h5 class="card-title">{{$sesion->materia->Nombre}}</h5>
+                                              <p class="card-text"><i class="bi bi-person-circle" style="font-size: 3rem;"></i> Estudiante: {{$sesion->estudiantes->nombre}}</p>
+                                              <p class="card-text">Fecha: {{$sesion->fecha->isoFormat('dddd, D [de] MMMM [de] YYYY')}}</p>
+                                              
+                                          </div>
+                                  </div>
+                               @endif
+                                
                               <!-- termina la card -->
                               @endforeach
 

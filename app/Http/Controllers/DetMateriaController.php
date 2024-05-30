@@ -23,48 +23,6 @@ class DetMateriaController extends Controller
         return view('detmaterias', compact('user', 'estudiante','tutor','materia','disponibilidad'));
     }
 
-
-    // public function agendarS(Request $request,$id,$id_materia){
-    //     $user = Auth::user();
-    //     $estudiante = $user->estudiante;
-    //     $sesion = new sesion();
-    //    // $tutor= $user->tutores;
-    //     if ($_SERVER['REQUEST_METHOD']=="POST"){
-    //         $request->validate([
-    //             'fecha' => 'required|date_format:Y-m-d\TH:i',
-    //         ]); 
-    //         $fecha1 = \Carbon\Carbon::createFromFormat('Y-m-d\TH:i', $request->fecha);
-    //             $sesion->id_tutor=$id;
-    //             $sesion->id_estudiante=$estudiante->id_estudiante;
-    //             $sesion->fecha= $fecha1;
-    //             $sesion->id_materia= $id_materia;
-    //             $sesion->estado= 1;
-
-    //             $sesion->save();
-    //             $materia = Materia::findOrFail($id_materia);
-    //             $tutor = Tutores::findOrFail($id);
-    //             $sesiones = Sesion::with(['tutores', 'estudiantes', 'materia'])
-    //             ->where('id_estudiante', $estudiante->id_estudiante)
-    //             ->get()
-    //             ->map(function ($sesion) {
-    //                     return [
-    //                         'id_sesion' => $sesion->id_sesion,
-    //                         //'fecha' => $sesion->fecha->format('Y-m-d\TH:i:s'),
-    //                         'fecha' => $sesion->fecha->format('Y-m-d'),
-    //                         'nombre_tutor' => $sesion->tutores ? $sesion->tutores->nombre : 'No especificado',
-    //                         'nombre_estudiante' => $sesion->estudiantes ? $sesion->estudiantes->nombre : 'No especificado',
-    //                         'nombre_materia' => $sesion->materia ? $sesion->materia->Nombre : 'No especificado',
-    //                         'estado' => $sesion->estado,
-    //                     ];
-    //                 });
-
-    //             return view('calendar',compact('tutor','estudiante','materia','sesiones'));
-
-    //         //sreturn redirect()->back()->with('success', 'Cita guardada correctamente.');
-    //     }
-                   
-    // }
-
     public function agendarS(Request $request,$id,$id_materia){
         $user = Auth::user();
         $estudiante = $user->estudiante;
@@ -88,8 +46,13 @@ class DetMateriaController extends Controller
             $sesion->hora_fin=trim($_POST["hora_fin"]);
             $sesion->id_materia=$id_materia;
             $sesion->estado=1;
-                    
+ 
+            //$id_disponiblidad=trim($_POST["id_disponibilidad"]);
+           
             $sesion->save(); 
+            $id_disponiblidad = $request->input('id_disponibilidad');
+            $disponibilidad = Disponibilidad::find($id_disponiblidad);
+            $disponibilidad->delete();
             
             }
                

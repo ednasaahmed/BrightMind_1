@@ -49,6 +49,7 @@ Route::get('/perfilt', [PerfilTController::class, 'perfil'])->name('perfilt');
 Route::post('/perfilt/updateD{id}', [PerfilTController::class, 'updateD'])->name('perfilt.updateD');
 Route::post('/perfilt/update{id}', [PerfilTController::class, 'update'])->name('perfilt.update');
 Route::delete('/delete/{id}', [PerfilTController::class, 'delete'])->name('delete');
+Route::get('/finalzarS/{id}', [CalendarController::class, 'finalizarS'])->name('finalizarS');
 
 
 Route::post('/registrar', [RegistrarController::class, 'register'])->name('register');

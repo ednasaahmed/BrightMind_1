@@ -35,4 +35,14 @@ class CalendarController extends Controller
         return view('calendar', compact('user', 'estudiante','sesiones'));
     }
 
+    public function finalizarS($id){
+
+        $sesion = sesion::find($id);
+        $sesion->estado=0;
+        $sesion->save();
+        return redirect()->back()->with('success', 'Sesión finalizada correctamente.');
+      //  return route('calendar');
+       
+    }
+
 }

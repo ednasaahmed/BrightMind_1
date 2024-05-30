@@ -14,6 +14,7 @@ class HomeController extends Controller
         $user = Auth::user();
         $estudiante = $user->estudiante; 
         $sesiones = $estudiante->sesiones()->with('tutores', 'materia')->get();
+        \Carbon\Carbon::setLocale('es');
         return view('home', compact('user', 'estudiante','sesiones'));
     }
   
