@@ -55,6 +55,12 @@
   <!-- Incluye Bootstrap CSS -->
   <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css' rel='stylesheet' />
 
+  <!-- Incluye FullCalendar JS -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.js'></script>
+  <!-- Incluye jQuery y Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+
 <div id='calendar'></div>
 
   <!-- Modal -->
@@ -63,9 +69,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="eventModalLabel">Evento</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" style="border:none; background-color: #FFFFFF;" aria-label="Close"><i class="bi bi-x-lg"></i></button>
         </div>
         <div class="modal-body">
           <p name="id_sesion "id="id_sesion"></p>
@@ -79,17 +83,14 @@
         <div class="modal-footer">
         <button type="submit" class="btn btn-secondary" ><a href="#"></a>Chat</button>
         <a href="#" id="btnFinalizar" class="btn btn-primary">Finalizar</a>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  aria-label="Close">Cerrar</button>
+          <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
         </div>
       </div>
     </div>
   </div>
 
-   <!-- Incluye FullCalendar JS -->
-   <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/5.11.3/main.min.js'></script>
-  <!-- Incluye jQuery y Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+   
 
   <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -127,10 +128,16 @@
                     document.getElementById('fecha').innerText = `Fecha: ${info.event.start.toLocaleDateString()}`;
                     document.getElementById('hora_inicio').innerText = `Hora de inicio: ${info.event.extendedProps.hourstart}`;
                    document.getElementById('hora_fin').innerText = `Hora de fin: ${info.event.extendedProps.hourend}`;
-                    document.getElementById('estado').innerText = `Estado: ${info.event.extendedProps.estado ? 'Activo' : 'Inactivo'}`;
+                    document.getElementById('estado').innerText = `Estado: ${info.event.extendedProps.estado ? 'Activo' : 'Finalizada'}`;
 
-                const finalizarUrl = "{{ route('finalizarS', ':id') }}".replace(':id', info.event.extendedProps.id_sesion);
-                document.getElementById('btnFinalizar').setAttribute('href', finalizarUrl);
+                const finalizarBtn = document.getElementById('btnFinalizar');
+                    if (info.event.extendedProps.estado === 1) {
+                        finalizarBtn.style.display = 'inline-block';
+                        const finalizarUrl = "{{ route('finalizarS', ':id') }}".replace(':id', info.event.extendedProps.id_sesion);
+                        finalizarBtn.setAttribute('href', finalizarUrl);
+                    } else {
+                        finalizarBtn.style.display = 'none';
+                    }
                 }
             });
             calendar.render();
