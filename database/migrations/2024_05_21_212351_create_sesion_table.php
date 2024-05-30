@@ -22,7 +22,7 @@ return new class extends Migration
             $table->foreign('id_materia')->references('id_materia')->on('materia');
             $table->time('hora_inicio');
             $table->time('hora_fin');
-            $table->binary('estado');
+            $table->integer('estado');
             $table->timestamps();
 
         });
