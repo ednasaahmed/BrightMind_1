@@ -128,10 +128,16 @@
                     document.getElementById('fecha').innerText = `Fecha: ${info.event.start.toLocaleDateString()}`;
                     document.getElementById('hora_inicio').innerText = `Hora de inicio: ${info.event.extendedProps.hourstart}`;
                    document.getElementById('hora_fin').innerText = `Hora de fin: ${info.event.extendedProps.hourend}`;
-                    document.getElementById('estado').innerText = `Estado: ${info.event.extendedProps.estado ? 'Activo' : 'Inactivo'}`;
+                    document.getElementById('estado').innerText = `Estado: ${info.event.extendedProps.estado ? 'Activo' : 'Finalizada'}`;
 
-                const finalizarUrl = "{{ route('finalizarS', ':id') }}".replace(':id', info.event.extendedProps.id_sesion);
-                document.getElementById('btnFinalizar').setAttribute('href', finalizarUrl);
+                const finalizarBtn = document.getElementById('btnFinalizar');
+                    if (info.event.extendedProps.estado === 1) {
+                        finalizarBtn.style.display = 'inline-block';
+                        const finalizarUrl = "{{ route('finalizarS', ':id') }}".replace(':id', info.event.extendedProps.id_sesion);
+                        finalizarBtn.setAttribute('href', finalizarUrl);
+                    } else {
+                        finalizarBtn.style.display = 'none';
+                    }
                 }
             });
             calendar.render();
