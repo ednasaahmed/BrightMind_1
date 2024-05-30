@@ -23,14 +23,34 @@ class RegistrarController extends Controller
 
     public function register(Request $request){
 
-        //validación para ver que el correo a registrar no exista ya en la base de datos.
-        $validator = Validator::make($request->all(), [
-            'email' => 'required|email|unique:users,email'
-            //'password' => 'required|min:8|confirm-password'
-        ]);
-        
-        //En caso de existir retornara un error, que se mostrara en la pantalla del registro, indicando que es lo que fallo
-        if ($validator->fails()) {
+        $rules = [
+            'email' => 'required|email|unique:users,email',
+            'password' => [
+                'required',
+                'string',
+                'min:8', 
+                'regex:/[a-z]/', 
+                'regex:/[A-Z]/', 
+                'regex:/[0-9]/', 
+                'regex:/[@$!%*?&]/', 
+                'confirmed', 
+            ],
+        ];
+
+        $messages = [
+            'email.required' => 'El correo electrónico es obligatorio.',
+            'email.email' => 'El correo electrónico no es válido.',
+            'email.unique' => 'El correo electrónico ya está registrado.',
+            'password.required' => 'La contraseña es obligatoria.',
+            'password.min' => 'La contraseña debe tener al menos 8 caracteres.',
+            'password.regex' => 'La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial (@$!%*?&).',
+            'password.confirmed' => 'Las contraseñas no coinciden.',
+            'password.regex.*' => 'La contraseña debe contener al menos una letra minúscula, una letra mayúscula, un número y un carácter especial (@$!%*?&).',
+        ];
+
+        $validator = Validator::make($request->all(), $rules, $messages);
+
+        if ($validator->fails()) {   
             return redirect('registrar')
                         ->withErrors($validator)
                         ->withInput();

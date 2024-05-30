@@ -17,15 +17,26 @@
           <form method="POST" class='login'>
           @csrf
           <div class="mb-3">
-            <input type="email" class="form-control estilo-campos ancho" name="email" placeholder="Correo Electrónico" value="{{ old('email') }}" required>
+            <input type="email" class="form-control estilo-campos ancho"  name="email" placeholder="Correo Electrónico" value="{{ old('email') }}" required>
+            @error('email')
+              <p class=" ancho alert alert-danger ">{{$message}}</p>
+            @enderror
           </div>
           <div class="mb-3">
             <input type="password" class="form-control estilo-campos ancho" name="password" placeholder="Contraseña" required>
           </div>
           <div class="mb-3">
-            <input type="password" class="form-control estilo-campos ancho" name="confirm-password" placeholder="Confirmar Contraseña" required>
+            <input type="password" class="form-control estilo-campos ancho" name="password_confirmation" placeholder="Confirmar Contraseña" required>
+              @if($errors->has('password'))
+                <div class="ancho alert alert-danger">
+                  @foreach($errors->get('password') as $message)
+                      <ul>                 
+                          <li >{{$message}}</li>
+                      </ul>
+                    @endforeach
+                </div>
+              @endif
           </div>
-
           <div>
             <input class="form-control estilo-campos mb-3 ancho" name="nombre" placeholder="Nombre" value="{{ old('nombre') }}" required>
           </div>
@@ -53,15 +64,6 @@
               <label for="floatingSelect">Sexo</label>
             </div>
           </div>
-          @if ($errors->any())
-          <div class="alert alert-danger">
-              <ul>
-                  @foreach ($errors->all() as $error)
-                      <li>{{ $error }}</li>
-                  @endforeach
-              </ul>
-          </div>
-          @endif
           <div style="text-align:center;">
             <p class="d-inline-flex gap-1">
               <button id="radioAlumno" class="radio-btn" type="radio" name="alu-tut"  value="Alumno" autocomplete="off">
