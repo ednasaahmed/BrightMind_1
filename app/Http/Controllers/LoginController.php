@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Estudiantes;
 use App\Models\User;
+use Dotenv\Exception\ValidationException;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -50,6 +51,10 @@ class LoginController extends Controller
           // return redirect('home');
             
         }
+
+        // throw ValidationException::withMessages([
+        //     'email' => __('auth.failed')
+        // ]);
 
         //Si la autenticación no es correcta se redirige al usuario al login de nuevo
         return redirect('login');

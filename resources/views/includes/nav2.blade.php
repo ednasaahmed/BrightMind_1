@@ -57,8 +57,20 @@
         <h5>Mensajes</h5>
         <button id="close-message-panel" class="btn btn-secondary">Cerrar</button>
     </div>
-    <div class="message-body">
-        <!-- Aquí irán los mensajes -->
+    <div class="conversation-list">
+        <!-- Lista de conversaciones -->
+        <ul id="conversations">
+            <li data-conversation-id="1"><i class="bi bi-person-circle icono-grande"></i>Tutor: Luis Alberto Cardiel Murillo <br> <br> Luis: Hola, ¿Lista para comenzar la sesión?</li>
+            <li data-conversation-id="2"><i class="bi bi-person-circle icono-grande"></i>Tutor: Sol Martinez <br> <br> Sol: Que tal, ¿Lista para comenzar la sesión?</li>
+            <!-- Más conversaciones -->
+        </ul>
+    </div>
+     <!-- Aquí irán los mensajes -->
+    <!-- <div class="message-body">
+        <div class="message-input">
+        <input type="text" id="message-input" placeholder="Escribe un mensaje">
+        <button id="send-message" class="btn btn-primary">Enviar</button>
+    </div> -->
     </div>
 </div>
 <script src="{{ asset('js/script.js') }}"></script>

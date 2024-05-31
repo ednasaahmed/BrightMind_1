@@ -87,14 +87,11 @@
       </div>
     </div>
   </div>
-
   </form>
-      
-
 </main>
-<script>
+<!-- <script>
   document.getElementById("radioAlumno").addEventListener("click", function() {
   document.getElementById("collapseTutor").classList.remove("show");
   });
-</script>
+</script> -->
 @endsection

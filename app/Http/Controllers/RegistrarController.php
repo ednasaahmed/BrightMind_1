@@ -24,7 +24,7 @@ class RegistrarController extends Controller
     public function register(Request $request){
 
         $rules = [
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required | email | unique:users ,email',
             'password' => [
                 'required',
                 'string',

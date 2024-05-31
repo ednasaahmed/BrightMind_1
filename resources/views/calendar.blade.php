@@ -81,7 +81,7 @@
           <p id="estado"></p>
         </div>
         <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary" ><a href="#"></a>Chat</button>
+        <a href="#" id="btnChat" class="btn btn-primary" data-bs-dismiss="modal"  aria-label="Close">Chat</a>
         <a href="#" id="btnFinalizar" class="btn btn-primary">Finalizar</a>
         <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  aria-label="Close">Cerrar</button>
           <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button> -->
@@ -138,8 +138,17 @@
                     } else {
                         finalizarBtn.style.display = 'none';
                     }
-                }
-            });
+                    
+                            const openMessagePanel = () => {
+                            messagePanel.classList.add('open');
+                            mainContent.style.marginRight = '400px';
+                            $('#eventModal').modal('hide'); // Cierra el modal // Ajusta el margen del contenido principal
+                        };
+
+                        btnChat.addEventListener('click', openMessagePanel);
+                        
+                      }
+                  });
             calendar.render();
         });
     </script>
