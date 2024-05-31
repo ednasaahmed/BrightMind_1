@@ -25,7 +25,7 @@
           
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link" role="button" data-bs-toggle="dropdown">
+          <a href="#" id="btnMen" class="nav-link" role="button" data-bs-toggle="dropdown">
             <i class="bi bi-envelope-fill icono-grande"></i>
           </a>
         </li>
@@ -96,6 +96,13 @@
         document.addEventListener('DOMContentLoaded', function() {
             const calendarEl = document.getElementById('calendar');
 
+            const openMessagePanel1 = () => {
+                            messagePanel.classList.add('open');
+                            mainContent.style.marginRight = '400px';
+                 
+                        };
+
+            btnMen.addEventListener('click', openMessagePanel1);
             // Recoge las sesiones desde la variable PHP
             const sesiones = @json($sesiones);
 
@@ -144,9 +151,9 @@
                             mainContent.style.marginRight = '400px';
                             $('#eventModal').modal('hide'); // Cierra el modal // Ajusta el margen del contenido principal
                         };
-
+                       
                         btnChat.addEventListener('click', openMessagePanel);
-                        
+
                       }
                   });
             calendar.render();

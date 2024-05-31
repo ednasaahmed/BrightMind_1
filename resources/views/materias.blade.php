@@ -24,7 +24,7 @@
           
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link" role="button" data-bs-toggle="dropdown">
+          <a href="#" id="btnMenMat"class="nav-link" role="button" data-bs-toggle="dropdown">
             <i class="bi bi-envelope-fill icono-grande"></i>
           </a>
         </li>
@@ -71,7 +71,16 @@
 
 </section>
 
+<script>
 
+                    const openMessagePanel = () => {
+                            messagePanel.classList.add('open');
+                            mainContent.style.marginRight = '400px';
+                        };
+
+                        btnMenMat.addEventListener('click', openMessagePanel);
+
+</script>
 
     
 @endsection

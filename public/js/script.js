@@ -21,6 +21,7 @@ const body = document.querySelector("body"),
         mainContent.style.marginRight = '250px'; // Vuelve al margen original
     });
     
+    
     //-----------------------------------
       toggle.addEventListener("click", () =>{
         sidebar.classList.toggle("close");

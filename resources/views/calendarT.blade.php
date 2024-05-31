@@ -24,7 +24,7 @@
           
         </li>
         <li class="nav-item dropdown">
-          <a href="#" class="nav-link" role="button" data-bs-toggle="dropdown">
+          <a href="#" id="btnMen"class="nav-link" role="button" data-bs-toggle="dropdown">
             <i class="bi bi-envelope-fill icono-grande"></i>
           </a>
         </li>
@@ -57,9 +57,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="eventModalLabel">Evento</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" style="border:none; background-color: #FFFFFF;" aria-label="Close"><i class="bi bi-x-lg"></i></button>
         </div>
         <div class="modal-body">
           <p id="id_sesion"></p>
@@ -71,9 +69,8 @@
           <p id="estado"></p>
         </div>
         <div class="modal-footer">
-        <button type="submit" class="btn btn-secondary" ><a href="#"></a>Chat</button>
-        <button type="submit" class="btn btn-secondary" ><a href="#"></a>Finalizar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <a href="#" id="btnMenCal" class="btn btn-primary" data-bs-dismiss="modal"  aria-label="Close">Chat</a>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  aria-label="Close">Cerrar</button>
         </div>
       </div>
     </div>
@@ -89,6 +86,15 @@
   <script>
         document.addEventListener('DOMContentLoaded', function() {
             const calendarEl = document.getElementById('calendar');
+
+            const openMessagePanel1 = () => {
+                            messagePanel.classList.add('open');
+                            mainContent.style.marginRight = '400px';
+                 
+                        };
+
+            btnMenCal.addEventListener('click', openMessagePanel1);
+            btnMen.addEventListener('click', openMessagePanel1);
 
             // Recoge las sesiones desde la variable PHP
             const sesiones = @json($sesiones);

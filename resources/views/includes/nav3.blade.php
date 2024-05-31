@@ -32,6 +32,12 @@
                     <span class="text nav-text">Calendario</span>
                     </a>
                 </li>
+                <li class="nav-links">
+                    <a href="#" id="messages-button">
+                        <i class='bx bx-message icon'></i>
+                        <span class="text nav-text">Mensajes</span>
+                    </a>
+                </li>
             </ul>
         </div>
         <div class="bottom-content">
@@ -44,6 +50,29 @@
         </div>
     </div>
 </nav>
+
+<div id="message-panel">
+    <div class="message-header">
+        <h5>Mensajes</h5>
+        <button id="close-message-panel" class="btn btn-secondary">Cerrar</button>
+    </div>
+    <div class="conversation-list">
+        <!-- Lista de conversaciones -->
+        <ul id="conversations">
+            <li data-conversation-id="1"><i class="bi bi-person-circle icono-grande"></i>Alumno: Estefy Barraza Carreon <br> <br> Estefy: Hola, Estoy lista para comenzar</li>
+            <li data-conversation-id="2"><i class="bi bi-person-circle icono-grande"></i>Alumno: Edna Amhed Cardenas<br> <br> Edna: Que tal, Estoy preparada para la sesión</li>
+            <!-- Más conversaciones -->
+        </ul>
+    </div>
+     <!-- Aquí irán los mensajes -->
+    <!-- <div class="message-body">
+        <div class="message-input">
+        <input type="text" id="message-input" placeholder="Escribe un mensaje">
+        <button id="send-message" class="btn btn-primary">Enviar</button>
+    </div> -->
+    </div>
+</div>
+
 <script src="js/script.js"></script>
 
 </body>
