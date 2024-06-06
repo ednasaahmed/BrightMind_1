@@ -47,9 +47,9 @@
     justify-content: center;
     background-color: #B3B3B3;
     padding: 20px;
-    position: fixed;
+    /* position: fixed;
     bottom: 0;
-    width: 100%;
+    width: 100%; */
 }
 
 .fin {

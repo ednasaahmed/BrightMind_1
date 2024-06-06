@@ -64,12 +64,6 @@
             <!-- Más conversaciones -->
         </ul>
     </div>
-     <!-- Aquí irán los mensajes -->
-    <!-- <div class="message-body">
-        <div class="message-input">
-        <input type="text" id="message-input" placeholder="Escribe un mensaje">
-        <button id="send-message" class="btn btn-primary">Enviar</button>
-    </div> -->
     </div>
 </div>
 
