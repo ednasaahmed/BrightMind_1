@@ -55,6 +55,7 @@ class RegistrarController extends Controller
         //                 ->withErrors($validator)
         //                 ->withInput();
         // }
+        
 
         $user= new User();
 
