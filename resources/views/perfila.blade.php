@@ -81,8 +81,9 @@
         <div class="card1">
         <form method="post" class="needs-validation" novalidate="" action="{{ url('/perfila/update' . $estudiante->id_estudiante) }}">
         @csrf  
-        <div class="card-header">
-              <h4>Editar Perfil</h4>
+        <div class="card-header d-flex justify-content-between">
+              <h4 style="margin: 10px;">Editar Perfil</h4>
+              <button type="submit" class="btn1">Guardar Cambios</button>
             </div>
             <div class="card-body">
               <div class="row">                               
@@ -110,7 +111,7 @@
               </div>
               <br>
               <div class="row">
-                <div class="form-group col-md-6 col-12">
+                <div class="form-group1 col-md-6 col-12">
                   <label>Fecha de Nacimiento</label>
                   <input type="date" class="form-control" name="fecha_nacimiento" value="{{ $estudiante->fecha_nacimiento }}" required>
                   <div class="invalid-feedback">
@@ -118,21 +119,21 @@
                   </div>
                 </div>
                 <div class="form-group col-md-6 col-12">
-                  <label>Sexo</label>
+                  <label class="S">Sexo</label><br>
                   <select class="form-select" name="sexo">
                     <option value="M" {{ $estudiante->sexo == 'M' ? 'selected' : '' }}>Hombre</option>
                     <option value="F" {{ $estudiante->sexo == 'F' ? 'selected' : '' }}>Mujer</option>
                   </select>
+                </div>
+                <div class="form-group col-md-6 col-12">
+                  <br> 
+                  <h5>Cambiar Contraseña</h5>
                 </div>
               </div>
             </div>
       <div class="col-12 text-center">
         <img src="images/logo4.png" alt="Logo" class="img-fluid">
       </div>
-      <div class="boton"> 
-      <button type="submit" class="btn1" >Guardar Cambios</button>
-    </div>
-
           </form>
         </div>
       </div>

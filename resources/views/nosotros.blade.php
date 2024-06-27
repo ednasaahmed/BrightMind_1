@@ -34,7 +34,7 @@
             </div>
             <div class="content">
                 <h2>Selección de Materias</h2>
-                <p>Los alumnos podrán escoger sus materias dependiendo de la calificación del usuariio según otros alumnos, además de ver sus grados de conocimiento de los mismos.</p>
+                <p>Los alumnos podrán escoger sus materias dependiendo de la calificación del usuario según otros alumnos, además de ver sus grados de conocimiento de los mismos.</p>
             </div>
         </div>
     </div>
