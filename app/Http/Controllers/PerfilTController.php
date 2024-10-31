@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Tutores;
 use App\Models\Disponibilidad;
+use App\Http\Controllers\Session;
 
 class PerfilTController extends Controller
 {
